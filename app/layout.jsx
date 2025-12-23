@@ -1,6 +1,6 @@
 // app/layout.js
 import './globals.css'; // Tus estilos de Tailwind
-import { Inter } from 'next/font/google'; // O tu fuente personalizada
+import { Inter, Space_Grotesk, Syne } from 'next/font/google';
 import HeaderManager from '@/components/HeaderManager';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
@@ -8,8 +8,27 @@ import FloatingChat from '@/components/FloatingChat';
 import { UIProvider } from '@/context/UIContext';
 import SmoothScroll from '@/components/SmoothScroll'; // Wrapper para Lenis (ver abajo)
 
-const inter = Inter({ subsets: ['latin'] });
 
+// 2. CONFIGURAMOS LAS FUENTES
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-space',
+  display: 'swap',
+});
+
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['400', '700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+});
 // AQUÍ VA TU SEO POTENTE (Reemplaza a Helmet)
 export const metadata = {
   title: 'MADA | Agencia de Desarrollo Web y Marketing Digital',
@@ -34,7 +53,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${syne.variable}`}>
         <UIProvider>
           {/* CustomCursor necesita 'use client', así que funciona bien si tiene la directiva */}
           <CustomCursor />
