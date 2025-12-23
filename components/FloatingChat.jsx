@@ -74,7 +74,7 @@ const FloatingChat = () => {
                             <p className="text-xs text-lime-400 font-medium mt-1">● Disponible ahora</p>
                         </div>
                     </div>
-                    <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white transition-colors z-10">
+                    <button aria-label="Botón de chat" onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white transition-colors z-10">
                         <X size={20} />
                     </button>
                 </div>
