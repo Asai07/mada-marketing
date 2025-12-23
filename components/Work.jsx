@@ -1,18 +1,16 @@
+'use client';
 import React from 'react';
-import { useScroll } from '../hooks/useScroll'; // 1. Importamos el hook
+import Image from 'next/image'; // <--- 1. Importamos Image
+import { useScroll } from '../hooks/useScroll';
 
 const Work = React.forwardRef(({ isMobile }, ref) => {
-    // 2. Abrimos llaves arriba para poder declarar variables antes de retornar el HTML
     const scrolled = useScroll();
 
     // Calculamos un valor seguro para evitar errores si window no está definido
-    // (Aunque en tu caso probablemente siempre lo esté, es buena práctica)
     const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
 
     return (
         <section ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden text-black">
-            {/* Nota: Ajusté bg-lime-400 arriba según tu diseño original para que coincida con el contexto, 
-                 si prefieres que el fondo lo maneje el SectionWrapper, quita 'bg-lime-400' de aquí */}
 
             <div className="hidden md:block absolute top-20 right-20 text-9xl font-display font-bold text-black opacity-5 pointer-events-none select-none animate-float">WORK</div>
 
@@ -26,15 +24,22 @@ const Work = React.forwardRef(({ isMobile }, ref) => {
 
                     {/* Project 1 */}
                     <div className="group grid md:grid-cols-2 gap-8 md:gap-10 items-center">
+                        {/* Contenedor de imagen */}
                         <div className="relative overflow-hidden rounded-xl aspect-[4/3] shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2564&auto=format&fit=crop" alt="Project 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            {/* --- CAMBIO AQUÍ --- */}
+                            <Image
+                                src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2564&auto=format&fit=crop"
+                                alt="Vogue X Street Project"
+                                fill // Ocupa todo el contenedor 'aspect-[4/3]'
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                sizes="(max-width: 768px) 100vw, 50vw" // Móvil: 100% ancho, Desktop: 50% ancho
+                            />
+                            {/* ------------------- */}
                         </div>
                         <div
                             className="md:-ml-20 z-10 p-6 md:p-12 bg-black text-white rounded-lg shadow-xl transition-transform duration-75 ease-linear"
                             style={{
-                                // Usamos scrolled directamente aquí
                                 transform: !isMobile ? `translateY(${(scrolled * 0.05) - 100}px)` : 'none'
-                                // Nota: Resté 100px para ajustar el desfase inicial, puedes quitarlo si prefieres
                             }}
                         >
                             <span className="text-lime-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 block">Fashion & E-commerce</span>
@@ -53,7 +58,6 @@ const Work = React.forwardRef(({ isMobile }, ref) => {
                         <div
                             className="order-2 md:order-1 md:-mr-20 z-10 p-6 md:p-12 bg-white text-black rounded-lg shadow-xl transition-transform duration-75 ease-linear"
                             style={{
-                                // Efecto Parallax inverso
                                 transform: !isMobile ? `translateY(${scrolled * -0.02 + 50}px)` : 'none'
                             }}
                         >
@@ -65,8 +69,17 @@ const Work = React.forwardRef(({ isMobile }, ref) => {
                                 <li className="border border-black/10 px-2 py-1 rounded">React Native</li>
                             </ul>
                         </div>
+                        {/* Contenedor de imagen */}
                         <div className="order-1 md:order-2 relative overflow-hidden rounded-xl aspect-[4/3] shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1556742521-9713bf272865?q=80&w=687&auto=format&fit=crop" alt="Project 2" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            {/* --- CAMBIO AQUÍ --- */}
+                            <Image
+                                src="https://images.unsplash.com/photo-1556742521-9713bf272865?q=80&w=687&auto=format&fit=crop"
+                                alt="Neobank Prime Project"
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                            {/* ------------------- */}
                         </div>
                     </div>
 

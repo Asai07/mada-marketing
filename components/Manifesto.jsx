@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useScroll } from '../hooks/useScroll';
+import Image from 'next/image';
 
 const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
     const scrolled = useScroll();
@@ -42,8 +43,14 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                             </h2>
                         </div>
                         <div className="relative w-full aspect-video overflow-hidden rounded-sm">
-                            <img src="https://images.unsplash.com/photo-1492551557933-34265f7af79e?q=80&w=2670&auto=format&fit=crop" alt="Team working" className="absolute inset-0 w-full h-full object-cover" />
-                            <div className="absolute inset-0 bg-black/10"></div>
+                            <Image
+                                src="https://images.unsplash.com/photo-1492551557933-34265f7af79e?q=80&w=2670&auto=format&fit=crop"
+                                alt="Team working"
+                                fill // Esto hace que llene el contenedor padre (ideal para backgrounds)
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 80vw" // Le dice al navegador qué tamaño esperar
+                                priority // Agrega esto SOLO si la imagen sale en la primera pantalla al cargar
+                            />                            <div className="absolute inset-0 bg-black/10"></div>
                         </div>
                         <p className="font-display text-2xl md:text-5xl font-bold leading-tight text-gray-800">Creamos ecosistemas <span className="italic font-serif font-light text-gray-400">digitales</span> que conectan emociones con resultados de negocio.</p>
                     </div>

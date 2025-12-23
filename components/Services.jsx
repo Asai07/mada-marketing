@@ -1,5 +1,7 @@
+'use client'; // No olvides esto porque usas useState
 import React, { useState } from 'react';
 import { ArrowRight, Plus } from 'lucide-react';
+import Image from 'next/image'; // <--- 1. IMPORTANTE
 
 const Services = React.forwardRef(({ isMobile }, ref) => {
     const [activeService, setActiveService] = useState(0);
@@ -21,12 +23,24 @@ const Services = React.forwardRef(({ isMobile }, ref) => {
                     <p className="text-gray-400 font-body text-xs md:text-sm max-w-xs">{isMobile ? 'Toca para explorar.' : 'Despliega cada módulo para explorar.'}</p>
                 </div>
             </div>
+
             <div className="flex flex-col lg:flex-row w-full h-[80vh] lg:h-[70vh] border-y border-white/10" onMouseLeave={() => !isMobile && setActiveService(0)}>
                 {services.map((service, index) => (
                     <div key={index} onMouseEnter={() => !isMobile && setActiveService(index)} onClick={() => setActiveService(index)}
                         className={`relative border-b border-white/10 lg:border-b-0 lg:border-r overflow-hidden transition-all duration-700 ease-[0.22, 1, 0.36, 1] group cursor-pointer lg:cursor-none ${activeService === index ? 'flex-[4] lg:flex-[3] opacity-100' : 'flex-[1] lg:flex-[1] opacity-60 hover:opacity-100'}`}>
-                        <div className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${activeService === index ? 'scale-105 grayscale-0 opacity-50' : 'scale-125 grayscale opacity-0'}`} style={{ backgroundImage: `url(${service.img})` }} />
+
+                        {/* --- AQUÍ ESTÁ EL CAMBIO --- */}
+                        <Image
+                            src={service.img}
+                            alt={service.title}
+                            fill // Esto reemplaza al width/height y position absolute
+                            className={`object-cover object-center transition-all duration-1000 ${activeService === index ? 'scale-105 grayscale-0 opacity-50' : 'scale-125 grayscale opacity-0'}`}
+                            sizes="(max-width: 1024px) 100vw, 50vw" // Optimización: carga imágenes más chicas en móvil
+                        />
+                        {/* --------------------------- */}
+
                         <div className={`absolute inset-0 bg-[#0a0a0a] transition-opacity duration-700 ${activeService === index ? 'opacity-30' : 'opacity-100'}`} />
+
                         <div className="relative z-10 h-full p-6 md:p-8 flex flex-col justify-between">
                             <div className="flex justify-between items-start">
                                 <span className={`font-display text-xl md:text-2xl transition-colors duration-300 drop-shadow-lg ${activeService === index ? 'text-lime-400' : 'text-gray-600'}`}>/{service.id}</span>
