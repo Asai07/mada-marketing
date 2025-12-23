@@ -28,7 +28,7 @@ const Hero = React.forwardRef((props, ref) => {
     return (
         <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-10">
             <div className="absolute inset-0 z-0 bg-gradient-to-br from-black via-[#4a044e] via-[#172554] to-[#052e16] animate-gradient-xy opacity-90"></div>
-            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[url('/noise.svg')]"></div>
 
             <div className="relative z-10 w-full max-w-7xl mx-auto pt-20 flex flex-col justify-center h-full">
                 <div className="flex flex-col md:flex-row items-end justify-between border-b border-white/20 pb-8 mb-8 md:mb-16">

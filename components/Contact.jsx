@@ -16,7 +16,7 @@ const Contact = () => {
     return (
         <section ref={ctaRef} className="py-32 px-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
             {/* Background noise for texture */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('/noise.svg')]"></div>
 
             <div className="max-w-4xl mx-auto relative z-10">
                 <span className="text-lime-400 font-body text-xs md:text-sm uppercase tracking-[0.2em] block mb-6 animate-pulse">

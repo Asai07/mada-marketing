@@ -98,7 +98,7 @@ const InfoBento = ({ isMobile }) => {
                             backgroundImage: 'linear-gradient(135deg, #0f172a 0%, #000000 50%, #1e293b 100%)',
                         }}
                     >
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+                        <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20"></div>
                         <div className="absolute top-0 right-0 w-64 h-64 bg-lime-400/10 rounded-full blur-[100px] animate-pulse"></div>
 
                         <div className="relative z-10">
