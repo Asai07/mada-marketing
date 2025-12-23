@@ -13,7 +13,7 @@ const Navbar = ({ onMenuClick }) => {
                     Hablemos
                 </button>
 
-                <button
+                <button aria-label="Botón de menú"
                     onClick={onMenuClick}
                     className="group flex items-center gap-3 text-xs font-body uppercase tracking-widest hover:text-lime-400 transition-colors"
                 >
