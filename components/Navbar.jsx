@@ -9,7 +9,7 @@ const Navbar = ({ onMenuClick }) => {
             </div>
 
             <div className="flex items-center gap-6 md:gap-8">
-                <button className="hidden md:block text-xs font-bold uppercase tracking-widest border border-white px-5 py-2 hover:bg-white hover:text-black transition-all">
+                <button aria-label="Hablemos" className="hidden md:block text-xs font-bold uppercase tracking-widest border border-white px-5 py-2 hover:bg-white hover:text-black transition-all">
                     Hablemos
                 </button>
 

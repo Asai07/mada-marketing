@@ -127,7 +127,7 @@ const FloatingChat = () => {
             </div>
 
             {/* 3. FAB (Botón Flotante) */}
-            <button
+            <button aria-label="Botón de chat"
                 onClick={handleOpen}
                 className={`
           pointer-events-auto
