@@ -52,7 +52,7 @@ const PricingSection = () => {
                             ))}
                         </ul>
 
-                        <button className="w-full py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest">
+                        <button aria-label="Seleccionar plan ignition" className="w-full py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest">
                             Seleccionar plan
                         </button>
                     </div>
@@ -95,7 +95,7 @@ const PricingSection = () => {
                             ))}
                         </ul>
 
-                        <button className="w-full py-3 bg-lime-400 text-black font-bold border border-lime-400 hover:bg-transparent hover:text-lime-400 transition-all duration-300 text-xs uppercase tracking-widest">
+                        <button aria-label="Seleccionar plan bestseller" className="w-full py-3 bg-lime-400 text-black font-bold border border-lime-400 hover:bg-transparent hover:text-lime-400 transition-all duration-300 text-xs uppercase tracking-widest">
                             Seleccionar Plan
                         </button>
                     </div>
@@ -133,7 +133,7 @@ const PricingSection = () => {
                             ))}
                         </ul>
 
-                        <button className="w-full py-3 border border-black text-black hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300 text-xs font-bold uppercase tracking-widest">
+                        <button aria-label="Contactar ventas" className="w-full py-3 border border-black text-black hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300 text-xs font-bold uppercase tracking-widest">
                             Contactar Ventas
                         </button>
                     </div>

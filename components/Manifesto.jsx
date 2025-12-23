@@ -25,7 +25,7 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                         <span className="inline-block px-3 py-1 rounded-full border border-black/10 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 bg-gray-100 text-black">01. The Insight</span>
                         <h3 className="font-display text-3xl md:text-4xl font-bold leading-tight mb-6">El diseño estático está muerto.</h3>
                         <p className="font-body text-gray-600 text-base md:text-lg leading-relaxed mb-8">Hoy en día, la atención es la moneda más valiosa. Si tu sitio web no cuenta una historia, si no se mueve, si no respira... es invisible.</p>
-                        <button onClick={onOpenManifesto} className="px-8 py-3 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-lime-400 hover:text-black transition-colors">Leer Manifiesto</button>
+                        <button onClick={onOpenManifesto} aria-label="Leer Manifesto de la Página" className="px-8 py-3 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-lime-400 hover:text-black transition-colors">Leer Manifiesto</button>
                     </div>
                     <div className="md:col-span-8 flex flex-col gap-16 md:gap-20">
                         <div className="relative">

@@ -46,7 +46,7 @@ const Hero = React.forwardRef((props, ref) => {
                 </h1>
 
                 <div className="mt-8 animate-[slideUpFade_1s_ease-out_0.6s_forwards] opacity-0">
-                    <button className="group relative px-8 py-4 bg-transparent border border-white text-white uppercase font-bold tracking-widest text-sm overflow-hidden transition-all hover:border-lime-400 hover:text-black">
+                    <button aria-label="Agendar llamada" className="group relative px-8 py-4 bg-transparent border border-white text-white uppercase font-bold tracking-widest text-sm overflow-hidden transition-all hover:border-lime-400 hover:text-black">
                         <span className="relative z-10 flex items-center gap-2">Agendar Llamada <ArrowRight className="w-4 h-4" /></span>
                         <div className="absolute inset-0 bg-lime-400 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                     </button>
