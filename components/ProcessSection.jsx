@@ -70,9 +70,7 @@ const ProcessSection = () => {
                                     }`}
                             >
                                 {/* Puntos centrales (solo desktop) */}
-                                <div className={`hidden md:flex absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full items-center justify-center z-10 shadow-sm
-    ${isEven ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'}
-`}>
+                                <div className={`hidden md:flex absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full items-center justify-center z-10 shadow-sm ${isEven ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'}`}>
                                     <div className="w-2 h-2 bg-lime-500 rounded-full" />
                                 </div>
 

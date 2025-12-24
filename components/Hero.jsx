@@ -8,7 +8,16 @@ const Hero = React.forwardRef((props, ref) => {
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(80);
-    const toRotate = ["REALIDAD", "PRESENCIA", "POTENCIA", "VISIÓN"];
+    const toRotate = [
+        "IMPACTO",
+        "ALCANCE",
+        "VALOR",
+        "ESTÁNDAR",
+        "PRESTIGIO",
+        "NIVEL",
+        "ESENCIA",
+        "MARCA",
+    ];
 
     useEffect(() => {
         const handleType = () => {
