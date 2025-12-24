@@ -20,7 +20,7 @@ const Work = React.forwardRef(({ isMobile }, ref) => {
                     <a href="#" className="mt-8 md:mt-0 flex items-center gap-2 font-body font-bold text-black uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-opacity text-sm md:text-base">Ver todo el portafolio</a>
                 </div>
 
-                <div className="flex flex-col gap-20 md:gap-80">
+                <div className="flex flex-col gap-20 md:gap-30">
 
                     {/* Project 1 */}
                     <div className="group grid md:grid-cols-2 gap-8 md:gap-10 items-center">
