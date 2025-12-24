@@ -10,10 +10,11 @@ const FloatingChat = () => {
 
     useEffect(() => {
         let hideTimer;
-
+        // Mostramos el tooltip a los 2.5s si no ha interactuado
         const showTimer = setTimeout(() => {
             if (!hasInteracted) {
                 setShowTooltip(true);
+                // Lo ocultamos automáticamente después de 5s
                 hideTimer = setTimeout(() => {
                     setShowTooltip(false);
                 }, 5000);
@@ -33,7 +34,7 @@ const FloatingChat = () => {
     };
 
     const handleStartChat = () => {
-        const phone = "5215555555555";
+        const phone = "528180114561"; // Tu número
         let message = "Hola EventoClic, quiero escalar mi negocio.";
 
         if (selectedInterest === 'web') message = "Hola, me interesa una Landing Page de alto impacto o Sitio Web.";
@@ -51,8 +52,7 @@ const FloatingChat = () => {
             <div
                 className={`
                   pointer-events-auto 
-                  /* CORRECCIÓN 1: Ancho responsivo. En móvil ocupa el ancho disponible menos margen, en desktop fijo */
-                  w-[calc(100vw-3rem)] sm:w-[340px] 
+                  w-full max-w-[90vw] sm:w-[340px] 
                   bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right border border-gray-100
                   ${isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-0 opacity-0 translate-y-10'}
                 `}
@@ -109,20 +109,20 @@ const FloatingChat = () => {
                 </div>
             </div>
 
-            {/* 2. TOOLTIP DE VENTA (Mensaje Flotante) */}
+            {/* 2. TOOLTIP DE VENTA (Corregido) */}
             <div
                 className={`
+                  /* SOLUCIÓN: Absolute SIEMPRE, fijado respecto al botón */
+                  absolute bottom-24 right-0 z-40
+                  w-max max-w-[200px] md:max-w-xs
                   pointer-events-auto
                   bg-black text-white px-5 py-3 rounded-full shadow-2xl text-xs font-bold uppercase tracking-wider
-                  transition-all duration-500 transform flex items-center gap-2
+                  transition-all duration-500 ease-out transform flex items-center gap-2
                   
-                  /* CORRECCIÓN 2: Animación Vertical. 
-                     En lugar de 'translate-x-10' (que saca el elemento a la derecha), 
-                     usamos 'translate-y-4' (lo baja y oculta sin romper el ancho). 
-                  */
+                  /* Aquí solo alternamos visibilidad, no posición layout */
                   ${showTooltip && !isOpen
                         ? 'opacity-100 translate-y-0 scale-100'
-                        : 'opacity-0 translate-y-4 scale-95 pointer-events-none absolute'
+                        : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
                     }
                 `}
             >
