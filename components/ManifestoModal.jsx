@@ -31,15 +31,14 @@ const ManifestoModal = ({ isOpen, onClose }) => {
                         <span className="inline-block px-4 py-2 bg-lime-100 text-lime-800 rounded-lg text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 md:mb-8">
                             // Internal Memo: Why Us?
                         </span>
-                        {/* CAMBIO AQUÍ: text-3xl en móvil -> text-5xl en tablet -> text-8xl en desktop */}
                         <h1 className="text-3xl sm:text-5xl md:text-8xl font-display font-black leading-[0.95] md:leading-[0.9] mb-8 md:mb-12 uppercase break-words">
-                            No buscamos clientes. <br />
                             <span className="text-transparent stroke-text-black hover:text-lime-500 transition-colors duration-500">
-                                Buscamos Cómplices.
+                                No buscamos clientes.
                             </span>
+                            <br />
+                            Buscamos Cómplices.
                         </h1>
                         <div className="pl-4 md:pl-6 border-l-4 border-lime-400">
-                            {/* CAMBIO AQUÍ: Texto más pequeño en móvil (text-lg) */}
                             <p className="text-lg md:text-3xl font-medium text-gray-800 leading-relaxed max-w-3xl">
                                 El internet está lleno de ruido. Sitios web que parecen plantillas, aplicaciones que aburren y marcas que no se atreven a gritar. Nosotros existimos para romper ese silencio.
                             </p>
