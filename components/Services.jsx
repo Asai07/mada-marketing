@@ -43,19 +43,19 @@ const Card = ({ i, title, text, img, category, id, progress, range, targetScale 
         offset: ['start end', 'start start']
     });
 
-    // La escala dinámica: la tarjeta se hace pequeña cuando la siguiente la cubre
-    const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]); // Efecto zoom en la imagen al entrar
-    const scale = useTransform(progress, range, [1, targetScale]); // Efecto "stacking" (encogimiento)
+    // Efectos de escala
+    const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+    const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
         <div ref={container} className="h-screen flex items-center justify-center sticky top-0">
             <motion.div
                 style={{
                     scale,
-                    backgroundColor: '#111111', // Fondo de la tarjeta (ligeramente más claro que el fondo negro total)
-                    top: `calc(-5vh + ${i * 25}px)`, // EL TRUCO: Cada tarjeta se pega un poco más abajo que la anterior
+                    backgroundColor: '#111111',
+                    top: `calc(-5vh + ${i * 25}px)`,
                 }}
-                className="relative flex flex-col md:flex-row w-[90vw] md:w-[70vw] h-[65vh] md:h-[60vh] rounded-3xl border border-white/10 overflow-hidden shadow-2xl origin-top"
+                className="relative flex flex-col md:flex-row w-full md:w-[70vw] h-[65vh] md:h-[60vh] rounded-3xl border border-white/10 overflow-hidden shadow-2xl origin-top"
             >
                 {/* --- COLUMNA IMAGEN (40% Desktop / 40% Mobile) --- */}
                 <div className="relative w-full md:w-[40%] h-[40%] md:h-full overflow-hidden">
@@ -113,7 +113,7 @@ const Services = React.forwardRef(({ isMobile }, ref) => {
     });
 
     return (
-        <section ref={ref} className="bg-[#050505] pt-20 md:pt-32 pb-32"> {/* Padding top/bottom para espacio */}
+        <section ref={ref} className="bg-[#050505] pt-20 md:pt-32 pb-32">
 
             {/* TÍTULO FIJO (Sticky Header) */}
             <div className="max-w-7xl mx-auto px-6 mb-12 md:mb-24">
@@ -130,11 +130,10 @@ const Services = React.forwardRef(({ isMobile }, ref) => {
             </div>
 
             {/* CONTENEDOR DE TARJETAS */}
-            <div ref={container} className="relative">
+            {/* CORRECCIÓN: Agregamos max-w-7xl y px-6 aquí para restringir el ancho de las cards w-full */}
+            <div ref={container} className="relative max-w-7xl mx-auto px-6">
                 {services.map((service, i) => {
-                    // Calculamos cuánto debe encogerse cada tarjeta.
-                    // La última tarjeta no se encoge (targetScale = 1).
-                    // Las anteriores se encogen un poco (0.05 de diferencia).
+                    // Lógica de escalado para efecto stack
                     const targetScale = 1 - ((services.length - i) * 0.05);
 
                     return (
