@@ -8,34 +8,28 @@ const FloatingChat = () => {
     const [hasInteracted, setHasInteracted] = useState(false);
     const [selectedInterest, setSelectedInterest] = useState(null);
 
-    // --- LÓGICA DE TIEMPO MODIFICADA ---
     useEffect(() => {
-        let hideTimer; // Variable para guardar la referencia del segundo timer
+        let hideTimer;
 
-        // 1. Timer para MOSTRAR el mensaje (2.5 segundos después de cargar)
         const showTimer = setTimeout(() => {
             if (!hasInteracted) {
                 setShowTooltip(true);
-
-                // 2. Timer para OCULTAR el mensaje (5 segundos después de aparecer)
                 hideTimer = setTimeout(() => {
                     setShowTooltip(false);
-                }, 5000); // 5000ms = 5 segundos visibles
+                }, 5000);
             }
         }, 2500);
 
-        // Limpieza: Si el usuario abre el chat o sale de la página, cancelamos ambos timers
         return () => {
             clearTimeout(showTimer);
             clearTimeout(hideTimer);
         };
     }, [hasInteracted]);
-    // ------------------------------------
 
     const handleOpen = () => {
         setIsOpen(!isOpen);
-        setShowTooltip(false); // Aseguramos que se oculte al abrir
-        setHasInteracted(true); // Esto cancela los timers gracias al useEffect
+        setShowTooltip(false);
+        setHasInteracted(true);
     };
 
     const handleStartChat = () => {
@@ -56,10 +50,12 @@ const FloatingChat = () => {
             {/* 1. INTERFAZ DE CHAT */}
             <div
                 className={`
-          pointer-events-auto 
-          bg-white w-[340px] rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right border border-gray-100
-          ${isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-0 opacity-0 translate-y-10'}
-        `}
+                  pointer-events-auto 
+                  /* CORRECCIÓN 1: Ancho responsivo. En móvil ocupa el ancho disponible menos margen, en desktop fijo */
+                  w-[calc(100vw-3rem)] sm:w-[340px] 
+                  bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right border border-gray-100
+                  ${isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-0 opacity-0 translate-y-10'}
+                `}
             >
                 {/* Header */}
                 <div className="bg-black p-5 flex justify-between items-start text-white relative overflow-hidden">
@@ -74,7 +70,7 @@ const FloatingChat = () => {
                             <p className="text-xs text-lime-400 font-medium mt-1">● Disponible ahora</p>
                         </div>
                     </div>
-                    <button aria-label="Botón de chat" onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white transition-colors z-10">
+                    <button aria-label="Cerrar chat" onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white transition-colors z-10">
                         <X size={20} />
                     </button>
                 </div>
@@ -116,24 +112,33 @@ const FloatingChat = () => {
             {/* 2. TOOLTIP DE VENTA (Mensaje Flotante) */}
             <div
                 className={`
-          pointer-events-auto
-          bg-black text-white px-5 py-3 rounded-full shadow-2xl text-xs font-bold uppercase tracking-wider
-          transition-all duration-500 transform flex items-center gap-2
-          ${showTooltip && !isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none absolute'}
-        `}
+                  pointer-events-auto
+                  bg-black text-white px-5 py-3 rounded-full shadow-2xl text-xs font-bold uppercase tracking-wider
+                  transition-all duration-500 transform flex items-center gap-2
+                  
+                  /* CORRECCIÓN 2: Animación Vertical. 
+                     En lugar de 'translate-x-10' (que saca el elemento a la derecha), 
+                     usamos 'translate-y-4' (lo baja y oculta sin romper el ancho). 
+                  */
+                  ${showTooltip && !isOpen
+                        ? 'opacity-100 translate-y-0 scale-100'
+                        : 'opacity-0 translate-y-4 scale-95 pointer-events-none absolute'
+                    }
+                `}
             >
                 ¿Tu web vende o solo existe? 🔥
+                {/* Triangulito indicador */}
                 <div className="absolute -bottom-1 right-6 w-3 h-3 bg-black transform rotate-45"></div>
             </div>
 
             {/* 3. FAB (Botón Flotante) */}
-            <button aria-label="Botón de chat"
+            <button aria-label="Abrir chat"
                 onClick={handleOpen}
                 className={`
-          pointer-events-auto
-          group relative w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 z-50
-          ${isOpen ? 'bg-white text-black rotate-180' : 'bg-black text-white hover:bg-lime-400 hover:text-black hover:scale-110'}
-        `}
+                  pointer-events-auto
+                  group relative w-16 h-16 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 z-50
+                  ${isOpen ? 'bg-white text-black rotate-180' : 'bg-black text-white hover:bg-lime-400 hover:text-black hover:scale-110'}
+                `}
             >
                 {isOpen ? <X size={28} /> : <MessageSquare size={28} />}
                 {!isOpen && (
