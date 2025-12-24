@@ -10,21 +10,13 @@ const FloatingChat = () => {
 
     useEffect(() => {
         let hideTimer;
-        // Mostramos el tooltip a los 2.5s si no ha interactuado
         const showTimer = setTimeout(() => {
             if (!hasInteracted) {
                 setShowTooltip(true);
-                // Lo ocultamos automáticamente después de 5s
-                hideTimer = setTimeout(() => {
-                    setShowTooltip(false);
-                }, 5000);
+                hideTimer = setTimeout(() => { setShowTooltip(false); }, 5000);
             }
         }, 2500);
-
-        return () => {
-            clearTimeout(showTimer);
-            clearTimeout(hideTimer);
-        };
+        return () => { clearTimeout(showTimer); clearTimeout(hideTimer); };
     }, [hasInteracted]);
 
     const handleOpen = () => {
@@ -34,25 +26,26 @@ const FloatingChat = () => {
     };
 
     const handleStartChat = () => {
-        const phone = "528180114561"; // Tu número
+        const phone = "528180114561";
         let message = "Hola EventoClic, quiero escalar mi negocio.";
-
         if (selectedInterest === 'web') message = "Hola, me interesa una Landing Page de alto impacto o Sitio Web.";
         if (selectedInterest === 'app') message = "Hola, tengo una idea para una App/Plataforma y quiero desarrollarla.";
         if (selectedInterest === 'marketing') message = "Hola, necesito estrategias de Marketing y embudos de venta.";
-
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-[9990] flex flex-col items-end gap-4 font-sans text-black pointer-events-none">
+        <div className="fixed bottom-6 right-6 z-[9990] flex flex-col items-end gap-4 font-sans text-black pointer-events-none max-w-[100vw]">
 
             {/* 1. INTERFAZ DE CHAT */}
             <div
                 className={`
                   pointer-events-auto 
-                  w-full max-w-[90vw] sm:w-[340px] 
+                  /* CORRECCIÓN MATEMÁTICA: 
+                     En móvil: Ancho de pantalla (100vw) menos 3rem (1.5rem de margen a cada lado).
+                     Esto evita que se salga o se vea descentrado si hay overflow fantasma. */
+                  w-[calc(100vw-3rem)] sm:w-[340px] 
                   bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 origin-bottom-right border border-gray-100
                   ${isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-0 opacity-0 translate-y-10'}
                 `}
@@ -83,6 +76,7 @@ const FloatingChat = () => {
                     </div>
 
                     <div className="grid grid-cols-1 gap-2 mt-2">
+                        {/* Botones de selección */}
                         <button onClick={() => setSelectedInterest('web')} className={`flex items-center gap-3 p-3 rounded-xl border text-sm font-medium transition-all ${selectedInterest === 'web' ? 'bg-black text-white border-black' : 'bg-white border-gray-200 hover:border-lime-400 hover:bg-lime-50 text-gray-600'}`}>
                             <Zap size={18} className={selectedInterest === 'web' ? 'text-lime-400' : 'text-gray-400'} /> Web & Landing
                         </button>
@@ -109,25 +103,18 @@ const FloatingChat = () => {
                 </div>
             </div>
 
-            {/* 2. TOOLTIP DE VENTA (Corregido) */}
+            {/* 2. TOOLTIP DE VENTA (Fixed / Absolute) */}
             <div
                 className={`
-                  /* SOLUCIÓN: Absolute SIEMPRE, fijado respecto al botón */
                   absolute bottom-24 right-0 z-40
                   w-max max-w-[200px] md:max-w-xs
                   pointer-events-auto
                   bg-black text-white px-5 py-3 rounded-full shadow-2xl text-xs font-bold uppercase tracking-wider
                   transition-all duration-500 ease-out transform flex items-center gap-2
-                  
-                  /* Aquí solo alternamos visibilidad, no posición layout */
-                  ${showTooltip && !isOpen
-                        ? 'opacity-100 translate-y-0 scale-100'
-                        : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
-                    }
+                  ${showTooltip && !isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95 pointer-events-none'}
                 `}
             >
                 ¿Tu web vende o solo existe? 🔥
-                {/* Triangulito indicador */}
                 <div className="absolute -bottom-1 right-6 w-3 h-3 bg-black transform rotate-45"></div>
             </div>
 

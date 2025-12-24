@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 body {
-  /* Esto previene el scroll horizontal en toda la app SIN romper el sticky */
-  overflow-x: hidden;
-  /* ... resto de tus estilos */
+  overflow-x: clip;
+  width: 100%;
+  position: relative;
 }
 
 html.lenis {

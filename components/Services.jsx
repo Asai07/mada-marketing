@@ -113,8 +113,10 @@ const Services = React.forwardRef(({ isMobile }, ref) => {
     });
 
     return (
-        <section ref={ref} className="bg-[#050505] pt-20 md:pt-32 pb-32">
-
+        <section
+            ref={ref}
+            className="bg-[#050505] pt-20 md:pt-32 pb-32 overflow-x-clip" // Agregamos overflow-x-clip aquí
+        >
             {/* TÍTULO FIJO (Sticky Header) */}
             <div className="max-w-7xl mx-auto px-6 mb-12 md:mb-24">
                 <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-4 block">
