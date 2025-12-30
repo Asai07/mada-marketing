@@ -8,6 +8,7 @@ import ManifestoModal from '@/components/ManifestoModal';
 
 // Componentes
 import Hero from '@/components/Hero';
+import BookingModal from '@/components/BookingModal';
 import Manifesto from '@/components/Manifesto';
 import Services from '@/components/Services';          // 1. La Nave (Visual)
 import InfoBento from '@/components/InfoBento';        // 2. La Tech (Lógica)
@@ -29,9 +30,11 @@ export default function Home() {
       style={{ backgroundColor: theme.bg, color: theme.text }}
     >
       <ManifestoModal isOpen={showManifesto} onClose={() => setShowManifesto(false)} />
+      <BookingModal isOpen={showBooking} onClose={() => setShowBooking(false)} />
 
       {/* 1. HERO (Dark) */}
       <SectionWrapper bg="#050505" text="#ffffff">
+        <Hero onOpenBooking={() => setShowBooking(true)} />
         <Hero />
       </SectionWrapper>
 
@@ -77,6 +80,7 @@ export default function Home() {
 
       {/* 10. CONTACT (Dark) - Footer */}
       <SectionWrapper bg="#050505" text="#ffffff">
+        <Footer onOpenBooking={() => setShowBooking(true)} />
         <Contact />
       </SectionWrapper>
     </main>

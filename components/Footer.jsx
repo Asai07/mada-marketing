@@ -4,7 +4,7 @@ import { Instagram, Twitter, Linkedin } from 'lucide-react';
 const Footer = React.forwardRef((props, ref) => (
     <footer ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden bg-black text-white">
         <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-[11vw] md:text-[12vw] font-display font-bold leading-none mb-10 md:mb-10 transition-all duration-500 cursor-pointer hover:text-transparent hover:[-webkit-text-stroke:1px_white]">HABLEMOS</h2>
+            <h2 onClick={onOpenBooking} className="text-[11vw] md:text-[12vw] font-display font-bold leading-none mb-10 md:mb-10 transition-all duration-500 cursor-pointer hover:text-transparent hover:[-webkit-text-stroke:1px_white]">HABLEMOS</h2>
             <div className="grid md:grid-cols-3 gap-8 md:gap-12 text-left border-t border-white/20 pt-12">
                 <div><h4 className="font-display text-lg md:text-xl mb-4 md:mb-6">SOMOSMADA HQ</h4><p className="font-body text-sm text-gray-400">Monterrey<br />Nuevo León<br />MX</p></div>
                 <div><h4 className="font-display text-lg md:text-xl mb-4 md:mb-6">Contacto</h4><a href="mailto:hola@mada.agency" className="block font-body text-sm text-gray-400 hover:text-lime-400 transition-colors mb-2">hola@somosmada.com</a><a href="tel:+525512345678" className="block font-body text-sm text-gray-400 hover:text-lime-400 transition-colors">+52 (81) 80114561</a></div>
