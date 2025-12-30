@@ -41,7 +41,7 @@ const Hero = React.forwardRef(({ onOpenBooking }, ref) => {
 
             <div className="relative z-10 w-full max-w-7xl mx-auto pt-20 flex flex-col justify-center h-full">
                 <div className="flex flex-col md:flex-row items-end justify-between border-b border-white/20 pb-8 mb-8 md:mb-16">
-                    <p className="font-body text-[10px] md:text-sm uppercase tracking-[0.2em] text-lime-400 max-w-[200px]">Agencia Digital<br />Global Independiente</p>
+                    <p className="font-body text-[10px] md:text-sm uppercase tracking-[0.2em] text-lime-400 max-w-[200px]">Agencia de Desarrollo Web<br />Global Independiente</p>
                     <p className="hidden md:block font-body text-xs text-right text-gray-400">Est. 2025 — Worldwide</p>
                 </div>
 
