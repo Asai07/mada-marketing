@@ -17,7 +17,11 @@ const Navbar = ({ onMenuClick }) => {
             </div>
 
             <div className="flex items-center gap-6 md:gap-8">
-                <button onClick={handleLetsTalk} aria-label="Hablemos" className="hidden md:block text-xs font-bold uppercase tracking-widest border border-white px-5 py-2 hover:bg-white hover:text-black transition-all">
+                <button
+                    onClick={handleLetsTalk}
+                    aria-label="Hablemos"
+                    className="text-xs font-bold uppercase tracking-widest border border-white px-3 py-2 md:px-5 hover:bg-white hover:text-black transition-all"
+                >
                     Hablemos
                 </button>
 

@@ -131,13 +131,9 @@ const jsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es" className="scroll-smooth">
-      <head>
-        {/* Inyectamos JSON-LD para Google */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
+
+
+
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${syne.variable}`}>
         <UIProvider>
           <CustomCursor />
@@ -146,6 +142,11 @@ export default function RootLayout({ children }) {
             {children}
           </SmoothScroll>
           <FloatingChat />
+          {/* Inyectamos JSON-LD para Google */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
         </UIProvider>
       </body>
     </html>
