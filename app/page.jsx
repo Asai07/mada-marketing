@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUI } from '@/context/UIContext';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import dynamic from 'next/dynamic';
 import SectionWrapper from '@/components/SectionWrapper';
 
 
