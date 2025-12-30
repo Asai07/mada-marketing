@@ -8,6 +8,7 @@ import SectionWrapper from '@/components/SectionWrapper';
 
 
 // Componentes
+const Hero = dynamic(() => import('@/components/Hero'));
 const ManifestoModal = dynamic(() => import('@/components/ManifestoModal'));
 const BookingModal = dynamic(() => import('@/components/BookingModal'));
 const Manifesto = dynamic(() => import('@/components/Manifesto'));
