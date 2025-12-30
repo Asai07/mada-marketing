@@ -1,7 +1,7 @@
 import React from 'react';
 import { Instagram, Twitter, Linkedin } from 'lucide-react';
 
-const Footer = React.forwardRef(({ onOpenBooking }, props, ref) => (
+const Footer = React.forwardRef(({ onOpenBooking }, ref) => (
     <footer ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden bg-black text-white">
         <div className="max-w-7xl mx-auto text-center">
             <h2 onClick={onOpenBooking} className="text-[11vw] md:text-[12vw] font-display font-bold leading-none mb-10 md:mb-10 transition-all duration-500 cursor-pointer hover:text-transparent hover:[-webkit-text-stroke:1px_white]">HABLEMOS</h2>
