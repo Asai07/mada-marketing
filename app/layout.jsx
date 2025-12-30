@@ -2,7 +2,6 @@
 import './globals.css';
 import { Inter, Space_Grotesk, Syne } from 'next/font/google';
 import HeaderManager from '@/components/HeaderManager';
-import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import FloatingChat from '@/components/FloatingChat';
 import { UIProvider } from '@/context/UIContext';
@@ -147,7 +146,6 @@ export default function RootLayout({ children }) {
             {children}
           </SmoothScroll>
           <FloatingChat />
-          <Footer />
         </UIProvider>
       </body>
     </html>
