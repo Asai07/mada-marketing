@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUI } from '@/context/UIContext';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import SectionWrapper from '@/components/SectionWrapper';
