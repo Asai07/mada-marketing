@@ -4,6 +4,10 @@ import { useUI } from '../context/UIContext';
 
 const CustomCursor = () => {
     const { cursorVariant } = useUI();
+    const isMobile = useIsMobile();
+    if (isMobile) {
+        return null;
+    }
     const cursorRef = useRef(null);
 
     useEffect(() => {

@@ -4,21 +4,21 @@ import React, { useState, useEffect } from 'react';
 import { useUI } from '@/context/UIContext';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import SectionWrapper from '@/components/SectionWrapper';
-import ManifestoModal from '@/components/ManifestoModal';
+
 
 // Componentes
-import Hero from '@/components/Hero';
-import BookingModal from '@/components/BookingModal';
-import Manifesto from '@/components/Manifesto';
-import Services from '@/components/Services';          // 1. La Nave (Visual)
-import InfoBento from '@/components/InfoBento';        // 2. La Tech (Lógica)
-import MarketingScrolly from '@/components/MarketingScrolly'; // 3. El Combustible (Growth)
-import ProcessSection from '@/components/ProcessSection';     // 4. El Método
-import Work from '@/components/Work';                  // 5. La Prueba
-import PricingSection from '@/components/PricingSection';     // 6. El Precio
-import FAQSection from '@/components/FAQSection';      // 7. Dudas
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+const ManifestoModal = dynamic(() => import('@/components/ManifestoModal'));
+const BookingModal = dynamic(() => import('@/components/BookingModal'));
+const Manifesto = dynamic(() => import('@/components/Manifesto'));
+const Services = dynamic(() => import('@/components/Services'));
+const InfoBento = dynamic(() => import('@/components/InfoBento'));
+const MarketingScrolly = dynamic(() => import('@/components/MarketingScrolly'));
+const ProcessSection = dynamic(() => import('@/components/ProcessSection'));
+const Work = dynamic(() => import('@/components/Work'));
+const PricingSection = dynamic(() => import('@/components/PricingSection'));
+const FAQSection = dynamic(() => import('@/components/FAQSection'));
+const Contact = dynamic(() => import('@/components/Contact'));
+const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
   const { theme } = useUI();
