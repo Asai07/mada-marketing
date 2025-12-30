@@ -75,8 +75,7 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                                     alt="Team working"
                                     fill
                                     className="object-cover"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 850px"
-                                />
+                                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 850px" />
                                 <div className="absolute inset-0 bg-black/10"></div>
                             </div>
                         </ScrollReveal>

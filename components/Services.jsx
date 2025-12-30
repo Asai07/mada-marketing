@@ -65,7 +65,7 @@ const Card = ({ i, title, text, img, category, id, progress, range, targetScale 
                             src={img}
                             alt={title}
                             className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 30vw"
+                            sizes="(max-width: 768px) 90vw, 30vw"
                         />
                         <div className="absolute inset-0 bg-black/20" />
                     </motion.div>
