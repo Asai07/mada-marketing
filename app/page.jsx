@@ -18,6 +18,7 @@ import Work from '@/components/Work';                  // 5. La Prueba
 import PricingSection from '@/components/PricingSection';     // 6. El Precio
 import FAQSection from '@/components/FAQSection';      // 7. Dudas
 import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const { theme } = useUI();
