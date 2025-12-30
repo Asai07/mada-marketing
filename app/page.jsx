@@ -23,6 +23,7 @@ export default function Home() {
   const { theme } = useUI();
   const isMobile = useIsMobile();
   const [showManifesto, setShowManifesto] = useState(false);
+  const [showBooking, setShowBooking] = useState(false);
 
   return (
     <main
