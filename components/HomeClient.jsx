@@ -27,17 +27,21 @@ const Contact = dynamic(() => import('@/components/Contact'));
 const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function HomeClient() {
+    const [isMounted, setIsMounted] = useState(false);
     const { theme } = useUI();
     const isMobile = useIsMobile();
     const [showManifesto, setShowManifesto] = useState(false);
     const [showBooking, setShowBooking] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
         const handleOpenBooking = () => setShowBooking(true);
         window.addEventListener('open-booking-modal', handleOpenBooking);
         return () => window.removeEventListener('open-booking-modal', handleOpenBooking);
     }, []);
-
+    if (!isMounted) {
+        return null; // O un <div className="bg-black min-h-screen" /> para que no parpadee blanco
+    }
     return (
         <main
             className="min-h-screen w-full transition-colors duration-700 ease-in-out selection:bg-lime-400 selection:text-black"
