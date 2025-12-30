@@ -1,6 +1,14 @@
 'use client';
 import React from 'react';
 
+
+const handleLetsTalk = () => {
+    const phone = "528180114561";
+    // Mensaje diferente para saber que vienen del menú
+    const message = encodeURIComponent("Hola, vengo de su sitio web y me gustaría información.");
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+};
+
 const Navbar = ({ onMenuClick }) => {
     return (
         <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-6 flex justify-between items-center mix-blend-difference text-white">
@@ -9,7 +17,7 @@ const Navbar = ({ onMenuClick }) => {
             </div>
 
             <div className="flex items-center gap-6 md:gap-8">
-                <button aria-label="Hablemos" className="hidden md:block text-xs font-bold uppercase tracking-widest border border-white px-5 py-2 hover:bg-white hover:text-black transition-all">
+                <button onClick={handleLetsTalk} aria-label="Hablemos" className="hidden md:block text-xs font-bold uppercase tracking-widest border border-white px-5 py-2 hover:bg-white hover:text-black transition-all">
                     Hablemos
                 </button>
 

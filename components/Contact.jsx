@@ -12,6 +12,11 @@ const Contact = () => {
     const textEnter = () => { };
     const textLeave = () => { };
     const buttonEnter = () => { };
+    const handleWhatsApp = () => {
+        const phone = "528180114561"; // Tu número
+        const message = encodeURIComponent("Hola MADA, tengo un proyecto en mente y quisiera platicar detalles.");
+        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    };
 
     return (
         <section ref={ctaRef} className="py-32 px-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
@@ -40,6 +45,7 @@ const Contact = () => {
                 </p>
 
                 <button
+                    onClick={handleWhatsApp}
                     onMouseEnter={buttonEnter}
                     onMouseLeave={textLeave}
                     className="group relative px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-sm overflow-hidden transition-all hover:bg-lime-400 hover:scale-105 duration-300 rounded-sm"
