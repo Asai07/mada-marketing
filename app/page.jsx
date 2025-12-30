@@ -70,7 +70,7 @@ export default function Home() {
 
       {/* 8. PRICING (White) - "The Ask". Claridad total para los precios */}
       <SectionWrapper bg="#ffffff" text="#000000">
-        <PricingSection />
+        <PricingSection onOpenBooking={() => setShowBooking(true)} />
       </SectionWrapper>
 
       {/* 9. FAQ (Dark Gray) - "The Close". Elegante para resolver dudas */}

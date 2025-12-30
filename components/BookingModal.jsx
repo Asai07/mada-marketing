@@ -15,7 +15,7 @@ const BookingModal = ({ isOpen, onClose }) => {
     }, [isOpen]);
 
     // Aquí pegaremos tu URL de Calendly más adelante
-    const CALENDLY_URL = "https://calendly.com/TU-USUARIO/TU-EVENTO";
+    const CALENDLY_URL = "https://calendly.com/somosmadamkt/sesion-de-estrategia-digital";
 
     return (
         <AnimatePresence>

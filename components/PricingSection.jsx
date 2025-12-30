@@ -3,7 +3,7 @@ import React from 'react';
 import { Check, Sparkles, Zap, InfinityIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const PricingSection = () => {
+const PricingSection = ({ onOpenBooking }) => {
     // --- 1. CONFIGURACIÓN DE CONTACTO ---
     const PHONE_NUMBER = "528180114561"; // ¡PON TU NÚMERO AQUÍ! (Con lada, sin espacios. Ej: 5215512345678)
     const CALENDLY_URL = "https://calendly.com/tu-usuario/discovery-call"; // Opcional: Si usas Calendly
@@ -24,13 +24,10 @@ const PricingSection = () => {
                 url = `https://wa.me/${PHONE_NUMBER}?text=${message}`;
                 break;
             case 'SINGULARITY':
-                // Plan caro: WhatsApp O Calendly (Tú decides). 
-                // Opción A (WhatsApp):
-                message = encodeURIComponent("Hola, busco una solución a medida (Plan SINGULARITY). Quisiera cotizar un proyecto.");
-                url = `https://wa.me/${PHONE_NUMBER}?text=${message}`;
 
-                // Opción B (Calendly - Descomenta si prefieres que agenden llamada):
-                // url = CALENDLY_URL;
+                if (onOpenBooking) {
+                    onOpenBooking();
+                }
                 break;
             default:
                 url = "#contact";
