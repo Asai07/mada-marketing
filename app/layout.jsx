@@ -38,20 +38,40 @@ export const metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: 'MADA Agency',
-  authors: [{ name: 'MADA Team', url: SITE_URL }],
-  creator: 'MADA Agency',
-  publisher: 'MADA Agency',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  // CAMBIO AQUÍ: Apuntando a tu nuevo archivo
+
+  // 1. AQUÍ VA LA "M" MINIMALISTA (Para la pestaña del navegador)
   icons: {
-    icon: '/icon.png',
-    shortcut: '/icon.png',
-    apple: '/icon.png',
+    icon: '/icon.png',          // La "M"
+    shortcut: '/icon.png',      // La "M"
+    apple: '/icon.png',         // La "M" (Icono de app en iPhone)
   },
+
+  // 2. AQUÍ VA EL LOGO COMPLETO (Para WhatsApp, Facebook, LinkedIn)
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: 'MADA Agency',
+    locale: 'es_MX',
+    type: 'website',
+    images: [
+      {
+        url: '/social-preview.png', // <--- TU IMAGEN GRANDE AQUÍ
+        width: 1200,
+        height: 630,
+        alt: 'MADA - Agencia de Desarrollo Web',
+      },
+    ],
+  },
+
+  // 3. TAMBIÉN PARA TWITTER (X)
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: ['/social-preview.png'], // <--- LA MISMA IMAGEN GRANDE
+  },
+
   verification: {
     google: '',
   },
