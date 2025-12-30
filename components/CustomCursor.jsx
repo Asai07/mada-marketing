@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { useUI } from '../context/UIContext';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const CustomCursor = () => {
     const { cursorVariant } = useUI();
