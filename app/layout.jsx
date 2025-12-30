@@ -39,14 +39,6 @@ export const metadata = {
   description: SITE_DESCRIPTION,
   applicationName: 'MADA Agency',
 
-  // 1. AQUÍ VA LA "M" MINIMALISTA (Para la pestaña del navegador)
-  icons: {
-    icon: '/icon.png',          // La "M"
-    shortcut: '/icon.png',      // La "M"
-    apple: '/icon.png',         // La "M" (Icono de app en iPhone)
-  },
-
-  // 2. AQUÍ VA EL LOGO COMPLETO (Para WhatsApp, Facebook, LinkedIn)
   openGraph: {
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
@@ -56,20 +48,20 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/social-preview.png', // <--- TU IMAGEN GRANDE AQUÍ
+        url: '/image-preview.png',
         width: 1200,
         height: 630,
-        alt: 'MADA - Agencia de Desarrollo Web',
+        alt: 'MADA - Agencia de Desarrollo Web y Marketing',
       },
     ],
   },
 
-  // 3. TAMBIÉN PARA TWITTER (X)
+  // 2. TWITTER / X
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: ['/social-preview.png'], // <--- LA MISMA IMAGEN GRANDE
+    images: ['/image-preview.png'],
   },
 
   verification: {
@@ -81,7 +73,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'MADA',
-  image: `${SITE_URL}/icon.png`, // CAMBIO AQUÍ: Para que Google vea tu nuevo logo
+  // Usamos la imagen grande para los resultados enriquecidos de Google
+  image: `${SITE_URL}/image-preview.png`,
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   telephone: '+528180114561',
@@ -110,9 +103,6 @@ const jsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es" className="scroll-smooth">
-
-
-
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${syne.variable}`}>
         <UIProvider>
           <CustomCursor />
