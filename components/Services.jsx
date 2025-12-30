@@ -124,8 +124,7 @@ const Services = React.forwardRef(({ isMobile }, ref) => {
                     {/* CAMBIO: De 'Capabilities' a 'Nuestros Servicios' o 'Soluciones' */}
                     // 02. Soluciones
                 </span>
-                <h2 className="text-5xl md:text-8xl font-display font-bold text-white uppercase leading-[0.9]">
-                    Arquitectura<br />
+                <h2 className="text-3xl sm:text-5xl md:text-8xl font-display font-bold text-white uppercase leading-[0.9] break-words">Arquitectura<br />
                     <span className="text-transparent stroke-text-white">Digital</span>
                 </h2>
                 <p className="text-gray-500 mt-6 max-w-md text-sm md:text-base">
