@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 
 // Importante: Usamos forwardRef para que el cambio de color funcione
-const Hero = React.forwardRef((props, ref) => {
+const Hero = React.forwardRef(({ onOpenBooking }, props, ref) => {
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
