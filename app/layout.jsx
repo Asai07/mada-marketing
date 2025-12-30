@@ -1,4 +1,3 @@
-// app/layout.js
 import './globals.css';
 import { Inter, Space_Grotesk, Syne } from 'next/font/google';
 import HeaderManager from '@/components/HeaderManager';
@@ -40,69 +39,29 @@ export const metadata = {
   description: SITE_DESCRIPTION,
   applicationName: 'MADA Agency',
   authors: [{ name: 'MADA Team', url: SITE_URL }],
-  generator: 'Next.js',
-  keywords: [
-    'Agencia de Marketing Digital',
-    'Desarrollo Web México',
-    'Diseño Web',
-    'SEO',
-    'Posicionamiento Web',
-    'E-commerce',
-    'Branding',
-    'Landing Pages'
-  ],
   creator: 'MADA Agency',
   publisher: 'MADA Agency',
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  openGraph: {
-    title: 'MADA | Transformamos tu presencia digital',
-    description: 'No hacemos simples sitios web. Creamos ecosistemas digitales que venden. Diseño sensorial, velocidad extrema y estrategias de crecimiento.',
-    url: SITE_URL,
-    siteName: 'MADA Agency',
-    locale: 'es_MX',
-    type: 'website',
-    images: [
-      {
-        url: '/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'MADA Agencia Digital - Desarrollo Web y Marketing',
-        type: 'image/png',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'MADA | Agencia Digital',
-    description: 'Creamos experiencias web que no solo se ven bien, sino que sienten. Diseño sensorial para marcas valientes.',
-    images: ['/logo.png'],
-  },
+  // CAMBIO AQUÍ: Apuntando a tu nuevo archivo
   icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
   },
   verification: {
     google: '',
   },
 };
 
-
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'MADA',
-  image: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/icon.png`, // CAMBIO AQUÍ: Para que Google vea tu nuevo logo
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   telephone: '+528180114561',
@@ -122,7 +81,7 @@ const jsonLd = {
     }
   ],
   sameAs: [
-    'https://www.instagram.com/somosmada', // TODO: Tus redes reales
+    'https://www.instagram.com/somosmada',
     'https://www.linkedin.com/company/somosmada',
     'https://www.facebook.com/somosmada'
   ]
