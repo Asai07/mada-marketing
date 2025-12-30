@@ -4,23 +4,32 @@ import { useUI } from '../context/UIContext';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
 const CustomCursor = () => {
+    // 1. PRIMERO: Declaramos TODOS los hooks (sin condiciones)
     const { cursorVariant } = useUI();
     const isMobile = useIsMobile();
-    if (isMobile) {
-        return null;
-    }
     const cursorRef = useRef(null);
 
+    // 2. Controlamos el efecto (para no gastar recursos en móvil)
     useEffect(() => {
+        // Si es móvil, no agregamos el listener (ahorro de recursos)
+        if (isMobile) return;
+
         const moveCursor = (e) => {
             if (cursorRef.current) {
-                // Mover el DOM directamente es mucho más rápido que React State para esto
                 cursorRef.current.style.transform = `translate3d(${e.clientX - 12}px, ${e.clientY - 12}px, 0)`;
             }
         };
+
         window.addEventListener('mousemove', moveCursor);
+
         return () => window.removeEventListener('mousemove', moveCursor);
-    }, []);
+    }, [isMobile]); // Agregamos isMobile a las dependencias
+
+    // 3. AHORA SÍ: El Early Return (después de los hooks)
+    // Esto evita que se pinte el DIV en el HTML
+    if (isMobile) {
+        return null;
+    }
 
     return (
         <div
@@ -29,4 +38,5 @@ const CustomCursor = () => {
         />
     );
 };
+
 export default CustomCursor;
