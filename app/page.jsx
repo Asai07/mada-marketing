@@ -36,7 +36,6 @@ export default function Home() {
       {/* 1. HERO (Dark) */}
       <SectionWrapper bg="#050505" text="#ffffff">
         <Hero onOpenBooking={() => setShowBooking(true)} />
-        <Hero />
       </SectionWrapper>
 
       {/* 2. MANIFESTO (Light) - Contraste fuerte para lectura */}
@@ -81,8 +80,7 @@ export default function Home() {
 
       {/* 10. CONTACT (Dark) - Footer */}
       <SectionWrapper bg="#050505" text="#ffffff">
-        <Footer onOpenBooking={() => setShowBooking(true)} />
-        <Contact />
+        <Contact onOpenBooking={() => setShowBooking(true)} />
       </SectionWrapper>
     </main>
   );
