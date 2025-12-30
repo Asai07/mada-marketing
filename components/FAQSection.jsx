@@ -14,7 +14,7 @@ const faqs = [
     },
     {
         question: "¿Incluyen el hosting y dominio?",
-        answer: "En el plan 'Ignition' incluimos el dominio por un año. Para todos los planes, configuramos el hosting en Vercel o Netlify (líderes mundiales), los cuales suelen tener capas gratuitas muy generosas para la mayoría de los negocios."
+        answer: "En todos nuestros planes incluimos el dominio gratis por un año. Para nuestros planes iniciales, configuramos el hosting en Vercel o Netlify (líderes mundiales), los cuales suelen tener capas gratuitas muy generosas para la mayoría de los negocios. En planes a medida analizamos la mejor solución de hosting o VPS para ti."
     },
     {
         question: "¿Cuánto tiempo tarda el desarrollo?",

@@ -1,32 +1,32 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import { Target, Megaphone, TrendingUp, ArrowUpRight } from 'lucide-react'; // Cambié algunos iconos
+import { Target, Megaphone, TrendingUp } from 'lucide-react';
 
 const MarketingScrolly = () => {
     const [activeService, setActiveService] = useState(0);
     const containerRef = useRef(null);
 
-    // CAMBIO CLAVE: Estos servicios son puramente de CRECIMIENTO (Post-Lanzamiento Web)
+    // CAMBIO CLAVE: Lenguaje enfocado en resultados monetarios, no técnicos.
     const services = [
         {
             id: '01',
-            title: "Traffic Acquisition",
-            description: "Una web increíble sin visitas es un desierto. Gestionamos campañas agresivas en Meta Ads y Google Ads para inyectar tráfico cualificado desde el día uno.",
-            tags: ["Paid Media", "Google Ads", "Social Ads"],
+            title: "Tráfico y Publicidad", // Antes: Traffic Acquisition
+            description: "Tener una web sin visitas es como tener una tienda en el desierto. Traemos clientes listos para comprar usando Google y Redes Sociales desde el primer día.",
+            tags: ["Google Ads", "Facebook & Instagram", "Tráfico Calificado"], // Adiós 'Paid Media'
             icon: Target
         },
         {
             id: '02',
-            title: "Performance Creative",
-            description: "El diseño bonito no siempre vende. Creamos piezas publicitarias (video/estáticas) diseñadas psicológicamente para detener el scroll y generar clics.",
-            tags: ["Ad Creatives", "UGC", "Copywriting"],
+            title: "Anuncios que Venden", // Antes: Performance Creative
+            description: "Nadie lee anuncios aburridos. Creamos videos e imágenes diseñados psicológicamente para que la gente deje de bajar el scroll y haga clic en tu oferta.",
+            tags: ["Videos Virales", "Diseño Persuasivo", "Guiones de Venta"], // Adiós 'UGC/Ad Creatives'
             icon: Megaphone
         },
         {
             id: '03',
-            title: "Growth Strategy",
-            description: "Dejamos de adivinar. Analizamos métricas, optimizamos embudos y escalamos lo que funciona. Tu socio de crecimiento basado en datos, no en intuición.",
-            tags: ["Data Analytics", "CRO", "Scaling"],
+            title: "Estrategia y Escalamiento", // Antes: Growth Strategy
+            description: "Dejamos de adivinar. Medimos cada peso invertido para saber qué funciona. Optimizamos tu embudo para que cada vez te cueste menos conseguir un cliente nuevo.",
+            tags: ["Analítica de Datos", "Retorno de Inversión", "Mejora de Ventas"], // Adiós 'CRO/Scaling'
             icon: TrendingUp
         }
     ];
@@ -57,17 +57,19 @@ const MarketingScrolly = () => {
                     <div className="h-full flex flex-col justify-between relative">
                         <div>
                             <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-4 block">
-                                // 03. The Fuel
+                                {/* CAMBIO: Español directo */}
+                                // 03. El Motor
                             </span>
                             <h2 className="text-7xl font-display font-bold leading-none mb-6">
-                                GROWTH<br />SYSTEM<span className="text-lime-400">.</span>
+                                MÁQUINA<br />DE <span className="text-lime-400">VENTAS.</span>
                             </h2>
                             <p className="text-gray-400 max-w-sm text-sm">
-                                Ya tienes la nave. Ahora necesitas el combustible para despegar.
+                                {/* CAMBIO: Metáfora más clara de negocio */}
+                                Ya tienes el sitio web. Ahora necesitas llenarlo de clientes comprando todos los días.
                             </p>
                         </div>
 
-                        {/* --- Representaciones Visuales Abstractas --- */}
+                        {/* --- Representaciones Visuales Abstractas (Sin cambios de lógica, solo funcionan visualmente) --- */}
                         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64">
 
                             {/* Visual 1: Traffic (Radar) */}
@@ -77,7 +79,6 @@ const MarketingScrolly = () => {
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <Target className="w-16 h-16 text-lime-400" />
                                 </div>
-                                {/* Partículas orbitando */}
                                 <div className="absolute top-0 left-1/2 w-2 h-2 bg-lime-400 rounded-full shadow-[0_0_10px_#a3e635] animate-ping"></div>
                             </div>
 
@@ -85,7 +86,6 @@ const MarketingScrolly = () => {
                             <div className={`absolute inset-0 transition-all duration-700 flex items-center justify-center ${activeService === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
                                 <div className="absolute inset-0 bg-lime-400/5 rounded-full animate-pulse"></div>
                                 <Megaphone className="w-16 h-16 text-lime-400 relative z-10 rotate-[-15deg]" />
-                                {/* Ondas de sonido simuladas */}
                                 <div className="absolute right-0 top-10 w-8 h-1 bg-lime-400/50 rounded-full animate-[pulse_1s_ease-in-out_infinite]"></div>
                                 <div className="absolute right-[-10px] top-4 w-12 h-1 bg-lime-400/30 rounded-full animate-[pulse_1.2s_ease-in-out_infinite]"></div>
                             </div>
@@ -95,7 +95,6 @@ const MarketingScrolly = () => {
                                 <div className="absolute inset-0 bg-gradient-to-tr from-lime-400/10 to-transparent rounded-lg transform rotate-6 border border-white/5"></div>
                                 <div className="absolute inset-0 bg-[#0a0a0a] rounded-lg border border-white/20 flex items-center justify-center overflow-hidden">
                                     <TrendingUp className="w-20 h-20 text-lime-400 mb-2" />
-                                    {/* Grid de fondo */}
                                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
                                 </div>
                             </div>
@@ -111,8 +110,8 @@ const MarketingScrolly = () => {
                 <div className="flex flex-col gap-32 pb-20 md:pb-0">
                     {/* Título visible solo en Móvil */}
                     <div className="md:hidden mb-10">
-                        <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-2 block">// 03. The Fuel</span>
-                        <h2 className="text-5xl font-display font-bold leading-none">GROWTH<br />SYSTEM.</h2>
+                        <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-2 block">// 03. El Motor</span>
+                        <h2 className="text-5xl font-display font-bold leading-none">MÁQUINA<br />DE VENTAS.</h2>
                     </div>
 
                     {services.map((service, index) => (

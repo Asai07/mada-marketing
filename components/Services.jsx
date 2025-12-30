@@ -7,30 +7,30 @@ import Image from 'next/image';
 const services = [
     {
         id: "01",
-        title: "Art Direction",
-        category: "Design",
-        text: "Sistemas de diseño, UI Kits y Branding Digital. No solo decoramos, creamos lenguajes visuales escalables.",
+        title: "Diseño Estratégico", // Antes: Art Direction
+        category: "Identidad & Marca", // Antes: Design
+        text: "No solo hacemos que se vea bonito, diseñamos para generar confianza inmediata. Una imagen profesional que eleva el valor de tu marca.", // Beneficio claro
         img: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2500&auto=format&fit=crop"
     },
     {
         id: "02",
-        title: "Interactive Web",
-        category: "Development",
-        text: "WebGL, Three.js y Framer Motion. Sitios que reaccionan al usuario. Tu web no solo se lee, se siente.",
+        title: "Webs Interactivas", // Antes: Interactive Web
+        category: "Experiencia de Usuario", // Antes: Development
+        text: "Sitios web que no aburren. Creamos experiencias dinámicas que atrapan la atención de tus clientes para que se queden más tiempo.", // Adiós WebGL/Three.js
         img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop"
     },
     {
         id: "03",
-        title: "Engineering",
-        category: "Tech",
-        text: "Next.js, Arquitectura Serverless y CMS Headless. Código robusto optimizado para un rendimiento de 100/100.",
+        title: "Desarrollo a Medida", // Antes: Engineering
+        category: "Tecnología", // Antes: Tech
+        text: "Velocidad extrema y seguridad blindada. Usamos la misma tecnología que las grandes startups para que tu sitio cargue al instante.", // Adiós Next.js/Headless
         img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop"
     },
     {
         id: "04",
-        title: "E-Commerce",
-        category: "Business",
-        text: "Desarrollo Shopify avanzado y pasarelas a medida. Convertimos visitas en transacciones sin fricción.",
+        title: "Tiendas en Línea", // Antes: E-Commerce (Se entiende, pero en español es más directo)
+        category: "Ventas Online", // Antes: Business
+        text: "Tu negocio abierto 24/7. Optimizamos cada paso para que comprar sea tan fácil que tus visitas se conviertan en dinero.", // Enfoque total en dinero
         img: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
 ];
@@ -116,27 +116,26 @@ const Services = React.forwardRef(({ isMobile }, ref) => {
     return (
         <section
             ref={ref}
-            className="bg-[#050505] pt-20 md:pt-32 pb-32 overflow-x-clip" // Agregamos overflow-x-clip aquí
+            className="bg-[#050505] pt-20 md:pt-32 pb-32 overflow-x-clip"
         >
             {/* TÍTULO FIJO (Sticky Header) */}
             <div className="max-w-7xl mx-auto px-6 mb-12 md:mb-24">
                 <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-4 block">
-                    // 02. Capabilities
+                    {/* CAMBIO: De 'Capabilities' a 'Nuestros Servicios' o 'Soluciones' */}
+                    // 02. Soluciones
                 </span>
                 <h2 className="text-5xl md:text-8xl font-display font-bold text-white uppercase leading-[0.9]">
-                    Digital<br />
-                    <span className="text-transparent stroke-text-white">Architecture</span>
+                    Arquitectura<br />
+                    <span className="text-transparent stroke-text-white">Digital</span>
                 </h2>
                 <p className="text-gray-500 mt-6 max-w-md text-sm md:text-base">
-                    Construimos activos digitales capa por capa. Desliza hacia abajo para deconstruir nuestro proceso.
+                    Construimos activos digitales que trabajan por tu negocio. Desliza hacia abajo para ver cómo te ayudamos a crecer.
                 </p>
             </div>
 
             {/* CONTENEDOR DE TARJETAS */}
-            {/* CORRECCIÓN: Agregamos max-w-7xl y px-6 aquí para restringir el ancho de las cards w-full */}
             <div ref={container} className="relative max-w-7xl mx-auto px-6">
                 {services.map((service, i) => {
-                    // Lógica de escalado para efecto stack
                     const targetScale = 1 - ((services.length - i) * 0.05);
 
                     return (

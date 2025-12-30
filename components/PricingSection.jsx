@@ -84,7 +84,7 @@ const PricingSection = ({ onOpenBooking }) => {
                                     <div className="p-3 bg-white rounded-lg text-black shadow-sm group-hover:scale-110 transition-transform duration-500 border border-gray-100">
                                         <Sparkles className="w-6 h-6" />
                                     </div>
-                                    <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">Basic Tier</span>
+                                    <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">Para emprendedores</span>
                                 </div>
                                 <h3 className="text-3xl font-display font-bold mb-2">IGNITION</h3>
                                 <p className="text-gray-500 text-sm h-12">Para validar ideas con impacto profesional inmediato.</p>
@@ -100,7 +100,7 @@ const PricingSection = ({ onOpenBooking }) => {
                                     "Landing Page (One-pager de Alto Impacto)",
                                     "Dominio .com Gratis (1 Año)",
                                     "Diseño Responsive (Mobile First)",
-                                    "Hosting Vercel (Velocidad Global)",
+                                    "Hosting (Velocidad Global)",
                                     "Certificado SSL (Sitio Seguro)",
                                     "Botón Flotante de WhatsApp",
                                     "Formulario de Contacto Funcional",
@@ -138,7 +138,7 @@ const PricingSection = ({ onOpenBooking }) => {
                                     <div className="p-3 bg-lime-400 rounded-lg text-black shadow-[0_0_15px_rgba(163,230,53,0.5)]">
                                         <Zap className="w-6 h-6 fill-current" />
                                     </div>
-                                    <span className="text-xs font-mono text-lime-400 uppercase tracking-wider">Growth Tier</span>
+                                    <span className="text-xs font-mono text-lime-400 uppercase tracking-wider">Para PyMES</span>
                                 </div>
                                 <h3 className="text-3xl font-display font-bold mb-2 text-white">MOMENTUM</h3>
                                 <p className="text-gray-400 text-sm h-12">La estructura completa para empresas que buscan escalar.</p>
@@ -188,7 +188,7 @@ const PricingSection = ({ onOpenBooking }) => {
                                     <div className="p-3 bg-white rounded-lg text-purple-600 shadow-sm group-hover:scale-110 transition-transform duration-500 border border-gray-100">
                                         <InfinityIcon className="w-6 h-6" />
                                     </div>
-                                    <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">Scale Tier</span>
+                                    <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">A Medida</span>
                                 </div>
                                 <h3 className="text-3xl font-display font-bold mb-2 group-hover:text-purple-600 transition-colors">SINGULARITY</h3>
                                 <p className="text-gray-500 text-sm h-12">Desarrollo a medida para marcas líderes y e-commerce.</p>

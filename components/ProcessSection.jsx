@@ -6,26 +6,26 @@ import { Search, PenTool, Code2, Rocket } from 'lucide-react';
 const steps = [
     {
         id: "01",
-        title: "Discovery & Estrategia",
-        desc: "No diseñamos a ciegas. Analizamos tu competencia, definimos tu audiencia y creamos la arquitectura de información que guiará el proyecto.",
+        title: "Análisis y Estrategia",
+        desc: "Antes de diseñar nada, estudiamos a tu competencia y definimos el plan. No damos pasos en falso; garantizamos que lo que vamos a construir tenga sentido comercial.",
         icon: Search
     },
     {
         id: "02",
-        title: "UI/UX Design",
-        desc: "Creamos prototipos de alta fidelidad. Aquí es donde definimos la estética, la tipografía y cómo se sentirá la marca antes de escribir código.",
+        title: "Diseño y Adaptación",
+        desc: "Te proponemos diferentes ideas, analizamos lo que requiere tu sitio y te ofrecemos la mejor solución, siempre enfocada a tus necesidades.",
         icon: PenTool
     },
     {
         id: "03",
-        title: "Desarrollo High-End",
-        desc: "Traducimos el diseño a código limpio (Next.js). Animaciones fluidas, optimización SEO técnica y velocidad de carga instantánea.",
+        title: "Construcción",
+        desc: "Transformamos todas tus ideas en código real. Nos aseguramos de que el resultado final sea confiable, llamativo y bien organizado, pero optimizado para cargar rápido y vender.",
         icon: Code2
     },
     {
         id: "04",
-        title: "Launch & Scale",
-        desc: "Pruebas exhaustivas, despliegue en servidores globales y entrega de documentación. Tu activo digital está listo para recibir tráfico.",
+        title: "Lanzamiento",
+        desc: "Te entregamos las llaves. Conectamos tu dominio, configuramos tus correos y te enseñamos a usar tu nuevo activo digital. ¡Estás en vivo!",
         icon: Rocket
     }
 ];
