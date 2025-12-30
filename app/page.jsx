@@ -25,6 +25,11 @@ export default function Home() {
   const isMobile = useIsMobile();
   const [showManifesto, setShowManifesto] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
+  useEffect(() => {
+    const handleOpenBooking = () => setShowBooking(true);
+    window.addEventListener('open-booking-modal', handleOpenBooking);
+    return () => window.removeEventListener('open-booking-modal', handleOpenBooking);
+  }, []);
 
   return (
     <main
@@ -40,14 +45,18 @@ export default function Home() {
       </SectionWrapper>
 
       {/* 2. MANIFESTO (Light) - Contraste fuerte para lectura */}
-      <SectionWrapper bg="#ffffff" text="#000000">
-        <Manifesto isMobile={isMobile} onOpenManifesto={() => setShowManifesto(true)} />
-      </SectionWrapper>
+      <div id="manifesto">
+        <SectionWrapper bg="#ffffff" text="#000000">
+          <Manifesto isMobile={isMobile} onOpenManifesto={() => setShowManifesto(true)} />
+        </SectionWrapper>
+      </div>
 
       {/* 3. SERVICES (Dark) - "The Vessel". Las imágenes lucen mejor en oscuro */}
-      <SectionWrapper bg="#0a0a0a" text="#ffffff">
-        <Services isMobile={isMobile} />
-      </SectionWrapper>
+      <div id="services">
+        <SectionWrapper bg="#0a0a0a" text="#ffffff">
+          <Services isMobile={isMobile} />
+        </SectionWrapper>
+      </div>
 
       {/* 4. INFO BENTO (Light) - "The Stack". Ingeniería limpia sobre blanco */}
       <SectionWrapper bg="#ffffff" text="#000000">
@@ -65,10 +74,11 @@ export default function Home() {
       </SectionWrapper>
 
       {/* 7. WORK (Lime) - "The Proof". Rompe el patrón visual para llamar la atención */}
-      <SectionWrapper bg="#bef264" text="#000000">
-        <Work isMobile={isMobile} />
-      </SectionWrapper>
-
+      <div id="work">
+        <SectionWrapper bg="#bef264" text="#000000">
+          <Work isMobile={isMobile} />
+        </SectionWrapper>
+      </div>
       {/* 8. PRICING (White) - "The Ask". Claridad total para los precios */}
       <SectionWrapper bg="#ffffff" text="#000000">
         <PricingSection onOpenBooking={() => setShowBooking(true)} />
