@@ -6,6 +6,11 @@ body {
   position: relative;
 }
 
+.lazy-render {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
 html.lenis {
   height: auto;
 }

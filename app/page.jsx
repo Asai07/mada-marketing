@@ -9,8 +9,8 @@ import SectionWrapper from '@/components/SectionWrapper';
 
 // Componentes
 const Hero = dynamic(() => import('@/components/Hero'));
-const ManifestoModal = dynamic(() => import('@/components/ManifestoModal'));
-const BookingModal = dynamic(() => import('@/components/BookingModal'));
+const ManifestoModal = dynamic(() => import('@/components/ManifestoModal'), { ssr: false });
+const BookingModal = dynamic(() => import('@/components/BookingModal'), { ssr: false });
 const Manifesto = dynamic(() => import('@/components/Manifesto'));
 const Services = dynamic(() => import('@/components/Services'));
 const InfoBento = dynamic(() => import('@/components/InfoBento'));
