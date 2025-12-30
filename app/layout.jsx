@@ -48,7 +48,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/image-preview.png',
+        url: '/social-preview.png',
         width: 1200,
         height: 630,
         alt: 'MADA - Agencia de Desarrollo Web y Marketing',
@@ -61,7 +61,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: ['/image-preview.png'],
+    images: ['/social-preview.png'],
   },
 
   verification: {
@@ -74,7 +74,7 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: 'MADA',
   // Usamos la imagen grande para los resultados enriquecidos de Google
-  image: `${SITE_URL}/image-preview.png`,
+  image: `${SITE_URL}/social-preview.png`,
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   telephone: '+528180114561',
