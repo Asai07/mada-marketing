@@ -40,7 +40,7 @@ export default function HomeClient() {
         return () => window.removeEventListener('open-booking-modal', handleOpenBooking);
     }, []);
     if (!isMounted) {
-        return null; // O un <div className="bg-black min-h-screen" /> para que no parpadee blanco
+        return <div className="min-h-screen w-full bg-[#050505]" />;
     }
     return (
         <main

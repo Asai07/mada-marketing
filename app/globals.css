@@ -4,6 +4,8 @@ body {
   overflow-x: clip;
   width: 100%;
   position: relative;
+  background-color: #050505;
+  color: #ffffff;
 }
 
 .lazy-render {
