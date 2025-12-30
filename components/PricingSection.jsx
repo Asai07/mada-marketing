@@ -28,7 +28,7 @@ const PricingSection = ({ onOpenBooking }) => {
                 if (onOpenBooking) {
                     onOpenBooking();
                 }
-                break;
+                return;
             default:
                 url = "#contact";
         }

@@ -80,7 +80,11 @@ export default function Home() {
 
       {/* 10. CONTACT (Dark) - Footer */}
       <SectionWrapper bg="#050505" text="#ffffff">
-        <Contact onOpenBooking={() => setShowBooking(true)} />
+        <Contact />
+      </SectionWrapper>
+      <SectionWrapper bg="#050505" text="#ffffff">
+        {/* Asegúrate de pasar la prop aquí 👇 */}
+        <Footer onOpenBooking={() => setShowBooking(true)} />
       </SectionWrapper>
     </main>
   );
