@@ -3,44 +3,42 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-// --- DATOS DE PROYECTOS (Para mantener el código limpio) ---
+// --- DATOS DE PROYECTOS ---
 const projects = [
     {
         title: "VELVET",
         category: "Magazine & Culture",
-        desc: "Página con estilo minimalista editorial, creada con las últimas tendencias de desarrollo.",
+        desc: "Plataforma editorial de diseño minimalista, enfocada en la experiencia de usuario y tendencias vanguardistas.",
         tags: ["UX/UI", "Autoadministrable", "React"],
         img: "/velvet.png",
-        theme: "dark" // Tarjeta negra
+        theme: "dark", // Tarjeta negra
+        link: "https://velvet-magazine.vercel.app/"
     },
     {
-        title: "Simulador de muebles y sitio web",
+        title: "Cotizador & Web de Carpintería",
         category: "Web & 3D",
-        desc: "Página web para carpintería, creamos su web y además un cotizador 3D que simula los muebles y es editable para el usuario.",
+        desc: "Ecosistema digital y configurador 3D interactivo para la visualización de mobiliario artesanal en tiempo real.",
         tags: ["ThreeJS", "WebGL", "React"],
         img: "/carpinteria.png",
-        theme: "light" // Tarjeta blanca
+        theme: "light", // Tarjeta blanca
+        link: "https://cotizador-muebles.vercel.app/"
     }
 ];
 
-// --- COMPONENTE DE TARJETA INDIVIDUAL (Maneja su propio Parallax) ---
+// --- COMPONENTE DE TARJETA INDIVIDUAL ---
 const ProjectCard = ({ project, index }) => {
     const ref = useRef(null);
     const isEven = index % 2 === 0;
 
-    // Detectamos el progreso del scroll SOLO cuando esta tarjeta cruza la pantalla
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"]
     });
 
-    // Mapeamos el scroll: Cuando entra, está abajo (50px), cuando sale, está arriba (-50px)
-    // Esto crea un movimiento suave y controlado, no infinito.
     const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
     return (
         <div ref={ref} className="group grid md:grid-cols-2 gap-8 md:gap-0 items-center relative">
-            {/* Nota: md:gap-0 porque usaremos márgenes negativos para el solapamiento */}
 
             {/* 1. IMAGEN */}
             <div className={`relative overflow-hidden rounded-xl aspect-[4/3] shadow-2xl w-full md:w-[110%] z-0 
@@ -58,16 +56,16 @@ const ProjectCard = ({ project, index }) => {
 
             {/* 2. TEXTO (CARD FLOTANTE) */}
             <motion.div
-                style={{ y }} // APLICAMOS EL PARALLAX CONTROLADO AQUÍ
+                style={{ y }}
                 className={`
-                    relative z-10 p-6 md:p-12 rounded-lg shadow-xl transition-all duration-300
+                    relative z-10 p-6 md:p-12 rounded-lg shadow-xl transition-all duration-300 flex flex-col justify-center
                     ${project.theme === 'dark'
                         ? 'bg-[#0a0a0a] text-white'
                         : 'bg-white text-black border border-gray-100'
                     }
                     ${isEven
-                        ? 'order-2 md:-ml-20'  // Solapamiento a la izquierda
-                        : 'order-2 md:order-1 md:-mr-20 z-20' // Solapamiento a la derecha
+                        ? 'order-2 md:-ml-20'
+                        : 'order-2 md:order-1 md:-mr-20 z-20'
                     }
                 `}
             >
@@ -87,7 +85,7 @@ const ProjectCard = ({ project, index }) => {
                     {project.desc}
                 </p>
 
-                <ul className={`flex flex-wrap gap-2 md:gap-4 text-xs font-mono 
+                <ul className={`flex flex-wrap gap-2 md:gap-4 text-xs font-mono mb-8 
                     ${project.theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`
                 }>
                     {project.tags.map(tag => (
@@ -98,6 +96,30 @@ const ProjectCard = ({ project, index }) => {
                         </li>
                     ))}
                 </ul>
+
+                {/* --- NUEVO BOTÓN: VER DEMO --- */}
+                <div className={`pt-6 border-t ${project.theme === 'dark' ? 'border-white/10' : 'border-black/5'}`}>
+                    <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-all group/link
+                            ${project.theme === 'dark' ? 'text-lime-400 hover:text-lime-300' : 'text-black hover:opacity-60'}`
+                        }
+                    >
+                        Ver Demo en Vivo
+                        {/* Flecha animada */}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                            className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
+                        >
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
             </motion.div>
         </div>
     );
@@ -106,9 +128,8 @@ const ProjectCard = ({ project, index }) => {
 // --- COMPONENTE PRINCIPAL ---
 const Work = React.forwardRef(({ isMobile }, ref) => {
     return (
-        <section ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden text-black bg-[#bef264]"> {/* Fondo Lima para contraste */}
+        <section ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden text-black bg-[#bef264]">
 
-            {/* Título decorativo flotante */}
             <div className="hidden md:block absolute top-20 right-20 text-[10rem] font-display font-bold text-black opacity-[0.03] pointer-events-none select-none">
                 WORK
             </div>
@@ -119,13 +140,15 @@ const Work = React.forwardRef(({ isMobile }, ref) => {
                         CASOS<br />
                         <span className="ml-2 md:ml-32 opacity-50 stroke-text-black text-transparent">REALES</span>
                     </h2>
-                    <a href="#" className="mt-8 md:mt-0 flex items-center gap-2 font-body font-bold text-black uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-opacity text-sm md:text-base">
+
+                    {/* --- ENLACE COMENTADO TEMPORALMENTE --- */}
+                    {/* <a href="#" className="mt-8 md:mt-0 flex items-center gap-2 font-body font-bold text-black uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-opacity text-sm md:text-base">
                         Ver Portafolio Completo
-                    </a>
+                    </a> 
+                    */}
                 </div>
 
-                {/* Lista de Proyectos con gap razonable */}
-                <div className="flex flex-col gap-20 md:gap-32"> {/* Gap normalizado (antes era 150) */}
+                <div className="flex flex-col gap-20 md:gap-32">
                     {projects.map((project, index) => (
                         <ProjectCard key={index} project={project} index={index} />
                     ))}
