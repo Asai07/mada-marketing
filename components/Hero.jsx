@@ -40,19 +40,25 @@ const Hero = React.forwardRef(({ onOpenBooking }, ref) => {
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[url('/noise.svg')]"></div>
 
             <div className="relative z-10 w-full max-w-7xl mx-auto pt-20 flex flex-col justify-center h-full">
+                <h1 className="sr-only">
+                    MADA: Agencia de Desarrollo Web y Marketing Digital en Monterrey. Elevamos tu marca.
+                </h1>
+
                 <div className="flex flex-col md:flex-row items-end justify-between border-b border-white/20 pb-8 mb-8 md:mb-16">
                     <p className="font-body text-[10px] md:text-sm uppercase tracking-[0.2em] text-lime-400 max-w-[200px]">Agencia de Desarrollo Web<br />Global Independiente</p>
                     <p className="hidden md:block font-body text-xs text-right text-gray-400">Est. 2025 — Worldwide</p>
                 </div>
 
-                <h1 className="font-display text-5xl sm:text-6xl md:text-[7rem] leading-[0.9] font-bold uppercase mix-blend-overlay text-white break-words">
+                {/* --- CAMBIO SEO 2: TU TÍTULO ANIMADO AHORA ES UN DIV (Visual) --- */}
+                {/* Cambié la etiqueta <h1...> por <div...> y agregué aria-hidden="true" para que los lectores de pantalla ignoren este texto incompleto y lean solo el H1 de arriba */}
+                <div aria-hidden="true" className="font-display text-5xl sm:text-6xl md:text-[7rem] leading-[0.9] font-bold uppercase mix-blend-overlay text-white break-words">
                     <span className="block overflow-hidden"><span className="block animate-[slideUpFade_1s_ease-out_forwards]">Elevamos</span></span>
                     <span className="block overflow-hidden"><span className="block animate-[slideUpFade_1s_ease-out_0.2s_forwards] text-transparent bg-clip-text bg-gradient-to-r from-lime-200 to-lime-500">Tu </span></span>
                     <span className="block overflow-hidden relative min-h-[1.1em] text-white">
                         <span>{text}</span>
                         <span className="inline-block w-[3px] h-[0.8em] bg-lime-400 ml-2 animate-blink align-middle"></span>
                     </span>
-                </h1>
+                </div>
 
                 <div className="mt-8 animate-[slideUpFade_1s_ease-out_0.6s_forwards] opacity-0">
                     <button onClick={onOpenBooking} aria-label="Agendar llamada" className="group relative px-8 py-4 bg-transparent border border-white text-white uppercase font-bold tracking-widest text-sm overflow-hidden transition-all hover:border-lime-400 hover:text-black">
