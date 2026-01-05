@@ -6,19 +6,19 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 // --- DATOS DE PROYECTOS (Para mantener el código limpio) ---
 const projects = [
     {
-        title: "VOGUE X STREET",
-        category: "Fashion & E-commerce",
-        desc: "Rediseño completo de la experiencia de compra para la marca de streetwear más grande de LATAM.",
-        tags: ["UX/UI", "Shopify Plus", "3D Configurator"],
-        img: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=2564&auto=format&fit=crop",
+        title: "VELVET",
+        category: "Magazine & Culture",
+        desc: "Página con estilo minimalista editorial, creada con las últimas tendencias de desarrollo.",
+        tags: ["UX/UI", "Autoadministrable", "React"],
+        img: "/velvet.png",
         theme: "dark" // Tarjeta negra
     },
     {
-        title: "NEOBANK PRIME",
-        category: "Fintech & App",
-        desc: "Una aplicación bancaria que la gente realmente quiere usar. Animaciones fluidas, seguridad biométrica.",
-        tags: ["Mobile App", "React Native", "Security"],
-        img: "https://images.unsplash.com/photo-1556742521-9713bf272865?q=80&w=687&auto=format&fit=crop",
+        title: "Simulador de muebles y sitio web",
+        category: "Web & 3D",
+        desc: "Página web para carpintería, creamos su web y además un cotizador 3D que simula los muebles y es editable para el usuario.",
+        tags: ["ThreeJS", "WebGL", "React"],
+        img: "/carpinteria.png",
         theme: "light" // Tarjeta blanca
     }
 ];

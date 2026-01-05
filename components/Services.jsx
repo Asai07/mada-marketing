@@ -10,14 +10,14 @@ const services = [
         title: "Diseño Estratégico", // Antes: Art Direction
         category: "Identidad & Marca", // Antes: Design
         text: "No solo hacemos que se vea bonito, diseñamos para generar confianza inmediata. Una imagen profesional que eleva el valor de tu marca.", // Beneficio claro
-        img: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2500&auto=format&fit=crop"
+        img: "/diseño-estrategico.png"
     },
     {
         id: "02",
         title: "Webs Interactivas", // Antes: Interactive Web
         category: "Experiencia de Usuario", // Antes: Development
         text: "Sitios web que no aburren. Creamos experiencias dinámicas que atrapan la atención de tus clientes para que se queden más tiempo.", // Adiós WebGL/Three.js
-        img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop"
+        img: "/webs-interactivas.png"
     },
     {
         id: "03",
@@ -65,7 +65,8 @@ const Card = ({ i, title, text, img, category, id, progress, range, targetScale 
                             src={img}
                             alt={title}
                             className="object-cover"
-                            sizes="(max-width: 768px) 90vw, 30vw"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            quality={100}
                         />
                         <div className="absolute inset-0 bg-black/20" />
                     </motion.div>
