@@ -39,7 +39,7 @@ export const metadata = {
   description: SITE_DESCRIPTION,
   applicationName: 'MADA Agency',
   alternates: {
-    canonical: '/',
+    canonical: './',
   },
 
   openGraph: {
@@ -70,22 +70,48 @@ export const metadata = {
   verification: {
     google: 'mp_3c6jUW-Mcs6gENnz4NyIvPVIJpxL4gFNNPdpOeS0',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'MADA',
-  // Usamos la imagen grande para los resultados enriquecidos de Google
-  image: `${SITE_URL}/social-preview.png`,
+  image: [`${SITE_URL}/social-preview.png`],
+  logo: `${SITE_URL}/logo.png`,
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   telephone: '+528180114561',
+  email: 'contacto@somosmada.com',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Monterrey',
     addressRegion: 'NL',
     addressCountry: 'MX'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '25.6866',
+    longitude: '-100.3161'
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Monterrey'
   },
   priceRange: '$$$',
   openingHoursSpecification: [
@@ -98,7 +124,6 @@ const jsonLd = {
   ],
   sameAs: [
     'https://www.instagram.com/somosmada',
-    'https://www.linkedin.com/company/somosmada',
     'https://www.facebook.com/somosmada'
   ]
 };
@@ -114,7 +139,6 @@ export default function RootLayout({ children }) {
             {children}
           </SmoothScroll>
           <FloatingChat />
-          {/* Inyectamos JSON-LD para Google */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
