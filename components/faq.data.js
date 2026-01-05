@@ -9,7 +9,7 @@ export const faqs = [
     },
     {
         question: "¿El servicio incluye dominio y hosting para mi sitio web?",
-        answer: "Sí. Incluimos el dominio gratis durante el primer año. En la mayoría de los proyectos configuramos el hosting en plataformas líderes como Vercel o Netlify, que ofrecen alto rendimiento, seguridad y excelente posicionamiento SEO."
+        answer: "Sí. Incluimos el dominio gratis durante el primer año. En la mayoría de los proyectos configuramos el hosting en plataformas líderes que se adaptan a tu proyecto, que ofrecen alto rendimiento, seguridad y excelente posicionamiento SEO."
     },
     {
         question: "¿Cuánto tiempo tarda el desarrollo de un sitio web profesional?",
