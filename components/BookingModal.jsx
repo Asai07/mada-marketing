@@ -118,7 +118,6 @@ const BookingModal = ({ isOpen, onClose }) => {
             website: 'No especificado',
             to_email: 'somosmadamkt@gmail.com'
         };
-
         try {
             await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
             setIsSubmitted(true);
