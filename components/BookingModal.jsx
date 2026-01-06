@@ -118,6 +118,7 @@ const BookingModal = ({ isOpen, onClose }) => {
             website: 'No especificado',
             to_email: 'somosmadamkt@gmail.com'
         };
+        //Actualizando variables
         console.log("Mi llave pública es:", PUBLIC_KEY); // ESTO TE DIRÁ LA VERDAD EN LA CONSOLA
         try {
             await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
