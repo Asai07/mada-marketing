@@ -1,20 +1,38 @@
 'use client';
 import React from 'react';
-
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const handleLetsTalk = () => {
     const phone = "528180114561";
-    // Mensaje diferente para saber que vienen del menú
     const message = encodeURIComponent("Hola, vengo de su sitio web y me gustaría información.");
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
 };
 
 const Navbar = ({ onMenuClick }) => {
+    const pathname = usePathname();
+
+    const handleLogoClick = (e) => {
+        if (pathname === '/') {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+    };
+
     return (
         <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-6 flex justify-between items-center mix-blend-difference text-white">
-            <div className="text-xl font-display font-bold tracking-tighter cursor-pointer md:cursor-none">
+
+            <Link
+                href="/"
+                onClick={handleLogoClick} // <--- 4. Asignamos la función aquí
+                className="text-xl font-display font-bold tracking-tighter cursor-pointer relative z-50 hover:opacity-80 transition-opacity"
+            >
                 MADA<span className="text-lime-400">.</span>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-6 md:gap-8">
                 <button
