@@ -152,7 +152,7 @@ const PricingSection = ({ onOpenBooking }) => {
                             <ul className="space-y-3 mb-8 flex-1">
                                 {[
                                     "Sitio Web Multi-sección (Hasta 5)",
-                                    "Diseño UX/UI Personalizado (Figma)",
+                                    "Diseño UX/UI Personalizado",
                                     "CMS Autoadministrable (Blog/Noticias)",
                                     "SEO Técnico + Indexación en Google",
                                     "Integración Google Analytics / Pixel",
@@ -224,7 +224,7 @@ const PricingSection = ({ onOpenBooking }) => {
                                 onClick={() => handlePlanSelect('SINGULARITY')}
                                 className="w-full py-3 border border-black text-black hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300 text-xs font-bold uppercase tracking-widest"
                             >
-                                Agendar Consultoría
+                                Agendar Llamada
                             </button>
                         </div>
                     </motion.div>
