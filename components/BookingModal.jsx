@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Loader2, Zap, Layout, Search, ArrowRight, Layers, Smartphone, Sparkles, User, Mail, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-
 // --- COMPONENTE DE INPUT (Simplificado) ---
 const InputField = ({ label, icon: Icon, ...props }) => (
     <div className="space-y-1.5">
@@ -36,6 +35,7 @@ const BookingModal = ({ isOpen, onClose }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -47,10 +47,9 @@ const BookingModal = ({ isOpen, onClose }) => {
 
     const showWebPlans = formData.service === 'Web / Landing';
 
-    // TUS CREDENCIALES
-    const SERVICE_ID = "service_49ecb0u";
-    const TEMPLATE_ID = "template_b2wjapb";
-    const PUBLIC_KEY = "1er5IDQJHU1R_e4os";
+    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
     useEffect(() => {
         if (!isOpen) {
@@ -59,6 +58,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                 setIsLoading(false);
                 setError(null);
                 setFormData({ name: '', email: '', phone: '', service: '', plan: '' });
+                setPrivacyAccepted(false);
             }, 500);
             return () => clearTimeout(timer);
         }
@@ -97,6 +97,11 @@ const BookingModal = ({ isOpen, onClose }) => {
 
         if (!formData.service) {
             setError("Por favor selecciona qué necesitas (Web, App o Marketing).");
+            setIsLoading(false);
+            return;
+        }
+        if (!privacyAccepted) {
+            setError("Debes aceptar la política de privacidad para continuar.");
             setIsLoading(false);
             return;
         }
@@ -183,7 +188,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                                             className="space-y-6"
                                         >
                                             {/* SECCIÓN 1: DATOS */}
-                                            <div className="space-y-3">
+                                            <div className="space-y-4"> {/* Aumenté un poco el espacio */}
                                                 <h4 className="text-xs font-bold text-black uppercase tracking-wide border-b border-gray-100 pb-2 mb-3">
                                                     1. Tus Datos
                                                 </h4>
@@ -191,7 +196,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                                                     <InputField
                                                         label="Nombre" icon={User}
                                                         required name="name" type="text" onChange={handleChange} value={formData.name}
-                                                        placeholder="Tu nombre"
+                                                        placeholder="Tu nombre completo"
                                                     />
                                                     <div className="grid grid-cols-2 gap-3">
                                                         <InputField
@@ -199,11 +204,17 @@ const BookingModal = ({ isOpen, onClose }) => {
                                                             required name="email" type="email" onChange={handleChange} value={formData.email}
                                                             placeholder="tu@email.com"
                                                         />
-                                                        <InputField
-                                                            label="WhatsApp" icon={Phone}
-                                                            required name="phone" type="tel" onChange={handleChange} value={formData.phone}
-                                                            placeholder="+52..."
-                                                        />
+                                                        <div>
+                                                            <InputField
+                                                                label="WhatsApp" icon={Phone}
+                                                                required name="phone" type="tel" onChange={handleChange} value={formData.phone}
+                                                                placeholder="WhatsApp (52...)"
+                                                            />
+                                                            {/* MICRO-COPY DE CONFIANZA */}
+                                                            <p className="text-[9px] text-gray-400 mt-1 ml-1 leading-tight">
+                                                                *Te escribiremos solo para agendar.
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -264,11 +275,30 @@ const BookingModal = ({ isOpen, onClose }) => {
                                                                     </button>
                                                                 ))}
                                                             </div>
+
                                                         </div>
                                                     </motion.div>
                                                 )}
                                             </AnimatePresence>
-
+                                            <div className="flex items-start gap-3 py-2 mt-4"> {/* Agregué mt-4 para separar un poco */}
+                                                <div className="relative flex items-center">
+                                                    <input
+                                                        type="checkbox"
+                                                        id="privacy"
+                                                        checked={privacyAccepted}
+                                                        onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                                                        className="peer h-4 w-4 cursor-pointer appearance-none rounded border border-gray-300 transition-all checked:border-black checked:bg-black hover:border-black"
+                                                    />
+                                                    <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 peer-checked:opacity-100">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <label htmlFor="privacy" className="cursor-pointer select-none text-[10px] sm:text-xs text-gray-500 leading-tight">
+                                                    He leído y acepto la <a href="/privacidad" target="_blank" className="font-bold text-black underline hover:text-lime-500">Política de Privacidad</a> y el tratamiento de mis datos.
+                                                </label>
+                                            </div>
                                             {/* ERROR */}
                                             {error && (
                                                 <div className="p-3 bg-red-50 text-red-500 text-xs font-medium rounded-lg flex items-center gap-2">
@@ -285,7 +315,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                                                     className="w-full py-4 bg-lime-400 hover:bg-lime-500 active:scale-[0.99] text-black font-bold uppercase tracking-widest text-xs rounded-xl transition-all shadow-xl shadow-lime-400/20 flex items-center justify-center gap-3 disabled:opacity-50 disabled:shadow-none"
                                                 >
                                                     {isLoading ? <Loader2 className="animate-spin" /> : (
-                                                        <>Solicitar Llamada <ArrowRight size={16} /></>
+                                                        <>Agendar Llamada <ArrowRight size={16} /></>
                                                     )}
                                                 </button>
                                             </div>
@@ -314,12 +344,22 @@ const BookingModal = ({ isOpen, onClose }) => {
                                                 </p>
                                             </div>
 
-                                            <button
-                                                onClick={onClose}
-                                                className="px-8 py-3 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
-                                            >
-                                                Cerrar Ventana
-                                            </button>
+
+                                            <div className="flex gap-3 justify-center w-full">
+                                                <button
+                                                    onClick={onClose}
+                                                    className="px-6 py-3 border border-gray-200 text-gray-500 rounded-xl text-xs font-bold uppercase hover:bg-gray-50 transition-colors"
+                                                >
+                                                    Cerrar
+                                                </button>
+                                                <a
+                                                    href="#proyectos"
+                                                    onClick={onClose}
+                                                    className="px-6 py-3 bg-black text-white rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors flex items-center gap-2"
+                                                >
+                                                    Ver Proyectos <ArrowRight size={14} />
+                                                </a>
+                                            </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>

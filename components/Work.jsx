@@ -128,7 +128,7 @@ const ProjectCard = ({ project, index }) => {
 // --- COMPONENTE PRINCIPAL ---
 const Work = React.forwardRef(({ isMobile }, ref) => {
     return (
-        <section ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden text-black bg-[#bef264]">
+        <section id="proyectos" ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden text-black bg-[#bef264]">
 
             <div className="hidden md:block absolute top-20 right-20 text-[10rem] font-display font-bold text-black opacity-[0.03] pointer-events-none select-none">
                 WORK
