@@ -39,7 +39,7 @@ export const metadata = {
   description: SITE_DESCRIPTION,
   applicationName: 'MADA Agency',
   alternates: {
-    canonical: './',
+    canonical: SITE_URL,
   },
 
   openGraph: {
