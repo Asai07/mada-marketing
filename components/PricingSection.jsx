@@ -91,7 +91,7 @@ const PricingSection = ({ onOpenBooking }) => {
                             </div>
 
                             <div className="mb-8">
-                                <span className="text-4xl font-bold font-display text-black">$4,900</span>
+                                <span className="text-4xl font-bold font-display text-black">$5,900</span>
                                 <span className="text-gray-500 text-sm ml-2">MXN / único</span>
                             </div>
 
