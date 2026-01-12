@@ -15,7 +15,7 @@ const PricingSection = ({ onOpenBooking }) => {
         switch (plan) {
             case 'IGNITION':
                 // Plan barato: Directo a WhatsApp para cerrar rápido
-                message = encodeURIComponent("¡Hola! 👋 Estoy interesado en el Plan IGNITION de $4,900. ¿Podemos comenzar?");
+                message = encodeURIComponent("¡Hola! 👋 Estoy interesado en el Plan IGNITION de $5,900. ¿Podemos comenzar?");
                 url = `https://wa.me/${PHONE_NUMBER}?text=${message}`;
                 break;
             case 'MOMENTUM':
