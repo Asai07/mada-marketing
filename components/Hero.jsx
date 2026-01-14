@@ -49,8 +49,6 @@ const Hero = React.forwardRef(({ onOpenBooking }, ref) => {
                     <p className="hidden md:block font-body text-xs text-right text-gray-400">Est. 2025 — Worldwide</p>
                 </div>
 
-                {/* --- CAMBIO SEO 2: TU TÍTULO ANIMADO AHORA ES UN DIV (Visual) --- */}
-                {/* Cambié la etiqueta <h1...> por <div...> y agregué aria-hidden="true" para que los lectores de pantalla ignoren este texto incompleto y lean solo el H1 de arriba */}
                 <div aria-hidden="true" className="font-display text-5xl sm:text-6xl md:text-[7rem] leading-[0.9] font-bold uppercase mix-blend-overlay text-white break-words">
                     <span className="block overflow-hidden"><span className="block animate-[slideUpFade_1s_ease-out_forwards]">Elevamos</span></span>
                     <span className="block overflow-hidden"><span className="block animate-[slideUpFade_1s_ease-out_0.2s_forwards] text-transparent bg-clip-text bg-gradient-to-r from-lime-200 to-lime-500">Tu </span></span>
