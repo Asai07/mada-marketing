@@ -298,8 +298,8 @@ export default function MarketingPage() {
                     <p className="text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto opacity-80">
                         Agenda una sesión gratuita de 15 minutos para auditar tu estrategia actual y ver dónde estás perdiendo dinero.
                     </p>
-                    <a href="https://wa.me/528180114561" target="_blank" className="inline-flex items-center gap-3 px-10 py-4 md:px-12 md:py-5 bg-black text-white font-bold rounded-full text-base md:text-lg hover:scale-105 transition-transform shadow-2xl">
-                        Agendar Auditoría de Growth
+                    <a href="https://wa.me/528180114561?text=Hola,%20me%20interesa%20agendar%20una%20estrategia%20de%20marketing." target="_blank" className="inline-flex items-center gap-3 px-10 py-4 md:px-12 md:py-5 bg-black text-white font-bold rounded-full text-base md:text-lg hover:scale-105 transition-transform shadow-2xl">
+                        Agendar estrategia de Marketing
                     </a>
                 </div>
             </section>
