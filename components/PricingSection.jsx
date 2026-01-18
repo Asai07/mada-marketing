@@ -2,11 +2,12 @@
 import React from 'react';
 import { Check, Sparkles, Zap, InfinityIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const PricingSection = ({ onOpenBooking }) => {
     // --- 1. CONFIGURACIÓN DE CONTACTO ---
-    const PHONE_NUMBER = "528180114561"; // ¡PON TU NÚMERO AQUÍ! (Con lada, sin espacios. Ej: 5215512345678)
-    const CALENDLY_URL = "https://calendly.com/tu-usuario/discovery-call"; // Opcional: Si usas Calendly
+    const PHONE_NUMBER = "528180114561";
+    const CALENDLY_URL = "https://calendly.com/tu-usuario/discovery-call";
 
     const handlePlanSelect = (plan) => {
         let url = "";
@@ -230,7 +231,33 @@ const PricingSection = ({ onOpenBooking }) => {
                     </motion.div>
 
                 </motion.div>
-            </div>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-16 flex flex-col items-center justify-center text-center space-y-4"
+                >
+                    <p className="text-gray-500 text-sm">
+                        ¿Quieres conocer el stack tecnológico detrás de estos planes?
+                    </p>
+
+                    <Link
+                        href="/servicios/desarrollo-web"
+                        className="group flex items-center gap-2 px-6 py-3 rounded-full bg-gray-50 border border-gray-200 text-black text-sm font-medium transition-all hover:bg-black hover:text-white hover:border-black"
+                    >
+                        <span>Explorar Especificaciones Técnicas y Servicios</span>
+                        {/* Flecha animada al hacer hover */}
+                        <svg
+                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </Link>
+                </motion.div>
+                {/* 👆 FIN DEL BOTÓN GENERAL 👆 */}
+
+            </div> {/* Cierre del container max-w-7xl */}
         </section>
     );
 };

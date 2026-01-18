@@ -1,32 +1,32 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import { Target, Megaphone, TrendingUp } from 'lucide-react';
+import { Target, Megaphone, TrendingUp, ArrowRight } from 'lucide-react';
+import Link from 'next/link'; // Importante: Añadimos Link
 
 const MarketingScrolly = () => {
     const [activeService, setActiveService] = useState(0);
     const containerRef = useRef(null);
 
-    // CAMBIO CLAVE: Lenguaje enfocado en resultados monetarios, no técnicos.
     const services = [
         {
             id: '01',
-            title: "Tráfico y Publicidad", // Antes: Traffic Acquisition
+            title: "Tráfico y Publicidad",
             description: "Tener una web sin visitas es como tener una tienda en el desierto. Traemos clientes listos para comprar usando Google y Redes Sociales desde el primer día.",
-            tags: ["Google Ads", "Facebook & Instagram", "Tráfico Calificado"], // Adiós 'Paid Media'
+            tags: ["Google Ads", "Facebook & Instagram", "Tráfico Calificado"],
             icon: Target
         },
         {
             id: '02',
-            title: "Anuncios que Venden", // Antes: Performance Creative
+            title: "Anuncios que Venden",
             description: "Nadie lee anuncios aburridos. Creamos videos e imágenes diseñados psicológicamente para que la gente deje de bajar el scroll y haga clic en tu oferta.",
-            tags: ["Videos Virales", "Diseño Persuasivo", "Guiones de Venta"], // Adiós 'UGC/Ad Creatives'
+            tags: ["Videos Virales", "Diseño Persuasivo", "Guiones de Venta"],
             icon: Megaphone
         },
         {
             id: '03',
-            title: "Estrategia y Escalamiento", // Antes: Growth Strategy
+            title: "Estrategia y Escalamiento",
             description: "Dejamos de adivinar. Medimos cada peso invertido para saber qué funciona. Optimizamos tu embudo para que cada vez te cueste menos conseguir un cliente nuevo.",
-            tags: ["Analítica de Datos", "Retorno de Inversión", "Mejora de Ventas"], // Adiós 'CRO/Scaling'
+            tags: ["Analítica de Datos", "Retorno de Inversión", "Mejora de Ventas"],
             icon: TrendingUp
         }
     ];
@@ -38,7 +38,6 @@ const MarketingScrolly = () => {
 
             sections.forEach((section, index) => {
                 const { top, bottom } = section.getBoundingClientRect();
-                // Ajuste para detectar qué sección está activa en pantalla
                 if (top < window.innerHeight / 1.5 && bottom > window.innerHeight / 3) {
                     setActiveService(index);
                 }
@@ -57,45 +56,38 @@ const MarketingScrolly = () => {
                     <div className="h-full flex flex-col justify-between relative">
                         <div>
                             <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-4 block">
-                                {/* CAMBIO: Español directo */}
                                 // 03. El Motor
                             </span>
                             <h2 className="text-7xl font-display font-bold leading-none mb-6">
                                 MÁQUINA<br />DE <span className="text-lime-400">VENTAS.</span>
                             </h2>
                             <p className="text-gray-400 max-w-sm text-sm">
-                                {/* CAMBIO: Metáfora más clara de negocio */}
                                 Ya tienes el sitio web. Ahora necesitas llenarlo de clientes comprando todos los días.
                             </p>
                         </div>
 
-                        {/* --- Representaciones Visuales Abstractas (Sin cambios de lógica, solo funcionan visualmente) --- */}
+                        {/* Visuales Abstractos (Sin cambios) */}
                         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64">
-
-                            {/* Visual 1: Traffic (Radar) */}
+                            {/* Visual 1: Traffic */}
                             <div className={`absolute inset-0 transition-all duration-700 ${activeService === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
                                 <div className="absolute inset-0 border border-lime-400/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
                                 <div className="absolute inset-4 border border-lime-400/40 rounded-full border-dashed animate-[spin_15s_linear_infinite_reverse]"></div>
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <Target className="w-16 h-16 text-lime-400" />
                                 </div>
-                                <div className="absolute top-0 left-1/2 w-2 h-2 bg-lime-400 rounded-full shadow-[0_0_10px_#a3e635] animate-ping"></div>
                             </div>
 
-                            {/* Visual 2: Creatives (Ondas/Voz) */}
+                            {/* Visual 2: Creatives */}
                             <div className={`absolute inset-0 transition-all duration-700 flex items-center justify-center ${activeService === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
                                 <div className="absolute inset-0 bg-lime-400/5 rounded-full animate-pulse"></div>
                                 <Megaphone className="w-16 h-16 text-lime-400 relative z-10 rotate-[-15deg]" />
-                                <div className="absolute right-0 top-10 w-8 h-1 bg-lime-400/50 rounded-full animate-[pulse_1s_ease-in-out_infinite]"></div>
-                                <div className="absolute right-[-10px] top-4 w-12 h-1 bg-lime-400/30 rounded-full animate-[pulse_1.2s_ease-in-out_infinite]"></div>
                             </div>
 
-                            {/* Visual 3: Strategy (Gráfica Ascendente) */}
+                            {/* Visual 3: Strategy */}
                             <div className={`absolute inset-0 transition-all duration-700 ${activeService === 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
                                 <div className="absolute inset-0 bg-gradient-to-tr from-lime-400/10 to-transparent rounded-lg transform rotate-6 border border-white/5"></div>
                                 <div className="absolute inset-0 bg-[#0a0a0a] rounded-lg border border-white/20 flex items-center justify-center overflow-hidden">
                                     <TrendingUp className="w-20 h-20 text-lime-400 mb-2" />
-                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
                                 </div>
                             </div>
                         </div>
@@ -107,36 +99,51 @@ const MarketingScrolly = () => {
                 </div>
 
                 {/* --- DERECHA: Contenido Scrolleable --- */}
-                <div className="flex flex-col gap-32 pb-20 md:pb-0">
-                    {/* Título visible solo en Móvil */}
-                    <div className="md:hidden mb-10">
+                <div className="flex flex-col pb-20 md:pb-0">
+                    {/* Título Móvil */}
+                    <div className="md:hidden mb-16">
                         <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-2 block">// 03. El Motor</span>
                         <h2 className="text-5xl font-display font-bold leading-none">MÁQUINA<br />DE VENTAS.</h2>
                     </div>
 
-                    {services.map((service, index) => (
-                        <div
-                            key={index}
-                            className={`service-block min-h-[50vh] flex flex-col justify-center transition-all duration-500 ${activeService === index ? 'opacity-100' : 'opacity-30 blur-sm'}`}
-                        >
-                            <span className="text-8xl font-display font-black text-white/5 md:text-white/10 mb-[-40px] z-0 select-none">
-                                {service.id}
-                            </span>
-                            <div className="relative z-10 pl-4 border-l-2 border-lime-400/50">
-                                <h3 className="text-4xl md:text-5xl font-bold mb-6 text-white">{service.title}</h3>
-                                <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-md mb-8">
-                                    {service.description}
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                    {service.tags.map(tag => (
-                                        <span key={tag} className="px-3 py-1 rounded-full border border-white/10 text-xs font-mono uppercase tracking-wider text-lime-400/80 bg-lime-400/5">
-                                            {tag}
-                                        </span>
-                                    ))}
+                    <div className="flex flex-col gap-32">
+                        {services.map((service, index) => (
+                            <div
+                                key={index}
+                                className={`service-block min-h-[50vh] flex flex-col justify-center transition-all duration-500 ${activeService === index ? 'opacity-100' : 'opacity-30 blur-sm'}`}
+                            >
+                                <span className="text-8xl font-display font-black text-white/5 md:text-white/10 mb-[-40px] z-0 select-none">
+                                    {service.id}
+                                </span>
+                                <div className="relative z-10 pl-4 border-l-2 border-lime-400/50">
+                                    <h3 className="text-4xl md:text-5xl font-bold mb-6 text-white">{service.title}</h3>
+                                    <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-md mb-8">
+                                        {service.description}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {service.tags.map(tag => (
+                                            <span key={tag} className="px-3 py-1 rounded-full border border-white/10 text-xs font-mono uppercase tracking-wider text-lime-400/80 bg-lime-400/5">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
+                        ))}
+
+                        {/* --- BOTÓN DISCRETO AL FINAL DEL SCROLL --- */}
+                        <div className="mt-12 pl-4">
+                            <Link
+                                href="/servicios/marketing-digital"
+                                className="inline-flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-colors group"
+                            >
+                                <span className="text-sm font-bold uppercase tracking-widest border-b border-transparent group-hover:border-lime-400 pb-1">
+                                    Ver Servicio Completo
+                                </span>
+                                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                            </Link>
                         </div>
-                    ))}
+                    </div>
                 </div>
             </div>
         </section>
