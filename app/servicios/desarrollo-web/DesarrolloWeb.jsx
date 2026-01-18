@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Rocket, Zap, Database, Layout, Smartphone,
@@ -42,25 +42,25 @@ export default function DesarrolloWebClient() {
     }, []);
     const projects = [
         {
-            title: "Inmobiliaria Regia",
-            category: "Real Estate",
+            title: "La Prietilla Tacos",
+            category: "Restaurant",
             result: "+40% Leads",
-            demoUrl: "#",
-            image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop",
+            demoUrl: "https://laprietillatacos.vercel.app/",
+            image: "/la-prietilla.png",
         },
         {
-            title: "Dr. Roberto M.",
-            category: "Sector Salud",
-            result: "Agenda Llena",
-            demoUrl: "#",
-            image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop",
+            title: "Velvet",
+            category: "Magazine",
+            result: "100% Administrable",
+            demoUrl: "https://velvet-magazine.vercel.app/",
+            image: "/velvet-mockup.png",
         },
         {
-            title: "Muebles Design",
+            title: "Carpintería",
             category: "E-Commerce",
             result: "Ventas 24/7",
-            demoUrl: "#",
-            image: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=1000&auto=format&fit=crop",
+            demoUrl: "https://furniture-sooty-rho.vercel.app/",
+            image: "/ace.png",
         }
     ];
 
@@ -130,12 +130,6 @@ export default function DesarrolloWebClient() {
 
                 <div className="max-w-7xl mx-auto relative z-10 text-center w-full">
                     <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
-
-                        {/* TÍTULO SEGURO PARA MÓVIL:
-                            - text-4xl en móvil: Asegura que "DESARROLLO" quepa sin romperse.
-                            - sm:text-6xl y md:text-8xl: Crece mucho en pantallas grandes.
-                            - Estructura limpia de 3 líneas para máximo impacto.
-                        */}
                         <motion.h1
                             variants={fadeInUp}
                             className="font-display font-black uppercase leading-tight mb-8 text-white tracking-tight w-full"
@@ -452,7 +446,7 @@ export default function DesarrolloWebClient() {
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                         <a
-                            href={`https://wa.me/${PHONE_NUMBER}`}
+                            href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent("Me interesa conocer más acerca de los servicios de desarrollo web")}`}
                             target="_blank"
                             className="w-full md:w-auto flex items-center justify-center gap-3 bg-black text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl"
                         >
