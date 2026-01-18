@@ -37,7 +37,9 @@ const breathingBlob = {
 export default function DesarrolloWebClient() {
     const [activePlan, setActivePlan] = useState('momentum');
     const PHONE_NUMBER = "528180114561";
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const projects = [
         {
             title: "Inmobiliaria Regia",
