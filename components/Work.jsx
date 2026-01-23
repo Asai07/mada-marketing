@@ -133,7 +133,7 @@ const ProjectCard = ({ project }) => {
                         rel="noopener noreferrer"
                         className="px-5 py-2 text-xs font-bold uppercase tracking-widest bg-black text-[#bef264] border border-black rounded hover:bg-black/80 transition-colors flex items-center gap-2"
                     >
-                        <span>Cotizar solución similar</span>
+                        <span>Cotizar web similar</span>
                         {/* Mantuve la flecha original para no romper la estética, pero ya funciona el link */}
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
