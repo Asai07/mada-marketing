@@ -123,7 +123,7 @@ const ProjectCard = ({ project }) => {
                         rel="noopener noreferrer"
                         className="px-5 py-2 text-xs font-bold uppercase tracking-widest border border-black text-black rounded hover:bg-black hover:text-[#bef264] transition-colors"
                     >
-                        Ver Demo
+                        Demo
                     </a>
 
                     {/* 🟢 BOTÓN WHATSAPP INTEGRADO AL DISEÑO VERDE */}
