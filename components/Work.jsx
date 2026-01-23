@@ -1,158 +1,213 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
-// --- DATOS DE PROYECTOS ---
-const projects = [
+// --- DATOS DE TUS PROYECTOS ---
+const allProjects = [
     {
-        title: "VELVET",
-        category: "Magazine & Culture",
-        desc: "Plataforma editorial de diseño minimalista, enfocada en la experiencia de usuario y tendencias vanguardistas.",
-        tags: ["UX/UI", "Autoadministrable", "React"],
-        img: "/velvet.png",
-        theme: "dark", // Tarjeta negra
-        link: "https://velvet-magazine.vercel.app/"
+        id: 1,
+        title: "La Prietilla Tacos",
+        category: "Web",
+        desc: "Diseño UX/UI y desarrollo para negocio de alimentos.",
+        tags: ["Next.js", "Framer Motion", "Tailwind"],
+        img: "/la-prietilla.png",
+        link: "https://laprietillatacos.vercel.app/",
+        year: "2025"
     },
     {
-        title: "Cotizador & Web de Carpintería",
-        category: "Web & 3D",
-        desc: "Ecosistema digital y configurador 3D interactivo para la visualización de mobiliario artesanal en tiempo real.",
-        tags: ["ThreeJS", "WebGL", "React"],
-        img: "/carpinteria.png",
-        theme: "light", // Tarjeta blanca
-        link: "https://cotizador-muebles.vercel.app/"
+        id: 2,
+        title: "Velvet",
+        category: "App",
+        desc: "Diseño UX/UI Editorial para revista, animaciones, artículos y blog funcional.",
+        tags: ["React", "Framer-motion", "Tailwind"],
+        img: "/velvet.png",
+        link: "https://velvet-magazine.vercel.app/",
+        year: "2026"
+    },
+    {
+        id: 3,
+        title: "MADA Agency",
+        category: "Branding",
+        desc: "Creación de identidad visual y sistema de diseño escalable.",
+        tags: ["Figma", "Illustrator", "Branding"],
+        img: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop",
+        link: "#",
+        year: "2025"
+    },
+    {
+        id: 4,
+        title: "Neon Dashboard",
+        category: "Web",
+        desc: "Desarrollo de panel administrativo con modo oscuro nativo.",
+        tags: ["React", "Chart.js", "SaaS"],
+        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
+        link: "#",
+        year: "2025"
     }
 ];
 
-// --- COMPONENTE DE TARJETA INDIVIDUAL ---
-const ProjectCard = ({ project, index }) => {
-    const ref = useRef(null);
-    const isEven = index % 2 === 0;
+const categories = ["Todos", "Web", "App", "Branding"];
 
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"]
-    });
+// --- TARJETA DE PROYECTO (CON WHATSAPP INTEGRADO) ---
+const ProjectCard = ({ project }) => {
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { once: true, margin: "-50px" });
 
-    const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+    // 🟢 LÓGICA DE WHATSAPP AGREGADA AQUÍ
+    const getWhatsAppLink = (projectTitle) => {
+        const phone = "528180114561";
+        const message = `Hola, me interesa cotizar una solución similar a: ${projectTitle}`;
+        return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    };
 
     return (
-        <div ref={ref} className="group grid md:grid-cols-2 gap-8 md:gap-0 items-center relative">
+        <motion.div
+            layout
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            ref={cardRef}
+            className="group flex flex-col gap-5 w-full"
+        >
+            {/* 1. Contenedor de Imagen */}
+            <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative overflow-hidden rounded-2xl aspect-[16/10] bg-black shadow-2xl border border-black/10 group-hover:shadow-[0_0_40px_-10px_rgba(0,0,0,0.3)] transition-shadow duration-500 block"
+            >
+                <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
 
-            {/* 1. IMAGEN */}
-            <div className={`relative overflow-hidden rounded-xl aspect-[4/3] shadow-2xl w-full md:w-[110%] z-0 
-                ${isEven ? 'order-1' : 'order-1 md:order-2 md:-ml-[10%]'}`
-            }>
                 <Image
                     src={project.img}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110 grayscale group-hover:grayscale-0"
                     sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-            </div>
 
-            {/* 2. TEXTO (CARD FLOTANTE) */}
-            <motion.div
-                style={{ y }}
-                className={`
-                    relative z-10 p-6 md:p-12 rounded-lg shadow-xl transition-all duration-300 flex flex-col justify-center
-                    ${project.theme === 'dark'
-                        ? 'bg-[#0a0a0a] text-white'
-                        : 'bg-white text-black border border-gray-100'
-                    }
-                    ${isEven
-                        ? 'order-2 md:-ml-20'
-                        : 'order-2 md:order-1 md:-mr-20 z-20'
-                    }
-                `}
-            >
-                <span className={`text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 block 
-                    ${project.theme === 'dark' ? 'text-lime-400' : 'text-gray-500'}`
-                }>
-                    {project.category}
-                </span>
+                <div className="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur text-black text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    {project.year}
+                </div>
+            </a>
 
-                <h3 className="text-3xl md:text-5xl font-display font-bold mb-4 md:mb-6 leading-tight">
-                    {project.title}
-                </h3>
+            {/* 2. Info del Proyecto */}
+            <div className="flex flex-col gap-4 px-1">
+                <div>
+                    <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-2xl font-display font-bold text-black">
+                            {project.title}
+                        </h3>
+                    </div>
 
-                <p className={`font-body text-sm md:text-base mb-6 md:mb-8 leading-relaxed
-                    ${project.theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`
-                }>
-                    {project.desc}
-                </p>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                        {project.tags.map((tag, i) => (
+                            <span key={i} className="text-[10px] font-mono font-bold uppercase tracking-wider border border-black/20 px-2 py-1 rounded text-black/60 bg-white/30">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
 
-                <ul className={`flex flex-wrap gap-2 md:gap-4 text-xs font-mono mb-8 
-                    ${project.theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`
-                }>
-                    {project.tags.map(tag => (
-                        <li key={tag} className={`border px-2 py-1 rounded 
-                            ${project.theme === 'dark' ? 'border-white/20' : 'border-black/10'}`
-                        }>
-                            {tag}
-                        </li>
-                    ))}
-                </ul>
+                    <p className="text-sm font-body text-black/80 leading-relaxed max-w-md">
+                        {project.desc}
+                    </p>
+                </div>
 
-                {/* --- NUEVO BOTÓN: VER DEMO --- */}
-                <div className={`pt-6 border-t ${project.theme === 'dark' ? 'border-white/10' : 'border-black/5'}`}>
+                {/* 3. Botones de Acción */}
+                <div className="flex items-center gap-3 mt-2">
                     <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-all group/link
-                            ${project.theme === 'dark' ? 'text-lime-400 hover:text-lime-300' : 'text-black hover:opacity-60'}`
-                        }
+                        className="px-5 py-2 text-xs font-bold uppercase tracking-widest border border-black text-black rounded hover:bg-black hover:text-[#bef264] transition-colors"
                     >
-                        Ver Demo en Vivo
-                        {/* Flecha animada */}
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                            className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
-                        >
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
+                        Ver Demo
+                    </a>
+
+                    {/* 🟢 BOTÓN WHATSAPP INTEGRADO AL DISEÑO VERDE */}
+                    <a
+                        href={getWhatsAppLink(project.title)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2 text-xs font-bold uppercase tracking-widest bg-black text-[#bef264] border border-black rounded hover:bg-black/80 transition-colors flex items-center gap-2"
+                    >
+                        <span>Cotizar solución similar</span>
+                        {/* Mantuve la flecha original para no romper la estética, pero ya funciona el link */}
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
                 </div>
-
-            </motion.div>
-        </div>
+            </div>
+        </motion.div>
     );
 };
 
-// --- COMPONENTE PRINCIPAL ---
+// --- COMPONENTE PRINCIPAL (FONDO VERDE) ---
 const Work = React.forwardRef(({ isMobile }, ref) => {
-    return (
-        <section id="proyectos" ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden text-black bg-[#bef264]">
+    const [filter, setFilter] = useState("Todos");
 
-            <div className="hidden md:block absolute top-20 right-20 text-[10rem] font-display font-bold text-black opacity-[0.03] pointer-events-none select-none">
-                WORK
+    const filteredProjects = allProjects.filter(p =>
+        filter === "Todos" ? true : p.category.includes(filter)
+    );
+
+    return (
+        <section id="proyectos" ref={ref} className="py-24 md:py-40 px-6 relative bg-[#bef264] text-black overflow-hidden">
+
+            <div className="absolute top-0 left-0 w-full overflow-hidden pointer-events-none opacity-[0.05]">
+                <h1 className="text-[15vw] font-display font-bold leading-none whitespace-nowrap text-black select-none">
+                    SELECTED WORK — SELECTED WORK
+                </h1>
             </div>
 
-            <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-32">
-                    <h2 className="text-5xl md:text-8xl font-display font-bold text-black leading-[0.8]">
-                        CASOS<br />
-                        <span className="ml-2 md:ml-32 opacity-50 stroke-text-black text-transparent">REALES</span>
-                    </h2>
+            <div className="max-w-7xl mx-auto relative z-10">
 
-                    {/* --- ENLACE COMENTADO TEMPORALMENTE --- */}
-                    {/* <a href="#" className="mt-8 md:mt-0 flex items-center gap-2 font-body font-bold text-black uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-opacity text-sm md:text-base">
-                        Ver Portafolio Completo
-                    </a> 
-                    */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
+                    <div>
+                        <h2 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-6">
+                            CASOS<br />
+                            <span className="stroke-text-black text-transparent ml-12">REALES</span>
+                        </h2>
+                        <p className="max-w-md text-lg font-body text-black/70">
+                            Resultados tangibles. Así es como ayudamos a nuestros clientes a destacar en su industria.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setFilter(cat)}
+                                className={`
+                                    px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide border transition-all duration-300
+                                    ${filter === cat
+                                        ? 'bg-black text-[#bef264] border-black scale-105'
+                                        : 'bg-transparent text-black border-black/30 hover:border-black hover:bg-black/5'
+                                    }
+                                `}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                <div className="flex flex-col gap-20 md:gap-32">
-                    {projects.map((project, index) => (
-                        <ProjectCard key={index} project={project} index={index} />
-                    ))}
-                </div>
+                <motion.div
+                    layout
+                    className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-24"
+                >
+                    <AnimatePresence mode='popLayout'>
+                        {filteredProjects.map((project) => (
+                            <ProjectCard key={project.id} project={project} />
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
+
+                <div className="mt-32 border-t border-black/10 w-full" />
+
             </div>
         </section>
     );
