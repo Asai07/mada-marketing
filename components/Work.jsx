@@ -7,6 +7,16 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 const allProjects = [
     {
         id: 1,
+        title: "Alyvia Hotel",
+        category: "Web",
+        desc: "Diseño y desarrollo web de hotel, con sistema de reservas completo.",
+        tags: ["Next.js", "Framer Motion", "Tailwind", "Routes"],
+        img: "/alyvia.png",
+        link: "https://alyvia-hotel.vercel.app/",
+        year: "2026"
+    },
+    {
+        id: 2,
         title: "La Prietilla Tacos",
         category: "Web",
         desc: "Diseño UX/UI y desarrollo para negocio de alimentos.",
@@ -16,7 +26,7 @@ const allProjects = [
         year: "2025"
     },
     {
-        id: 2,
+        id: 3,
         title: "Velvet",
         category: "App",
         desc: "Diseño UX/UI Editorial para revista, animaciones, artículos y blog funcional.",
@@ -26,7 +36,7 @@ const allProjects = [
         year: "2026"
     },
     {
-        id: 3,
+        id: 4,
         title: "MADA Agency",
         category: "Branding",
         desc: "Creación de identidad visual y sistema de diseño escalable.",
@@ -35,16 +45,6 @@ const allProjects = [
         link: "#",
         year: "2025"
     },
-    {
-        id: 4,
-        title: "Neon Dashboard",
-        category: "Web",
-        desc: "Desarrollo de panel administrativo con modo oscuro nativo.",
-        tags: ["React", "Chart.js", "SaaS"],
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
-        link: "#",
-        year: "2025"
-    }
 ];
 
 const categories = ["Todos", "Web", "App", "Branding"];

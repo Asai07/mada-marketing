@@ -71,7 +71,7 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                         <ScrollReveal width="100%" y={50}>
                             <div className="relative w-full aspect-video overflow-hidden rounded-sm">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1492551557933-34265f7af79e?q=80&w=2670&auto=format&fit=crop"
+                                    src="/manifesto.webp"
                                     alt="Team working"
                                     fill
                                     className="object-cover"
