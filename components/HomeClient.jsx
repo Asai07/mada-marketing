@@ -44,7 +44,7 @@ export default function HomeClient() {
     }
     return (
         <main
-            className="min-h-screen w-full transition-colors duration-700 ease-in-out selection:bg-lime-400 selection:text-black"
+            className="min-h-screen w-full will-change-auto transition-colors duration-700 ease-in-out selection:bg-lime-400 selection:text-black"
             style={{ backgroundColor: theme.bg, color: theme.text }}
         >
             <ManifestoModal isOpen={showManifesto} onClose={() => setShowManifesto(false)} />

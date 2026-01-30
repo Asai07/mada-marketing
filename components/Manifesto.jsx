@@ -1,18 +1,38 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { useScroll } from '../hooks/useScroll';
+import React, { useEffect, useRef } from 'react'; // Quitamos useState para el scroll
 import Image from 'next/image';
 import ScrollReveal from './ScrollReveal';
 
 const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
-    const scrolled = useScroll();
-    const [isMounted, setIsMounted] = useState(false);
+    // Referencia directa al elemento H2 para manipularlo sin re-renders
+    const titleRef = useRef(null);
 
     useEffect(() => {
-        setIsMounted(true);
-    }, []);
+        // Si es móvil, no hacemos nada para ahorrar batería y CPU
+        if (isMobile) return;
 
-    const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
+        const handleScroll = () => {
+            if (!titleRef.current) return;
+
+            // Calculamos posición relativa
+            const scrolled = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            // Lógica de movimiento:
+            // Solo calculamos si estamos cerca de la sección (Opcional, pero recomendado)
+            // Aquí aplicamos tu lógica original: (scrolled - windowHeight * 1.5) * 0.1
+            const offset = Math.min(0, (scrolled - windowHeight * 1.5) * 0.1);
+
+            // MANIPULACIÓN DIRECTA DEL DOM (Zero React Renders)
+            // Usamos translate3d para forzar aceleración de hardware
+            titleRef.current.style.transform = `translate3d(${offset}px, 0, 0)`;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        // Limpieza
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [isMobile]);
 
     return (
         <section ref={ref} className="py-20 md:py-32 px-6 relative overflow-hidden text-black">
@@ -49,33 +69,32 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                         </ScrollReveal>
                     </div>
 
-                    {/* COLUMNA DERECHA (Imágenes y Título grande) */}
+                    {/* COLUMNA DERECHA */}
                     <div className="md:col-span-8 flex flex-col gap-16 md:gap-20">
 
-                        {/* Título con efecto Parallax (Este no lleva ScrollReveal porque ya se mueve con el scroll) */}
+                        {/* Título con efecto Parallax Optimizado */}
                         <div className="relative">
                             <h2
-                                className="text-4xl sm:text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] transition-transform duration-100 ease-linear"
-                                style={{
-                                    transform: (isMounted && !isMobile)
-                                        ? `translateX(${Math.min(0, (scrolled - windowHeight * 1.5) * 0.1)}px)`
-                                        : 'none'
-                                }}
+                                ref={titleRef} // <--- ASIGNAMOS LA REF AQUÍ
+                                className="text-4xl sm:text-6xl md:text-8xl font-display font-black uppercase leading-[0.9] will-change-transform"
+                            // Quitamos el style inline dinámico de React
                             >
                                 <span className="text-transparent stroke-text-black">No solo hacemos</span> <br />
                                 <span className="text-black-600">Sitios Web.</span>
                             </h2>
                         </div>
 
-                        {/* Imagen grande apareciendo */}
+                        {/* Imagen */}
                         <ScrollReveal width="100%" y={50}>
-                            <div className="relative w-full aspect-video overflow-hidden rounded-sm">
+                            <div className="relative w-full aspect-video overflow-hidden rounded-sm bg-gray-200">
                                 <Image
                                     src="/manifesto.webp"
                                     alt="Team working"
                                     fill
+                                    priority={true}
                                     className="object-cover"
-                                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 850px" />
+                                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 850px"
+                                />
                                 <div className="absolute inset-0 bg-black/10"></div>
                             </div>
                         </ScrollReveal>
