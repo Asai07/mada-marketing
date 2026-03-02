@@ -89,7 +89,7 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                             <div className="relative w-full aspect-video overflow-hidden rounded-sm bg-gray-200">
                                 <Image
                                     src="/manifesto.webp"
-                                    alt="Team working"
+                                    alt="Equipo de agencia de marketing y desarrollo web MADA planificando estrategias en Monterrey"
                                     fill
                                     priority={true}
                                     className="object-cover"
@@ -102,7 +102,7 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                         {/* Texto final */}
                         <ScrollReveal delay={0.2}>
                             <p className="font-display text-2xl md:text-5xl font-bold leading-tight text-gray-800">
-                                Creamos ecosistemas <span className="italic font-serif font-light text-gray-400">digitales</span> que conectan emociones con resultados de negocio.
+                                Diseñamos activos <span className="italic font-serif font-light text-gray-400">digitales vivos</span> que conectan emociones con resultados de negocio.
                             </p>
                         </ScrollReveal>
                     </div>

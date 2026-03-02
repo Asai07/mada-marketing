@@ -1,16 +1,10 @@
 import './globals.css';
-import { Inter, Space_Grotesk, Syne } from 'next/font/google';
+import { Space_Grotesk, Syne } from 'next/font/google';
 import HeaderManager from '@/components/HeaderManager';
 import CustomCursor from '@/components/CustomCursor';
 import FloatingChat from '@/components/FloatingChat';
 import { UIProvider } from '@/context/UIContext';
 import SmoothScroll from '@/components/SmoothScroll';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -185,7 +179,10 @@ const jsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${syne.variable}`}>
+      <head>
+        <link rel="preload" href="/noise.svg" as="image" type="image/svg+xml" />
+      </head>
+      <body className={`${spaceGrotesk.variable} ${syne.variable}`}>
         <UIProvider>
           <CustomCursor />
           <HeaderManager />

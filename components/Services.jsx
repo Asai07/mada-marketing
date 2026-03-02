@@ -10,28 +10,28 @@ const services = [
         title: "Diseño Estratégico", // Antes: Art Direction
         category: "Identidad & Marca", // Antes: Design
         text: "No solo hacemos que se vea bonito, diseñamos para generar confianza inmediata. Una imagen profesional que eleva el valor de tu marca.", // Beneficio claro
-        img: "/diseño-estrategico.png"
+        img: "/diseño-estrategico.webp"
     },
     {
         id: "02",
         title: "Webs Interactivas", // Antes: Interactive Web
         category: "Experiencia de Usuario", // Antes: Development
         text: "Sitios web que no aburren. Creamos experiencias dinámicas que atrapan la atención de tus clientes para que se queden más tiempo.", // Adiós WebGL/Three.js
-        img: "/webs-interactivas.png"
+        img: "/webs-interactivas.webp"
     },
     {
         id: "03",
         title: "Desarrollo a Medida", // Antes: Engineering
         category: "Tecnología", // Antes: Tech
         text: "Velocidad extrema y seguridad blindada. Usamos la misma tecnología que las grandes startups para que tu sitio cargue al instante.", // Adiós Next.js/Headless
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop"
+        img: "/tecnología.webp"
     },
     {
         id: "04",
         title: "Tiendas en Línea", // Antes: E-Commerce (Se entiende, pero en español es más directo)
         category: "Ventas Online", // Antes: Business
         text: "Tu negocio abierto 24/7. Optimizamos cada paso para que comprar sea tan fácil que tus visitas se conviertan en dinero.", // Enfoque total en dinero
-        img: "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        img: "/e-comerce.webp"
     }
 ];
 
