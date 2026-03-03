@@ -1,24 +1,19 @@
 'use client';
 import React from 'react';
-import { X, ArrowUpRight } from 'lucide-react';
+import { X } from 'lucide-react';
 import Link from 'next/link';
 
 const Menu = ({ isOpen, onClose }) => {
 
-    // Links principales (scroll en home)
+    // Un solo array unificado: scroll anchors en home + páginas reales
     const menuItems = [
-        { label: 'Manifiesto', id: 'manifesto', type: 'scroll' },
-        { label: 'Proyectos', id: 'work', type: 'scroll' },
-        { label: 'Servicios', id: 'services', type: 'scroll' },
-        { label: 'Agendar', id: 'booking', type: 'action' }
-    ];
-
-    // Links de páginas independientes (para SEO y navegación)
-    const pageLinks = [
-        { label: 'Servicios', href: '/servicios' },
-        { label: 'Precios', href: '/precios' },
-        { label: 'Nosotros', href: '/nosotros' },
-        { label: 'Contacto', href: '/contacto' },
+        { label: 'Manifiesto', type: 'scroll', id: 'manifesto' },
+        { label: 'Proyectos', type: 'scroll', id: 'work' },
+        { label: 'Servicios', type: 'page', href: '/servicios' },
+        { label: 'Precios', type: 'page', href: '/precios' },
+        { label: 'Nosotros', type: 'page', href: '/nosotros' },
+        { label: 'Contacto', type: 'page', href: '/contacto' },
+        { label: 'Agendar', type: 'action' },
     ];
 
     const handleNavigation = (e, item) => {
@@ -43,33 +38,34 @@ const Menu = ({ isOpen, onClose }) => {
                 <X className="w-8 h-8" />
             </button>
 
-            {/* LINKS DE SCROLL (home) */}
-            <div className="flex flex-col gap-4 md:gap-6 text-center px-4 mb-12">
-                {menuItems.map((item) => (
-                    <a
-                        key={item.label}
-                        href={`#${item.id}`}
-                        onClick={(e) => handleNavigation(e, item)}
-                        className="text-4xl md:text-7xl font-display font-bold text-transparent stroke-text-white hover:text-lime-400 hover:text-stroke-0 transition-all duration-300 transform hover:skew-x-[-10deg] cursor-pointer"
-                    >
-                        {item.label}
-                    </a>
-                ))}
-            </div>
+            <div className="flex flex-col gap-3 md:gap-5 text-center px-4">
+                {menuItems.map((item) => {
+                    const className = "text-4xl md:text-7xl font-display font-bold text-transparent stroke-text-white hover:text-lime-400 hover:text-stroke-0 transition-all duration-300 transform hover:skew-x-[-10deg] cursor-pointer";
 
-            {/* LINKS DE PÁGINAS (SEO + navegación) */}
-            <div className="border-t border-white/10 pt-8 flex flex-wrap justify-center gap-4 px-6">
-                {pageLinks.map((link) => (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={onClose}
-                        className="flex items-center gap-1 text-xs text-gray-500 uppercase tracking-widest hover:text-lime-400 transition-colors"
-                    >
-                        {link.label}
-                        <ArrowUpRight className="w-3 h-3" />
-                    </Link>
-                ))}
+                    if (item.type === 'page') {
+                        return (
+                            <Link
+                                key={item.label}
+                                href={item.href}
+                                onClick={onClose}
+                                className={className}
+                            >
+                                {item.label}
+                            </Link>
+                        );
+                    }
+
+                    return (
+                        <a
+                            key={item.label}
+                            href={item.href ?? '#'}
+                            onClick={(e) => handleNavigation(e, item)}
+                            className={className}
+                        >
+                            {item.label}
+                        </a>
+                    );
+                })}
             </div>
         </div>
     );
