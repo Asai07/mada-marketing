@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import './globals.css';
 import { Space_Grotesk, Syne } from 'next/font/google';
 import HeaderManager from '@/components/HeaderManager';
@@ -198,6 +198,7 @@ export default function RootLayout({ children }) {
         </UIProvider>
       </body>
       <GoogleAnalytics gaId="G-DHZLTBYXS3" />
+      <GoogleTagManager gtmId="GTM-P7PTVBDC" />
     </html>
   );
 }
