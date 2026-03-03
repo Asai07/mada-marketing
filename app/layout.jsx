@@ -78,8 +78,8 @@ export const metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 };
 
@@ -88,11 +88,11 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: 'MADA',
   image: [`${SITE_URL}/social-preview.png`],
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}/social-preview.png`,
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   telephone: '+528180114561',
-  email: 'contacto@somosmada.com',
+  email: 'hola@somosmada.com',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Monterrey',
@@ -118,8 +118,8 @@ const jsonLd = {
     }
   ],
   sameAs: [
-    'https://www.instagram.com/somosmada',
-    'https://www.facebook.com/somosmada',
+    'https://www.instagram.com/mada.webstudio',
+    'https://www.facebook.com/mada.webstudio',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -177,6 +177,21 @@ const jsonLd = {
   }
 };
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'MADA Agency',
+  url: SITE_URL,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE_URL}/?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es" className="scroll-smooth">
@@ -194,6 +209,10 @@ export default function RootLayout({ children }) {
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
           />
         </UIProvider>
       </body>

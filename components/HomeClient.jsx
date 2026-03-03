@@ -39,16 +39,22 @@ export default function HomeClient() {
         window.addEventListener('open-booking-modal', handleOpenBooking);
         return () => window.removeEventListener('open-booking-modal', handleOpenBooking);
     }, []);
-    if (!isMounted) {
-        return <div className="min-h-screen w-full bg-[#050505]" />;
-    }
+
+    // ✅ SSR FIX: eliminado el bloqueo `if (!isMounted) return <div />`.
+    // El contenido ahora siempre se renderiza (SSR + cliente).
+    // Los modales y el tema de colores se aplican solo tras la hidratación.
     return (
         <main
             className="min-h-screen w-full will-change-auto transition-colors duration-700 ease-in-out selection:bg-lime-400 selection:text-black"
-            style={{ backgroundColor: theme.bg, color: theme.text }}
+            style={isMounted ? { backgroundColor: theme.bg, color: theme.text } : { backgroundColor: '#050505', color: '#ffffff' }}
         >
-            <ManifestoModal isOpen={showManifesto} onClose={() => setShowManifesto(false)} />
-            <BookingModal isOpen={showBooking} onClose={() => setShowBooking(false)} />
+            {isMounted && (
+                <>
+                    <ManifestoModal isOpen={showManifesto} onClose={() => setShowManifesto(false)} />
+                    <BookingModal isOpen={showBooking} onClose={() => setShowBooking(false)} />
+                </>
+            )}
+
 
             {/* 1. HERO (Dark) */}
             <SectionWrapper bg="#050505" text="#ffffff">

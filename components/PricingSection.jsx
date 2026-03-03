@@ -251,6 +251,12 @@ const PricingSection = ({ onOpenBooking }) => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </Link>
+                    <Link
+                        href="/precios"
+                        className="text-xs text-gray-400 hover:text-lime-600 transition-colors underline underline-offset-4"
+                    >
+                        Ver tabla comparativa y preguntas frecuentes sobre precios →
+                    </Link>
                 </motion.div>
                 {/* 👆 FIN DEL BOTÓN GENERAL 👆 */}
 

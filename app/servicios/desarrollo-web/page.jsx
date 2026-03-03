@@ -45,7 +45,7 @@ const jsonLd = {
         '@type': 'ProfessionalService',
         name: 'MADA',
         url: SITE_URL,
-        logo: `${SITE_URL}/logo.png`,
+        logo: `${SITE_URL}/social-preview.png`,
         address: {
             '@type': 'PostalAddress',
             addressLocality: 'Monterrey',
@@ -53,8 +53,8 @@ const jsonLd = {
             addressCountry: 'MX'
         },
         sameAs: [
-            'https://www.instagram.com/somosmada',
-            'https://www.facebook.com/somosmada'
+            'https://www.instagram.com/mada.webstudio',
+            'https://www.facebook.com/mada.webstudio'
         ]
     },
     areaServed: {
