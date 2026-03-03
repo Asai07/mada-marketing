@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Check, Rocket, Flame, Crown } from 'lucide-react';
+import { Check, Rocket, Flame, Mountain } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -184,7 +184,7 @@ const PricingSection = ({ onOpenBooking }) => {
                             <div className="mb-6">
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-3 bg-white rounded-lg text-purple-600 shadow-sm group-hover:scale-110 transition-transform duration-500 border border-gray-100">
-                                        <Crown className="w-6 h-6" />
+                                        <Mountain className="w-6 h-6" />
                                     </div>
                                     <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">A Medida</span>
                                 </div>

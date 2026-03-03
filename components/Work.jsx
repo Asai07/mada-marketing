@@ -17,8 +17,18 @@ const allProjects = [
     },
     {
         id: 2,
-        title: "La Prietilla Tacos",
+        title: "Hasz",
         category: "Web",
+        desc: "Diseño UX/UI para agencia de viajes.",
+        tags: ["Figma", "React", "Tailwind"],
+        img: "/hasz.png",
+        link: "https://hasz-agencia.vercel.app/",
+        year: "2026"
+    },
+    {
+        id: 3,
+        title: "La Prietilla Tacos",
+        category: "Branding, Web",
         desc: "Diseño UX/UI y desarrollo para negocio de alimentos.",
         tags: ["Next.js", "Framer Motion", "Tailwind"],
         img: "/la-prietilla.png",
@@ -26,28 +36,19 @@ const allProjects = [
         year: "2025"
     },
     {
-        id: 3,
+        id: 4,
         title: "Velvet",
-        category: "App",
+        category: "Design",
         desc: "Diseño UX/UI Editorial para revista, animaciones, artículos y blog funcional.",
-        tags: ["React", "Framer-motion", "Tailwind"],
+        tags: ["Figma", "React", "Branding"],
         img: "/velvet.png",
         link: "https://velvet-magazine.vercel.app/",
         year: "2026"
     },
-    {
-        id: 4,
-        title: "MADA Agency",
-        category: "Branding",
-        desc: "Creación de identidad visual y sistema de diseño escalable.",
-        tags: ["Figma", "Illustrator", "Branding"],
-        img: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop",
-        link: "#",
-        year: "2025"
-    },
+
 ];
 
-const categories = ["Todos", "Web", "App", "Branding"];
+const categories = ["Todos", "Web", "Design", "Branding"];
 
 // --- TARJETA DE PROYECTO (CON WHATSAPP INTEGRADO) ---
 const ProjectCard = ({ project }) => {
