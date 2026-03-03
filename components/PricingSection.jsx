@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Check, Sparkles, Zap, InfinityIcon } from 'lucide-react';
+import { Check, Rocket, Flame, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -38,7 +38,6 @@ const PricingSection = ({ onOpenBooking }) => {
         window.open(url, '_blank');
     };
 
-    // ... (Mantén tus variantes containerVariants e itemVariants igual) ...
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
@@ -51,7 +50,6 @@ const PricingSection = ({ onOpenBooking }) => {
     return (
         <section className="py-20 md:py-32 px-6 overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto">
-                {/* ... (Header se mantiene igual) ... */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -79,11 +77,10 @@ const PricingSection = ({ onOpenBooking }) => {
                     {/* PLAN 1: IGNITION */}
                     <motion.div variants={itemVariants} className="h-full">
                         <div className="group relative p-8 rounded-2xl bg-gray-50 border border-gray-200 hover:border-lime-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
-                            {/* ... (Contenido del plan igual) ... */}
                             <div className="mb-6">
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-3 bg-white rounded-lg text-black shadow-sm group-hover:scale-110 transition-transform duration-500 border border-gray-100">
-                                        <Sparkles className="w-6 h-6" />
+                                        <Rocket className="w-6 h-6" />
                                     </div>
                                     <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">Para emprendedores</span>
                                 </div>
@@ -137,7 +134,7 @@ const PricingSection = ({ onOpenBooking }) => {
                             <div className="mb-6">
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-3 bg-lime-400 rounded-lg text-black shadow-[0_0_15px_rgba(163,230,53,0.5)]">
-                                        <Zap className="w-6 h-6 fill-current" />
+                                        <Flame className="w-6 h-6 fill-current" />
                                     </div>
                                     <span className="text-xs font-mono text-lime-400 uppercase tracking-wider">Para PyMES</span>
                                 </div>
@@ -187,7 +184,7 @@ const PricingSection = ({ onOpenBooking }) => {
                             <div className="mb-6">
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-3 bg-white rounded-lg text-purple-600 shadow-sm group-hover:scale-110 transition-transform duration-500 border border-gray-100">
-                                        <InfinityIcon className="w-6 h-6" />
+                                        <Crown className="w-6 h-6" />
                                     </div>
                                     <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">A Medida</span>
                                 </div>
