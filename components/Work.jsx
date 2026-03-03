@@ -9,8 +9,8 @@ const allProjects = [
         id: 1,
         title: "Alyvia Hotel",
         category: "Web",
-        desc: "Diseño y desarrollo web de hotel, con sistema de reservas completo.",
-        tags: ["Next.js", "Framer Motion", "Tailwind", "Routes"],
+        desc: "Diseño y desarrollo web de hotel boutique, con sistema de reservaciones.",
+        tags: ["Next.js", "Framer Motion", "Tailwind", "Reservaciones"],
         img: "/alyvia.png",
         link: "https://alyvia-hotel.vercel.app/",
         year: "2026"
