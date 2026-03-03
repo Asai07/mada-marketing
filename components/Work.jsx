@@ -19,7 +19,7 @@ const allProjects = [
         id: 2,
         title: "Hasz",
         category: "Web",
-        desc: "Diseño UX/UI para agencia de viajes.",
+        desc: "Diseño UX/UI y desarrollo web para agencia de viajes.",
         tags: ["Figma", "React", "Tailwind"],
         img: "/hasz.png",
         link: "https://hasz-agencia.vercel.app/",
