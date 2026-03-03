@@ -29,7 +29,7 @@ const allProjects = [
         id: 3,
         title: "La Prietilla Tacos",
         category: "Branding, Web",
-        desc: "Diseño UX/UI y desarrollo para negocio de alimentos.",
+        desc: "Diseño UX/UI y desarrollo web para restaurante de comida mexicana.",
         tags: ["Next.js", "Framer Motion", "Tailwind"],
         img: "/la-prietilla.png",
         link: "https://laprietillatacos.vercel.app/",
