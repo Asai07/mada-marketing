@@ -59,7 +59,7 @@ const FloatingChat = () => {
                             <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-black rounded-full animate-pulse"></span>
                         </div>
                         <div>
-                            <h4 className="font-bold text-base leading-tight">SomosMada Digital</h4>
+                            <h4 className="font-bold text-base leading-tight">Mada Digital</h4>
                             <p className="text-xs text-lime-400 font-medium mt-1">● Disponible ahora</p>
                         </div>
                     </div>
