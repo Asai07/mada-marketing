@@ -27,7 +27,7 @@ const FloatingChat = () => {
 
     const handleStartChat = () => {
         const phone = "528180114561";
-        let message = "Hola EventoClic, quiero escalar mi negocio.";
+        let message = "Hola SomosMada, quiero escalar mi negocio.";
         if (selectedInterest === 'web') message = "Hola, me interesa una Landing Page de alto impacto o Sitio Web.";
         if (selectedInterest === 'app') message = "Hola, tengo una idea para una App/Plataforma y quiero desarrollarla.";
         if (selectedInterest === 'marketing') message = "Hola, necesito estrategias de Marketing y embudos de venta.";
@@ -55,11 +55,11 @@ const FloatingChat = () => {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-lime-400/20 rounded-full blur-2xl -mr-10 -mt-10"></div>
                     <div className="flex items-center gap-3 relative z-10">
                         <div className="relative">
-                            <div className="w-12 h-12 bg-lime-400 rounded-full flex items-center justify-center text-black font-black text-lg">EC</div>
+                            <div className="w-12 h-12 bg-lime-400 rounded-full flex items-center justify-center text-black font-black text-lg">MA</div>
                             <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-black rounded-full animate-pulse"></span>
                         </div>
                         <div>
-                            <h4 className="font-bold text-base leading-tight">Estrategia Digital</h4>
+                            <h4 className="font-bold text-base leading-tight">SomosMada Digital</h4>
                             <p className="text-xs text-lime-400 font-medium mt-1">● Disponible ahora</p>
                         </div>
                     </div>
