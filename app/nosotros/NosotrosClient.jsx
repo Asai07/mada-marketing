@@ -83,7 +83,7 @@ export default function NosotrosClient() {
                             El internet está lleno de sitios web que nadie visita.
                         </h2>
                         <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                            Los vemos todos los días: páginas lentas hechas en plantillas, sin estrategia, sin SEO,
+                            Lo vemos todos los días: páginas lentas hechas en plantillas, sin estrategia, sin SEO,
                             sin conversión. Empresas invirtiendo en presencia digital que no genera retorno.
                         </p>
                         <p className="text-gray-600 text-lg leading-relaxed mb-8">
