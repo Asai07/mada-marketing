@@ -56,7 +56,7 @@ const MarketingScrolly = () => {
                     <div className="h-full flex flex-col justify-between relative">
                         <div>
                             <span className="text-lime-400 font-mono text-xs uppercase tracking-widest mb-4 block">
-                                // 03. El Motor
+                                // 04. El Motor
                             </span>
                             <h2 className="text-7xl font-display font-bold leading-none mb-6">
                                 MÁQUINA<br />DE <span className="text-lime-400">VENTAS.</span>

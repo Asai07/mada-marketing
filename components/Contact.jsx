@@ -25,7 +25,7 @@ const Contact = () => {
 
             <div className="max-w-4xl mx-auto relative z-10">
                 <span className="text-lime-400 font-body text-xs md:text-sm uppercase tracking-[0.2em] block mb-6 animate-pulse">
-                    04. Contacto
+                    // 05. Contacto
                 </span>
 
                 <h2 className="font-display text-5xl md:text-8xl font-bold mb-8 leading-tight text-white">
