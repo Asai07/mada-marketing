@@ -7,7 +7,6 @@ import Link from 'next/link';
 const PricingSection = ({ onOpenBooking }) => {
     // --- 1. CONFIGURACIÓN DE CONTACTO ---
     const PHONE_NUMBER = "528180114561";
-    const CALENDLY_URL = "https://calendly.com/tu-usuario/discovery-call";
 
     const handlePlanSelect = (plan) => {
         let url = "";
@@ -20,12 +19,7 @@ const PricingSection = ({ onOpenBooking }) => {
                 url = `https://wa.me/${PHONE_NUMBER}?text=${message}`;
                 break;
             case 'MOMENTUM':
-                // Plan medio: WhatsApp también funciona genial
-                message = encodeURIComponent("¡Hola! 👋 Me interesa escalar con el Plan MOMENTUM de $12,500. Quisiera resolver unas dudas.");
-                url = `https://wa.me/${PHONE_NUMBER}?text=${message}`;
-                break;
             case 'SINGULARITY':
-
                 if (onOpenBooking) {
                     onOpenBooking();
                 }
@@ -172,7 +166,7 @@ const PricingSection = ({ onOpenBooking }) => {
                                 onClick={() => handlePlanSelect('MOMENTUM')}
                                 className="w-full py-3 bg-lime-400 text-black font-bold border border-lime-400 hover:bg-transparent hover:text-lime-400 transition-all duration-300 text-xs uppercase tracking-widest"
                             >
-                                Escalar mi Negocio
+                                Hablemos
                             </button>
                         </div>
                     </motion.div>
