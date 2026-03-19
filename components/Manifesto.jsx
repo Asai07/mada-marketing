@@ -42,7 +42,7 @@ const Manifesto = React.forwardRef(({ isMobile, onOpenManifesto }, ref) => {
                     <div className="md:col-span-4 md:sticky md:top-32 h-fit">
                         <ScrollReveal>
                             <span className="inline-block px-3 py-1 rounded-full border border-black/10 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 bg-gray-100 text-black">
-                                01. The Insight
+                                01. La Visión
                             </span>
                         </ScrollReveal>
 

@@ -101,7 +101,7 @@ const InfoBento = ({ isMobile }) => {
                     transition={{ duration: 0.6 }}
                     className="mb-12"
                 >
-                    <span className="inline-block px-3 py-1 rounded-full border border-black/10 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 bg-gray-100">03. The Stack</span>
+                    <span className="inline-block px-3 py-1 rounded-full border border-black/10 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 bg-gray-100">03. El Stack</span>
                     <h2 className="font-display text-4xl md:text-6xl font-bold">Sin Límites Técnicos</h2>
                 </motion.div>
 

@@ -42,7 +42,7 @@ const ProcessSection = () => {
                     className="mb-20 md:text-center max-w-3xl mx-auto"
                 >
                     <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">
-                        // The Workflow
+                        // El Proceso
                     </span>
                     <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
                         De la Idea al Activo Digital.
@@ -70,9 +70,11 @@ const ProcessSection = () => {
                                     }`}
                             >
                                 {/* Puntos centrales (solo desktop) */}
-                                <div className={`hidden md:flex absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full items-center justify-center z-10 shadow-sm ${isEven ? 'right-0 translate-x-1/2' : 'left-0 -translate-x-1/2'}`}>
-                                    <div className="w-2 h-2 bg-lime-500 rounded-full" />
-                                </div>
+                                {isEven && (
+                                    <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white border border-gray-200 rounded-full items-center justify-center z-10 shadow-sm right-0 translate-x-1/2">
+                                        <div className="w-2 h-2 bg-lime-500 rounded-full" />
+                                    </div>
+                                )}
 
                                 {/* Card del paso */}
                                 <div className="group bg-gray-50 hover:bg-white p-8 rounded-2xl border border-gray-100 hover:border-lime-500/50 hover:shadow-xl transition-all duration-300 w-full md:max-w-lg">

@@ -52,7 +52,7 @@ const PricingSection = ({ onOpenBooking }) => {
                     className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 gap-6"
                 >
                     <div>
-                        <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">// Investment Models</span>
+                        <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">// Modelos de Inversión</span>
                         <h2 className="text-4xl md:text-6xl font-display font-bold text-black">Arquitectura de<br />Valor Digital.</h2>
                     </div>
                     <p className="max-w-md text-gray-500 text-sm md:text-base text-right">
