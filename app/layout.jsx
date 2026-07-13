@@ -1,9 +1,8 @@
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import './globals.css';
 import { Space_Grotesk, Syne } from 'next/font/google';
-import HeaderManager from '@/components/HeaderManager';
+import PublicElements from '@/components/PublicElements';
 import CustomCursor from '@/components/CustomCursor';
-import FloatingChat from '@/components/FloatingChat';
 import { UIProvider } from '@/context/UIContext';
 import SmoothScroll from '@/components/SmoothScroll';
 
@@ -201,11 +200,10 @@ export default function RootLayout({ children }) {
       <body className={`${spaceGrotesk.variable} ${syne.variable}`}>
         <UIProvider>
           <CustomCursor />
-          <HeaderManager />
+          <PublicElements />
           <SmoothScroll>
             {children}
           </SmoothScroll>
-          <FloatingChat />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

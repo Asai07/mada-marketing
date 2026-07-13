@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Loader2, Zap, Layout, Search, ArrowRight, Layers, Smartphone, Sparkles, User, Mail, Phone } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+
 // --- COMPONENTE DE INPUT (Simplificado) ---
 const InputField = ({ label, icon: Icon, ...props }) => (
     <div className="space-y-1.5">
@@ -47,9 +47,7 @@ const BookingModal = ({ isOpen, onClose }) => {
 
     const showWebPlans = formData.service === 'Web / Landing';
 
-    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
 
     useEffect(() => {
         if (!isOpen) {
@@ -106,24 +104,23 @@ const BookingModal = ({ isOpen, onClose }) => {
             return;
         }
 
-        const serviceMessage = formData.plan
-            ? `${formData.service} (Plan: ${formData.plan})`
-            : formData.service;
-
-        const templateParams = {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            service: serviceMessage,
-            website: 'No especificado',
-            to_email: 'somosmadamkt@gmail.com'
-        };
         try {
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al enviar el formulario');
+            }
+
             setIsSubmitted(true);
         } catch (err) {
             console.error("Error:", err);
-            setError("Hubo un error al enviar. Intenta de nuevo.");
+            setError("Hubo un error al guardar tu contacto. Intenta de nuevo.");
         } finally {
             setIsLoading(false);
         }
