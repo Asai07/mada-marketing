@@ -90,7 +90,7 @@ const jsonLd = {
   logo: `${SITE_URL}/social-preview.png`,
   description: SITE_DESCRIPTION,
   url: SITE_URL,
-  telephone: '+528180114561',
+  telephone: '+528100000000',
   email: 'hola@somosmada.com',
   address: {
     '@type': 'PostalAddress',

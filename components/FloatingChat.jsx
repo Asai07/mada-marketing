@@ -26,7 +26,7 @@ const FloatingChat = () => {
     };
 
     const handleStartChat = () => {
-        const phone = "528180114561";
+        const phone = "528100000000";
         let message = "Hola SomosMada, quiero escalar mi negocio.";
         if (selectedInterest === 'web') message = "Hola, me interesa una Landing Page de alto impacto o Sitio Web.";
         if (selectedInterest === 'app') message = "Hola, tengo una idea para una App/Plataforma y quiero desarrollarla.";

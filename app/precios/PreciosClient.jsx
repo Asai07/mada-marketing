@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import PricingSection from '@/components/PricingSection';
+// IMPORTANTE: Ya no importamos PricingSection para evitar redundancia
 import { motion } from 'framer-motion';
-import { Check, X, ArrowRight, ShieldCheck, Clock, Headphones } from 'lucide-react';
+import { Check, X, ArrowRight, ShieldCheck, Clock, Headphones, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 const comparisonFeatures = [
@@ -22,7 +22,7 @@ const comparisonFeatures = [
     { feature: 'Integración CRM', ignition: false, momentum: true, singularity: true },
     { feature: 'Multilenguaje', ignition: false, momentum: false, singularity: true },
     { feature: 'Soporte post-entrega', ignition: '3 meses', momentum: 'Prioritario', singularity: 'SLA dedicado' },
-    { feature: 'Tiempo de entrega', ignition: '5-7 días', momentum: '2-3 semanas', singularity: 'A definir' },
+    { feature: 'Tiempo de entrega', ignition: '7-10 días', momentum: '2-3 semanas', singularity: 'A definir' },
 ];
 
 const pricingFAQs = [
@@ -59,7 +59,7 @@ function CellValue({ val }) {
 }
 
 export default function PreciosClient() {
-    const PHONE_NUMBER = "528180114561";
+    const PHONE_NUMBER = "528100000000";
 
     const handleOpenBooking = () => {
         window.dispatchEvent(new Event('open-booking-modal'));
@@ -98,65 +98,120 @@ export default function PreciosClient() {
                 </div>
             </section>
 
-            {/* GARANTÍAS */}
-            <section className="py-12 px-6 border-b border-gray-100 bg-white">
-                <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {[
-                        { icon: <ShieldCheck className="w-6 h-6 text-lime-600" />, title: 'Sin contratos ocultos', desc: 'Contrato claro desde el inicio. Todo por escrito.' },
-                        { icon: <Clock className="w-6 h-6 text-lime-600" />, title: 'Entregas puntuales', desc: 'Fechas de entrega reales que cumplimos siempre.' },
-                        { icon: <Headphones className="w-6 h-6 text-lime-600" />, title: 'Soporte real', desc: 'Respondemos en menos de 24h en horario hábil.' },
-                    ].map((item, i) => (
-                        <div key={i} className="flex gap-4 items-start">
-                            <div className="p-3 bg-lime-50 rounded-xl shrink-0">{item.icon}</div>
-                            <div>
-                                <h3 className="font-display font-bold text-black mb-1">{item.title}</h3>
-                                <p className="text-sm text-gray-500">{item.desc}</p>
+            {/* GARANTÍAS - Nuestro Compromiso */}
+            <section className="py-20 px-6 bg-gray-50 border-b border-gray-100">
+                <div className="max-w-6xl mx-auto">
+
+                    <div className="text-center mb-12">
+                        <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">
+                            // El Estándar MADA
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-display font-bold text-black">
+                            Garantías y Compromisos
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            {
+                                icon: <ShieldCheck className="w-6 h-6 text-lime-600" />,
+                                title: 'Transparencia Total',
+                                desc: 'Sin letras pequeñas. Contrato claro desde el inicio y cero costos ocultos de mantenimiento.'
+                            },
+                            {
+                                icon: <Zap className="w-6 h-6 text-lime-600" />,
+                                title: 'Rendimiento Premium',
+                                desc: 'Olvídate de las páginas lentas. Código limpio optimizado para cargar en menos de 1 segundo.'
+                            },
+                            {
+                                icon: <Clock className="w-6 h-6 text-lime-600" />,
+                                title: 'Entregas Puntuales',
+                                desc: 'Tu tiempo es dinero. Definimos fechas de entrega reales en contrato y las cumplimos siempre.'
+                            },
+                            {
+                                icon: <Headphones className="w-6 h-6 text-lime-600" />,
+                                title: 'Soporte Directo',
+                                desc: 'Soporte humano por WhatsApp. Resolvemos dudas y damos garantía técnica post-lanzamiento.'
+                            },
+                        ].map((item, i) => (
+                            <div
+                                key={i}
+                                className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-lime-300 hover:-translate-y-1 transition-all duration-300 flex flex-col items-start"
+                            >
+                                <div className="p-3 bg-lime-50 rounded-xl mb-6 inline-block">
+                                    {item.icon}
+                                </div>
+                                <h3 className="font-display font-bold text-black mb-3 text-lg">
+                                    {item.title}
+                                </h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                    {item.desc}
+                                </p>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+
                 </div>
             </section>
 
-            {/* PRICING CARDS */}
-            <PricingSection onOpenBooking={handleOpenBooking} />
-
-            {/* TABLA COMPARATIVA */}
-            <section className="py-20 md:py-32 px-6 bg-gray-50">
-                <div className="max-w-5xl mx-auto">
+            {/* TABLA COMPARATIVA - Ahora es la protagonista */}
+            <section className="py-20 md:py-32 px-6 bg-white">
+                <div className="max-w-6xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">// Comparativa</span>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-black">¿Qué incluye cada plan?</h2>
-                        <p className="text-gray-500 mt-4 max-w-lg mx-auto">Compara con detalle y elige sin dudas.</p>
+                        <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">// Comparativa Detallada</span>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-black">Planes y Soluciones de Desarrollo Web</h2>
+                        <p className="text-gray-500 mt-4 max-w-lg mx-auto">Más que páginas web, construimos herramientas digitales diseñadas para captar clientes, optimizar tu marketing y escalar tu negocio.</p>
                     </motion.div>
 
-                    <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
-                        <table className="w-full min-w-[600px]">
+                    <div className="overflow-x-auto rounded-[2rem] border border-gray-200 shadow-xl bg-white p-2">
+                        <table className="w-full min-w-[800px]">
                             <thead>
-                                <tr className="border-b border-gray-100">
-                                    <th className="py-5 px-6 text-left text-sm font-bold text-gray-500 uppercase tracking-wider w-1/2">Característica</th>
-                                    <th className="py-5 px-4 text-center text-sm font-display font-bold text-black">IGNITION</th>
-                                    <th className="py-5 px-4 text-center text-sm font-display font-bold text-lime-600 bg-lime-50">MOMENTUM</th>
-                                    <th className="py-5 px-4 text-center text-sm font-display font-bold text-purple-600">SINGULARITY</th>
-                                </tr>
-                                <tr className="border-b border-gray-200">
-                                    <td className="py-3 px-6 text-xs text-gray-400">Precio base</td>
-                                    <td className="py-3 px-4 text-center font-bold text-black text-sm">$5,900 MXN</td>
-                                    <td className="py-3 px-4 text-center font-bold text-lime-600 text-sm bg-lime-50">$12,500 MXN</td>
-                                    <td className="py-3 px-4 text-center font-bold text-purple-600 text-sm">Desde $25,000</td>
+                                <tr className="border-b-2 border-black/5">
+                                    <th className="py-8 px-6 text-left w-1/3">
+                                        <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">Características Clave</span>
+                                    </th>
+
+                                    {/* HEADER IGNITION */}
+                                    <th className="py-8 px-4 text-center">
+                                        <div className="flex flex-col items-center gap-2">
+                                            <span className="text-2xl font-display font-bold text-black">IGNITION</span>
+                                            <span className="text-gray-500 font-medium">$7,500 MXN</span>
+                                            <a href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent("Me interesa IGNITION")}`} target="_blank" rel="noopener noreferrer" className="mt-4 text-xs uppercase tracking-widest font-bold text-black border border-black/20 hover:bg-gray-50 hover:border-black rounded-full px-4 py-2 transition-colors">Cotizar</a>                                        </div>
+                                    </th>
+
+                                    {/* HEADER MOMENTUM */}
+                                    <th className="py-8 px-4 text-center relative overflow-hidden rounded-t-2xl bg-black">
+                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-lime-400 text-black text-[9px] font-bold uppercase tracking-widest px-3 py-0.5 rounded-b-md">Recomendado</div>
+                                        <div className="flex flex-col items-center gap-2 mt-4 relative z-10">
+                                            <span className="text-2xl font-display font-bold text-white">MOMENTUM</span>
+                                            <span className="text-lime-400 font-medium">$15,000 MXN</span>
+                                            <button onClick={handleOpenBooking} className="mt-4 text-xs uppercase tracking-widest font-bold bg-lime-400 text-black rounded-full px-6 py-2 hover:bg-lime-300 transition-colors">Agendar</button>
+                                        </div>
+                                    </th>
+
+                                    {/* HEADER SINGULARITY */}
+                                    <th className="py-8 px-4 text-center">
+                                        <div className="flex flex-col items-center gap-2">
+                                            <span className="text-2xl font-display font-bold text-purple-600">SINGULARITY</span>
+                                            <span className="text-gray-500 font-medium">A Medida</span>
+                                            <button onClick={handleOpenBooking} className="mt-4 text-xs uppercase tracking-widest font-bold border border-purple-200 text-purple-600 hover:bg-purple-50 rounded-full px-4 py-2 transition-colors">Consultoría</button>
+                                        </div>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {comparisonFeatures.map((row, i) => (
-                                    <tr key={i} className={`border-b border-gray-50 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
-                                        <td className="py-4 px-6 text-sm text-gray-700">{row.feature}</td>
-                                        <td className="py-4 px-4 text-center"><CellValue val={row.ignition} /></td>
-                                        <td className="py-4 px-4 text-center bg-lime-50/30"><CellValue val={row.momentum} /></td>
-                                        <td className="py-4 px-4 text-center"><CellValue val={row.singularity} /></td>
+                                    <tr key={i} className={`border-b border-gray-100 hover:bg-gray-50/50 transition-colors`}>
+                                        <td className="py-5 px-6 text-sm font-medium text-gray-700">{row.feature}</td>
+                                        <td className="py-5 px-4 text-center"><CellValue val={row.ignition} /></td>
+                                        {/* Columna Momentum oscurecida sutilmente para destacar */}
+                                        <td className="py-5 px-4 text-center bg-gray-50/30 border-l border-r border-gray-100"><CellValue val={row.momentum} /></td>
+                                        <td className="py-5 px-4 text-center"><CellValue val={row.singularity} /></td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -166,7 +221,7 @@ export default function PreciosClient() {
             </section>
 
             {/* FAQ DE PRECIOS */}
-            <section className="py-20 md:py-32 px-6 bg-white">
+            <section className="py-20 md:py-32 px-6 bg-gray-50">
                 <div className="max-w-3xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -174,8 +229,8 @@ export default function PreciosClient() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">// Preguntas frecuentes</span>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-black">Dudas sobre precios</h2>
+                        <span className="text-lime-600 font-mono text-xs uppercase tracking-widest mb-4 block">// Transparencia</span>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-black">Preguntas Frecuentes</h2>
                     </motion.div>
 
                     <div className="space-y-4">
@@ -186,7 +241,7 @@ export default function PreciosClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.05 }}
-                                className="group border border-gray-200 rounded-xl overflow-hidden"
+                                className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm"
                             >
                                 <summary className="flex justify-between items-center px-6 py-5 cursor-pointer font-display font-bold text-black list-none hover:bg-gray-50 transition-colors">
                                     {faq.q}
@@ -212,7 +267,7 @@ export default function PreciosClient() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button
                             onClick={handleOpenBooking}
-                            className="px-8 py-4 bg-lime-400 text-black font-bold text-sm uppercase tracking-widest hover:bg-lime-300 transition-colors"
+                            className="px-8 py-4 bg-lime-400 text-black font-bold text-sm uppercase tracking-widest hover:bg-lime-300 transition-colors rounded-full"
                         >
                             Agendar llamada gratis
                         </button>
@@ -220,7 +275,7 @@ export default function PreciosClient() {
                             href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent('Hola, me gustaría información sobre sus planes.')}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-8 py-4 border border-white/30 text-white text-sm uppercase tracking-widest hover:border-lime-400 hover:text-lime-400 transition-colors"
+                            className="px-8 py-4 border border-white/30 text-white text-sm uppercase tracking-widest hover:border-lime-400 hover:text-lime-400 transition-colors rounded-full"
                         >
                             Escribir por WhatsApp
                         </a>

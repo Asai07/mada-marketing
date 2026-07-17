@@ -159,7 +159,7 @@ export default function MarketingPage() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="https://wa.me/528180114561?text=Hola,%20me%20interesa%20una%20estrategia%20de%20marketing." target="_blank" className="px-8 py-3 md:px-10 md:py-4 bg-lime-400 text-black font-bold rounded-full hover:scale-105 transition-transform text-base md:text-lg flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(163,230,53,0.3)]">
+                            <a href="https://wa.me/528100000000?text=Hola,%20me%20interesa%20una%20estrategia%20de%20marketing." target="_blank" className="px-8 py-3 md:px-10 md:py-4 bg-lime-400 text-black font-bold rounded-full hover:scale-105 transition-transform text-base md:text-lg flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(163,230,53,0.3)]">
                                 <Zap className="w-4 h-4 md:w-5 md:h-5" />
                                 Iniciar Estrategia
                             </a>
@@ -298,7 +298,7 @@ export default function MarketingPage() {
                     <p className="text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto opacity-80">
                         Agenda una sesión gratuita de 15 minutos para auditar tu estrategia actual y ver dónde estás perdiendo dinero.
                     </p>
-                    <a href="https://wa.me/528180114561?text=Hola,%20me%20interesa%20agendar%20una%20estrategia%20de%20marketing." target="_blank" className="inline-flex items-center gap-3 px-10 py-4 md:px-12 md:py-5 bg-black text-white font-bold rounded-full text-base md:text-lg hover:scale-105 transition-transform shadow-2xl">
+                    <a href="https://wa.me/528100000000?text=Hola,%20me%20interesa%20agendar%20una%20estrategia%20de%20marketing." target="_blank" className="inline-flex items-center gap-3 px-10 py-4 md:px-12 md:py-5 bg-black text-white font-bold rounded-full text-base md:text-lg hover:scale-105 transition-transform shadow-2xl">
                         Agendar estrategia de Marketing
                     </a>
                 </div>

@@ -36,7 +36,7 @@ const jsonLd = {
         '@type': 'ProfessionalService',
         name: 'MADA',
         url: SITE_URL,
-        telephone: '+528180114561',
+        telephone: '+528100000000',
         email: 'contacto@somosmada.com',
         address: {
             '@type': 'PostalAddress',

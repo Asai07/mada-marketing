@@ -57,7 +57,7 @@ const ProjectCard = ({ project }) => {
 
     // 🟢 LÓGICA DE WHATSAPP AGREGADA AQUÍ
     const getWhatsAppLink = (projectTitle) => {
-        const phone = "528180114561";
+        const phone = "528100000000";
         const message = `Hola, me interesa cotizar una solución similar a: ${projectTitle}`;
         return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     };
@@ -169,11 +169,11 @@ const Work = React.forwardRef(({ isMobile }, ref) => {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
                     <div>
                         <h2 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-6">
-                            CASOS<br />
-                            <span className="stroke-text-black text-transparent ml-12">REALES</span>
+                            Portafolio<br />
+                            <span className="stroke-text-black text-transparent ml-12">MADA</span>
                         </h2>
-                        <p className="max-w-md text-lg font-body text-black/70">
-                            Resultados tangibles. Así es como ayudamos a nuestros clientes a destacar en su industria.
+                        <p className="max-w-md text-lg font-body text-black/80 font-medium">
+                            Casos de estudio y soluciones a medida. Descubre cómo transformamos la complejidad técnica en ventajas competitivas.
                         </p>
                     </div>
 

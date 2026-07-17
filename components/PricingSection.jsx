@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import { Check, Rocket, Flame, Mountain } from 'lucide-react';
+import { Check, Rocket, Flame, Mountain, Info, ExternalLink } from 'lucide-react'; // <-- Se añadió ExternalLink
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const PricingSection = ({ onOpenBooking }) => {
     // --- 1. CONFIGURACIÓN DE CONTACTO ---
-    const PHONE_NUMBER = "528180114561";
+    const PHONE_NUMBER = "528100000000";
 
     const handlePlanSelect = (plan) => {
         let url = "";
@@ -15,7 +15,7 @@ const PricingSection = ({ onOpenBooking }) => {
         switch (plan) {
             case 'IGNITION':
                 // Plan barato: Directo a WhatsApp para cerrar rápido
-                message = encodeURIComponent("¡Hola! 👋 Estoy interesado en el Plan IGNITION de $5,900. ¿Podemos comenzar?");
+                message = encodeURIComponent("¡Hola! 👋 Estoy interesado en el Plan IGNITION de $7,500. ¿Podemos comenzar?");
                 url = `https://wa.me/${PHONE_NUMBER}?text=${message}`;
                 break;
             case 'MOMENTUM':
@@ -83,7 +83,7 @@ const PricingSection = ({ onOpenBooking }) => {
                             </div>
 
                             <div className="mb-8">
-                                <span className="text-4xl font-bold font-display text-black">$5,900</span>
+                                <span className="text-4xl font-bold font-display text-black">$7,500</span>
                                 <span className="text-gray-500 text-sm ml-2">MXN / único</span>
                             </div>
 
@@ -97,8 +97,11 @@ const PricingSection = ({ onOpenBooking }) => {
                                     "Botón Flotante de WhatsApp",
                                     "Formulario de Contacto Funcional",
                                     "Hasta 3 Rondas de Cambios",
-                                    "3 Meses de Mantenimiento Gratuito",
-                                    "Entrega Express (5-7 Días)"
+                                    <span title="(Sujeto a términos y condiciones)" className="flex items-center gap-1 cursor-help">
+                                        3 Meses de Mantenimiento Gratuito
+                                        <Info className="w-4 h-4 text-gray-400" />
+                                    </span>,
+                                    "Entrega 7-10 Días"
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
                                         <Check className="w-4 h-4 text-lime-600 shrink-0 mt-0.5" />
@@ -106,6 +109,19 @@ const PricingSection = ({ onOpenBooking }) => {
                                     </li>
                                 ))}
                             </ul>
+
+                            {/* --- NUEVO BOTÓN DE EJEMPLO: IGNITION --- */}
+                            <div className="mb-4">
+                                <a
+                                    href="https://laprietillatacos.vercel.app/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2 w-full py-2 text-xs font-bold text-gray-500 hover:text-black uppercase tracking-widest transition-colors duration-300"
+                                >
+                                    <span>Ver Demo</span>
+                                    <ExternalLink className="w-4 h-4" />
+                                </a>
+                            </div>
 
                             {/* BOTÓN CON LÓGICA */}
                             <button
@@ -137,7 +153,7 @@ const PricingSection = ({ onOpenBooking }) => {
                             </div>
 
                             <div className="mb-8">
-                                <span className="text-4xl font-bold font-display text-lime-400">$12,500</span>
+                                <span className="text-4xl font-bold font-display text-lime-400">$15,000</span>
                                 <span className="text-gray-400 text-sm ml-2">MXN / único</span>
                             </div>
 
@@ -160,6 +176,19 @@ const PricingSection = ({ onOpenBooking }) => {
                                     </li>
                                 ))}
                             </ul>
+
+                            {/* --- NUEVO BOTÓN DE EJEMPLO: MOMENTUM --- */}
+                            <div className="mb-4">
+                                <a
+                                    href="https://hasz-agencia.vercel.app/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2 w-full py-2 text-xs font-bold text-gray-400 hover:text-lime-400 uppercase tracking-widest transition-colors duration-300"
+                                >
+                                    <span>Ver Demo</span>
+                                    <ExternalLink className="w-4 h-4" />
+                                </a>
+                            </div>
 
                             {/* BOTÓN CON LÓGICA */}
                             <button
@@ -193,7 +222,7 @@ const PricingSection = ({ onOpenBooking }) => {
 
                             <ul className="space-y-3 mb-8 flex-1">
                                 {[
-                                    "Arquitectura 100% a Medida (Sin Plantillas)",
+                                    "Arquitectura 100% a Medida",
                                     "E-Commerce Completo / Pasarelas de Pago",
                                     "Animaciones Avanzadas (WebGL / 3D)",
                                     "Sistemas de Reservas / Áreas de Miembros",
@@ -211,10 +240,12 @@ const PricingSection = ({ onOpenBooking }) => {
                                 ))}
                             </ul>
 
+                            {/* En SINGULARITY no añadimos el botón, pero mantenemos la estructura visual */}
+
                             {/* BOTÓN CON LÓGICA */}
                             <button
                                 onClick={() => handlePlanSelect('SINGULARITY')}
-                                className="w-full py-3 border border-black text-black hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300 text-xs font-bold uppercase tracking-widest"
+                                className="w-full py-3 border border-black text-black hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300 text-xs font-bold uppercase tracking-widest mt-auto"
                             >
                                 Agendar Llamada
                             </button>

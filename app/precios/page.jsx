@@ -6,13 +6,13 @@ const IMAGE_URL = `${SITE_URL}/social-preview.png`;
 
 export const metadata = {
     title: 'Planes y Precios | Inversión en Desarrollo Web y Marketing Digital',
-    description: 'Conoce los planes Ignition ($5,900), Momentum ($12,500) y Singularity de MADA. Precios transparentes, sin sorpresas. Agencia web en Monterrey.',
+    description: 'Conoce los planes Ignition ($7,500), Momentum ($15,000) y Singularity de MADA. Precios transparentes, sin sorpresas. Agencia web en Monterrey.',
     alternates: {
         canonical: `${SITE_URL}${PAGE_PATH}`,
     },
     openGraph: {
         title: 'Planes y Precios | MADA Agencia Digital',
-        description: 'Inversión clara y directa. Desde $5,900 MXN para emprendedores hasta proyectos a medida para marcas líderes.',
+        description: 'Inversión clara y directa. Desde $7,500 MXN para emprendedores hasta proyectos a medida para marcas líderes.',
         url: `${SITE_URL}${PAGE_PATH}`,
         siteName: 'MADA Agency',
         images: [{ url: IMAGE_URL, width: 1200, height: 630, alt: 'Planes y Precios MADA' }],
@@ -38,8 +38,8 @@ const jsonLd = {
             item: {
                 '@type': 'Offer',
                 name: 'Plan Ignition',
-                description: 'Landing Page de alto impacto para validar ideas con presencia profesional inmediata. Entrega en 5-7 días.',
-                price: '5900',
+                description: 'Landing Page de alto impacto para validar ideas con presencia profesional inmediata. Entrega en 7-10 días.',
+                price: '7500',
                 priceCurrency: 'MXN',
                 availability: 'https://schema.org/InStock',
                 seller: { '@type': 'Organization', name: 'MADA', url: SITE_URL },
@@ -52,7 +52,7 @@ const jsonLd = {
                 '@type': 'Offer',
                 name: 'Plan Momentum',
                 description: 'Sitio web multi-sección con CMS, SEO técnico y Google Analytics para PyMES que buscan escalar.',
-                price: '12500',
+                price: '15000',
                 priceCurrency: 'MXN',
                 availability: 'https://schema.org/InStock',
                 seller: { '@type': 'Organization', name: 'MADA', url: SITE_URL },

@@ -6,7 +6,7 @@ import {
     Rocket, Zap, Database, Layout, Smartphone,
     ArrowRight, MessageCircle, CheckCircle2,
     ShieldCheck, Search, Code2, Globe, ExternalLink,
-    Trophy, Play
+    Trophy, Play, Target
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -36,10 +36,12 @@ const breathingBlob = {
 
 export default function DesarrolloWebClient() {
     const [activePlan, setActivePlan] = useState('momentum');
-    const PHONE_NUMBER = "528180114561";
+    const PHONE_NUMBER = "528100000000";
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
     const projects = [
         {
             title: "La Prietilla Tacos",
@@ -69,7 +71,12 @@ export default function DesarrolloWebClient() {
             title: "IGNITION",
             subtitle: "Validación Rápida",
             desc: "La herramienta perfecta para empezar. Te entregamos una Landing Page de alto impacto diseñada con un solo objetivo: convertir visitantes en clientes. Ideal para campañas de publicidad.",
-            target: "Perfecto para: Lanzar un producto, Servicios Profesionales (Abogados, Dentistas) o Captación de Leads.",
+            targetContext: "Ideal para validar ideas rápidamente, probar el mercado o captar leads inmediatos con pauta publicitaria.",
+            idealFor: ["Startups tempranas", "Servicios Profesionales", "Campañas de Ads", "Lanzamientos"],
+            cardBg: "bg-gray-50",
+            cardBorder: "border-gray-200",
+            cardText: "text-gray-700",
+            pillBg: "bg-white",
             features: [
                 "Landing Page (One-Pager)",
                 "Carga Instantánea (< 1s)",
@@ -85,7 +92,12 @@ export default function DesarrolloWebClient() {
             title: "MOMENTUM",
             subtitle: "Crecimiento & Control",
             desc: "Tu negocio está creciendo. Este plan te da un Sitio Web Completo (Multi-sección) con un sistema integrado para que tú mismo edites textos y fotos sin saber programar.",
-            target: "Perfecto para: PyMES establecidas, Consultorios, Catálogos de Productos y Posicionamiento SEO.",
+            targetContext: "La estructura definitiva para negocios que ya facturan y necesitan profesionalizar su imagen o mejorar su posicionamiento (SEO).",
+            idealFor: ["PyMES establecidas", "Consultorios y Clínicas", "Catálogos", "Agencias"],
+            cardBg: "bg-lime-50/50",
+            cardBorder: "border-lime-200",
+            cardText: "text-lime-900",
+            pillBg: "bg-lime-100/50",
             features: [
                 "Sitio Web Completo (5 Secciones)",
                 "Panel Autoadministrable (CMS)",
@@ -101,7 +113,12 @@ export default function DesarrolloWebClient() {
             title: "SINGULARITY",
             subtitle: "Sin Límites",
             desc: "Cuando una plantilla no es suficiente. Desarrollamos plataformas web a la medida: Tiendas en línea complejas, áreas de miembros o integraciones con tu software.",
-            target: "Perfecto para: Startups, E-commerce Avanzado, Marcas Nacionales y Proyectos Especiales.",
+            targetContext: "Operaciones complejas que superaron las plantillas. Requieren arquitecturas a medida, bases de datos o lógicas de negocio únicas.",
+            idealFor: ["E-commerce Avanzado", "SaaS / Startups", "Educación", "Marcas Nacionales"],
+            cardBg: "bg-purple-50/50",
+            cardBorder: "border-purple-200",
+            cardText: "text-purple-900",
+            pillBg: "bg-purple-100/50",
             features: [
                 "Desarrollo 100% a Medida",
                 "Tienda en Línea / Pagos",
@@ -391,10 +408,32 @@ export default function DesarrolloWebClient() {
                                             {plansInfo[activePlan].desc}
                                         </p>
 
-                                        <div className="bg-gray-50/80 backdrop-blur-sm p-5 md:p-6 rounded-2xl mb-8 border border-gray-200">
-                                            <p className="font-medium text-gray-700 text-sm md:text-base">
-                                                {plansInfo[activePlan].target}
+                                        {/* NUEVO BLOQUE DE PERFIL IDEAL */}
+                                        <div className={`p-5 md:p-6 rounded-2xl mb-8 border transition-colors duration-500 ${plansInfo[activePlan].cardBg} ${plansInfo[activePlan].cardBorder}`}>
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <Target className={`w-5 h-5 ${plansInfo[activePlan].color}`} />
+                                                <h4 className={`font-bold text-sm uppercase tracking-wider ${plansInfo[activePlan].color}`}>
+                                                    ¿Para quién es este plan?
+                                                </h4>
+                                            </div>
+
+                                            <p className={`text-sm md:text-base mb-4 font-medium ${plansInfo[activePlan].cardText}`}>
+                                                {plansInfo[activePlan].targetContext}
                                             </p>
+
+                                            <div className="flex flex-wrap gap-2">
+                                                {plansInfo[activePlan].idealFor.map((profile, i) => (
+                                                    <span
+                                                        key={i}
+                                                        className={`text-xs font-bold px-3 py-1.5 rounded-full border shadow-sm transition-colors duration-300
+                                                            ${plansInfo[activePlan].pillBg} 
+                                                            ${plansInfo[activePlan].cardBorder} 
+                                                            ${plansInfo[activePlan].color}`}
+                                                    >
+                                                        {profile}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 mb-10">

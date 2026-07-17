@@ -14,8 +14,8 @@ const contactMethods = [
     {
         icon: <Phone className="w-5 h-5" />,
         label: 'WhatsApp / Teléfono',
-        value: '+52 (81) 8011 4561',
-        href: 'https://wa.me/528180114561?text=' + encodeURIComponent('Hola, me gustaría información sobre sus servicios.'),
+        value: '+52 (81) 0000 0000',
+        href: 'https://wa.me/528100000000?text=' + encodeURIComponent('Hola, me gustaría información sobre sus servicios.'),
     },
     {
         icon: <MapPin className="w-5 h-5" />,
@@ -48,7 +48,7 @@ export default function ContactoClient() {
         const text = encodeURIComponent(
             `Hola MADA! 👋\n\nMe llamo *${formData.name}*${formData.company ? ` y represento a *${formData.company}*` : ''}.\n\nMe interesa: ${formData.service || 'Conocer sus servicios'}.\n\n${formData.message}\n\nCorreo de contacto: ${formData.email}`
         );
-        window.open(`https://wa.me/528180114561?text=${text}`, '_blank');
+        window.open(`https://wa.me/528100000000?text=${text}`, '_blank');
 
         setSubmitted(true);
         setLoading(false);
