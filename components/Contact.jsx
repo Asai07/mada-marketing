@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-// Si tienes un hook de cursor, impórtalo aquí. Ejemplo:
-// import { useCursor } from '../context/CursorContext';
+
 
 const Contact = () => {
     // --- MANEJO DEL CURSOR ---
@@ -26,18 +25,18 @@ const Contact = () => {
 
     const itemVariants = {
         hidden: { y: "110%" },
-        visible: { 
-            y: 0, 
-            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+        visible: {
+            y: 0,
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
         }
     };
 
     const fadeVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: { 
-            opacity: 1, 
-            y: 0, 
-            transition: { duration: 0.8, ease: "easeOut" } 
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: "easeOut" }
         }
     };
 
@@ -46,7 +45,7 @@ const Contact = () => {
             {/* Background noise for texture */}
             <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('/noise.svg')]"></div>
 
-            <motion.div 
+            <motion.div
                 className="max-w-4xl mx-auto relative z-10"
                 variants={containerVariants}
                 initial="hidden"
@@ -54,7 +53,7 @@ const Contact = () => {
                 viewport={{ once: false, margin: "-20%" }}
             >
                 <div className="overflow-hidden mb-6 flex justify-center">
-                    <motion.span 
+                    <motion.span
                         variants={itemVariants}
                         className="font-body text-xs md:text-sm uppercase tracking-[0.2em] inline-block bg-lime-400/10 text-lime-400 px-4 py-1.5 rounded-full"
                     >
@@ -65,14 +64,14 @@ const Contact = () => {
                 <h2 className="font-display text-5xl md:text-8xl font-bold mb-8 leading-tight">
                     <div className="overflow-hidden">
                         <motion.div variants={itemVariants}>
-                            ¿Tienes un 
+                            ¿Tienes un
                         </motion.div>
                     </div>
                     <div className="overflow-hidden pt-2">
                         <motion.div variants={itemVariants}>
                             <span
                                 className="text-transparent hover:text-white transition-colors duration-700 cursor-none"
-                                style={{ WebkitTextStroke: '1px white' }} 
+                                style={{ WebkitTextStroke: '1px white' }}
                                 onMouseEnter={textEnter}
                                 onMouseLeave={textLeave}
                             >
@@ -83,7 +82,7 @@ const Contact = () => {
                 </h2>
 
                 <div className="overflow-hidden mb-16 px-4">
-                    <motion.p 
+                    <motion.p
                         variants={itemVariants}
                         className="font-body text-gray-400 text-lg md:text-3xl max-w-2xl mx-auto leading-relaxed font-light"
                     >
