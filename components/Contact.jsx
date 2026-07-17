@@ -1,15 +1,11 @@
 import React, { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 // Si tienes un hook de cursor, impórtalo aquí. Ejemplo:
 // import { useCursor } from '../context/CursorContext';
 
 const Contact = () => {
-    const ctaRef = useRef(null);
-
     // --- MANEJO DEL CURSOR ---
-    // Si no tienes un contexto global de cursor, estas funciones evitan que la app se rompa.
-    // Si ya tienes un hook (ej. useCursor), sustituye esto por: const { textEnter, textLeave, buttonEnter } = useCursor();
     const textEnter = () => { };
     const textLeave = () => { };
     const buttonEnter = () => { };
@@ -19,79 +15,100 @@ const Contact = () => {
         window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     };
 
-    const containerRef = useRef(null);
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
 
-    // Scroll progress relative to this section
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "center center"]
-    });
+    const itemVariants = {
+        hidden: { y: "110%" },
+        visible: { 
+            y: 0, 
+            transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+        }
+    };
 
-    // Smooth color transitions from black to green
-    const bgColor = useTransform(scrollYProgress, [0, 0.8], ["#050505", "#a3e635"]); // Black to Lime-400
-    const txtColor = useTransform(scrollYProgress, [0, 0.8], ["#ffffff", "#000000"]); // White to Black
-    const strokeColor = useTransform(scrollYProgress, [0, 0.8], ["1px white", "1px black"]);
-    
-    // Additional elements that need contrast changes
-    const accentBg = useTransform(scrollYProgress, [0, 0.8], ["rgba(0,0,0,0)", "#000000"]); // Transparent to Black
-    const accentText = useTransform(scrollYProgress, [0, 0.8], ["#a3e635", "#a3e635"]); // Always Lime
-    const pColor = useTransform(scrollYProgress, [0, 0.8], ["#9ca3af", "#1f2937"]); // Gray-400 to Gray-800
-    const btnBg = useTransform(scrollYProgress, [0, 0.8], ["#ffffff", "#000000"]); // Button White to Black
-    const btnText = useTransform(scrollYProgress, [0, 0.8], ["#000000", "#a3e635"]); // Button Text Black to Lime
+    const fadeVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { 
+            opacity: 1, 
+            y: 0, 
+            transition: { duration: 0.8, ease: "easeOut" } 
+        }
+    };
 
     return (
-        <motion.section 
-            ref={containerRef} 
-            style={{ backgroundColor: bgColor, color: txtColor }}
-            className="py-32 md:py-48 px-6 flex flex-col justify-center items-center text-center relative overflow-hidden"
-        >
+        <section className="py-32 md:py-48 px-6 flex flex-col justify-center items-center text-center relative overflow-hidden bg-[#050505] text-white">
             {/* Background noise for texture */}
             <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('/noise.svg')]"></div>
 
-            <div className="max-w-4xl mx-auto relative z-10">
-                <motion.span 
-                    style={{ backgroundColor: accentBg, color: accentText }}
-                    className="font-body text-xs md:text-sm uppercase tracking-[0.2em] inline-block mb-6 animate-pulse px-4 py-1.5 rounded-full"
-                >
-                    // 05. Contacto
-                </motion.span>
+            <motion.div 
+                className="max-w-4xl mx-auto relative z-10"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-20%" }}
+            >
+                <div className="overflow-hidden mb-6 flex justify-center">
+                    <motion.span 
+                        variants={itemVariants}
+                        className="font-body text-xs md:text-sm uppercase tracking-[0.2em] inline-block bg-lime-400/10 text-lime-400 px-4 py-1.5 rounded-full"
+                    >
+                        // 05. Contacto
+                    </motion.span>
+                </div>
 
                 <h2 className="font-display text-5xl md:text-8xl font-bold mb-8 leading-tight">
-                    ¿Tienes un <br />
-                    <motion.span
-                        className="text-transparent hover:text-current transition-colors duration-700 cursor-none"
-                        style={{ WebkitTextStroke: strokeColor }} 
-                        onMouseEnter={textEnter}
-                        onMouseLeave={textLeave}
-                    >
-                        Proyecto?
-                    </motion.span>
+                    <div className="overflow-hidden">
+                        <motion.div variants={itemVariants}>
+                            ¿Tienes un 
+                        </motion.div>
+                    </div>
+                    <div className="overflow-hidden pt-2">
+                        <motion.div variants={itemVariants}>
+                            <span
+                                className="text-transparent hover:text-white transition-colors duration-700 cursor-none"
+                                style={{ WebkitTextStroke: '1px white' }} 
+                                onMouseEnter={textEnter}
+                                onMouseLeave={textLeave}
+                            >
+                                Proyecto?
+                            </span>
+                        </motion.div>
+                    </div>
                 </h2>
 
-                <motion.p 
-                    style={{ color: pColor }}
-                    className="font-body text-lg md:text-3xl max-w-2xl mx-auto mb-16 leading-relaxed font-light"
-                >
-                    Hacemos tus ideas más <motion.span style={{ backgroundColor: accentBg, color: accentText }} className="italic font-serif px-2 py-0.5 rounded-md mx-1">caóticas</motion.span> e interesantes realidad.
-                </motion.p>
+                <div className="overflow-hidden mb-16 px-4">
+                    <motion.p 
+                        variants={itemVariants}
+                        className="font-body text-gray-400 text-lg md:text-3xl max-w-2xl mx-auto leading-relaxed font-light"
+                    >
+                        Hacemos tus ideas más <span className="italic font-serif bg-lime-400 text-black px-2 py-0.5 rounded-md mx-1">caóticas</span> e interesantes realidad.
+                    </motion.p>
+                </div>
 
-                <motion.button
-                    onClick={handleWhatsApp}
-                    onMouseEnter={buttonEnter}
-                    onMouseLeave={textLeave}
-                    style={{ backgroundColor: btnBg, color: btnText }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group relative px-12 py-5 font-bold uppercase tracking-widest text-sm overflow-hidden rounded-full shadow-2xl flex items-center justify-center mx-auto"
-                >
-                    <span className="relative z-10 flex items-center gap-3">
-                        Contáctanos <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
-                    </span>
-                    {/* Subtle hover overlay */}
-                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                </motion.button>
-            </div>
-        </motion.section>
+                <motion.div variants={fadeVariants} className="flex justify-center">
+                    <motion.button
+                        onClick={handleWhatsApp}
+                        onMouseEnter={buttonEnter}
+                        onMouseLeave={textLeave}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="group relative px-12 py-5 font-bold uppercase tracking-widest text-sm overflow-hidden rounded-full shadow-2xl flex items-center justify-center bg-white text-black hover:bg-lime-400 transition-colors duration-300"
+                    >
+                        <span className="relative z-10 flex items-center gap-3">
+                            Contáctanos <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                        </span>
+                        {/* Subtle hover overlay */}
+                        <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    </motion.button>
+                </motion.div>
+            </motion.div>
+        </section>
     );
 };
 
