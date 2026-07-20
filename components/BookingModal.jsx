@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Loader2, Zap, Layout, Search, ArrowRight, Layers, Smartphone, Sparkles, User, Mail, Phone } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 // --- COMPONENTE DE INPUT (Simplificado) ---
 const InputField = ({ label, icon: Icon, ...props }) => (
@@ -202,7 +203,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                                                         />
                                                         <div>
                                                             <InputField
-                                                                label="WhatsApp" icon={Phone}
+                                                                label="WhatsApp" icon={WhatsAppIcon}
                                                                 required name="phone" type="tel" onChange={handleChange} value={formData.phone}
                                                                 placeholder="WhatsApp (52...)"
                                                             />

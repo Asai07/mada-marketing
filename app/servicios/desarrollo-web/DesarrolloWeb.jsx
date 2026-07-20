@@ -9,6 +9,7 @@ import {
     Trophy, Play, Target
 } from 'lucide-react';
 import Image from 'next/image';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 // --- ANIMACIONES CONFIG ---
 const sectionVariants = {
@@ -456,7 +457,7 @@ export default function DesarrolloWebClient() {
                                                 className="w-full md:w-auto px-8 py-4 bg-black text-white font-bold rounded-full hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 group shadow-lg"
                                             >
                                                 Cotizar con un Experto
-                                                <MessageCircle className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                                <WhatsAppIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                             </a>
                                         </div>
                                     </div>
@@ -489,7 +490,7 @@ export default function DesarrolloWebClient() {
                             target="_blank"
                             className="w-full md:w-auto flex items-center justify-center gap-3 bg-black text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl"
                         >
-                            <MessageCircle className="w-5 h-5" />
+                            <WhatsAppIcon className="w-5 h-5" />
                             <span>WhatsApp Directo</span>
                         </a>
                     </div>

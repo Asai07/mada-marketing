@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+import WhatsAppIcon from './WhatsAppIcon';
 
 // --- DATOS DE TUS PROYECTOS ---
 const allProjects = [
@@ -135,11 +136,7 @@ const ProjectCard = ({ project }) => {
                         className="px-5 py-2 text-xs font-bold uppercase tracking-widest bg-black text-[#bef264] border border-black rounded hover:bg-black/80 transition-colors flex items-center gap-2"
                     >
                         <span>Cotizar web similar</span>
-                        {/* Mantuve la flecha original para no romper la estética, pero ya funciona el link */}
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
+                        <WhatsAppIcon className="w-4 h-4" />
                     </a>
                 </div>
             </div>

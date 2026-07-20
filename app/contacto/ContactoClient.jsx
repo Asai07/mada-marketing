@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, Instagram, Facebook, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 const contactMethods = [
     {
@@ -12,7 +13,7 @@ const contactMethods = [
         href: 'mailto:hola@somosmada.com',
     },
     {
-        icon: <Phone className="w-5 h-5" />,
+        icon: <WhatsAppIcon className="w-5 h-5" />,
         label: 'WhatsApp / Teléfono',
         value: '+52 (81) 0000 0000',
         href: 'https://wa.me/528100000000?text=' + encodeURIComponent('Hola, me gustaría información sobre sus servicios.'),
@@ -185,7 +186,7 @@ export default function ContactoClient() {
                                     disabled={loading}
                                     className="w-full py-4 bg-black text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-lime-500 hover:text-black transition-all duration-300 disabled:opacity-60"
                                 >
-                                    <Send className="w-4 h-4" />
+                                    <WhatsAppIcon className="w-4 h-4" />
                                     {loading ? 'Enviando...' : 'Enviar por WhatsApp'}
                                 </button>
                                 <p className="text-xs text-gray-400 text-center">

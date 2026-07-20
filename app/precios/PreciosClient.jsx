@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, ArrowRight, ShieldCheck, Clock, Headphones, Zap } from 'lucide-react';
 import Link from 'next/link';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 const comparisonFeatures = [
     { feature: 'Dominio .com (1 año)', ignition: true, momentum: true, singularity: true },
@@ -181,7 +182,9 @@ export default function PreciosClient() {
                                         <div className="flex flex-col items-center gap-2">
                                             <span className="text-2xl font-display font-bold text-black">IGNITION</span>
                                             <span className="text-gray-500 font-medium">$7,500 MXN</span>
-                                            <a href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent("Me interesa IGNITION")}`} target="_blank" rel="noopener noreferrer" className="mt-4 text-xs uppercase tracking-widest font-bold text-black border border-black/20 hover:bg-gray-50 hover:border-black rounded-full px-4 py-2 transition-colors">Cotizar</a>                                        </div>
+                                            <a href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent("Me interesa IGNITION")}`} target="_blank" rel="noopener noreferrer" className="mt-4 text-xs uppercase tracking-widest font-bold text-black border border-black/20 hover:bg-gray-50 hover:border-black rounded-full px-4 py-2 transition-colors flex items-center gap-2 justify-center">
+                                                <WhatsAppIcon className="w-4 h-4" /> Cotizar
+                                            </a>                                        </div>
                                     </th>
 
                                     {/* HEADER MOMENTUM */}
@@ -275,8 +278,9 @@ export default function PreciosClient() {
                             href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent('Hola, me gustaría información sobre sus planes.')}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-8 py-4 border border-white/30 text-white text-sm uppercase tracking-widest hover:border-lime-400 hover:text-lime-400 transition-colors rounded-full"
+                            className="px-8 py-4 border border-white/30 text-white text-sm uppercase tracking-widest hover:border-lime-400 hover:text-lime-400 transition-colors rounded-full flex items-center gap-2 justify-center"
                         >
+                            <WhatsAppIcon className="w-4 h-4" />
                             Escribir por WhatsApp
                         </a>
                     </div>

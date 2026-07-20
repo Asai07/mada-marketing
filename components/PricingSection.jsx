@@ -3,6 +3,7 @@ import React from 'react';
 import { Check, Rocket, Flame, Mountain, Info, ExternalLink } from 'lucide-react'; // <-- Se añadió ExternalLink
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const PricingSection = ({ onOpenBooking }) => {
     // --- 1. CONFIGURACIÓN DE CONTACTO ---
@@ -126,9 +127,9 @@ const PricingSection = ({ onOpenBooking }) => {
                             {/* BOTÓN CON LÓGICA */}
                             <button
                                 onClick={() => handlePlanSelect('IGNITION')}
-                                className="w-full py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest"
+                                className="w-full py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2"
                             >
-                                Iniciar Ahora
+                                <WhatsAppIcon className="w-4 h-4" /> Iniciar Ahora
                             </button>
                         </div>
                     </motion.div>

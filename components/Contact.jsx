@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { motion } from 'framer-motion';
 
 
@@ -100,7 +101,7 @@ const Contact = () => {
                         className="group relative px-12 py-5 font-bold uppercase tracking-widest text-sm overflow-hidden rounded-full shadow-2xl flex items-center justify-center bg-white text-black hover:bg-lime-400 transition-colors duration-300"
                     >
                         <span className="relative z-10 flex items-center gap-3">
-                            Contáctanos <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                            Contáctanos <WhatsAppIcon className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                         </span>
                         {/* Subtle hover overlay */}
                         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
