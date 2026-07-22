@@ -1,6 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useActionState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { submitContact } from '@/app/actions/contact';
 import { Mail, Phone, MapPin, Clock, Send, Instagram, Facebook, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
@@ -16,7 +17,7 @@ const contactMethods = [
         icon: <WhatsAppIcon className="w-5 h-5" />,
         label: 'WhatsApp / Teléfono',
         value: '+52 (81) 0000 0000',
-        href: 'https://wa.me/528100000000?text=' + encodeURIComponent('Hola, me gustaría información sobre sus servicios.'),
+        href: `https://wa.me/${process.env.NEXT_PUBLIC_PHONE_NUMBER}?text=` + encodeURIComponent('Hola, me gustaría información sobre sus servicios.'),
     },
     {
         icon: <MapPin className="w-5 h-5" />,
@@ -35,24 +36,34 @@ const contactMethods = [
 export default function ContactoClient() {
     const [formData, setFormData] = useState({ name: '', email: '', company: '', service: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
-    const [loading, setLoading] = useState(false);
+
+    const [state, formAction, isPending] = useActionState(submitContact, { success: false, error: null, message: null });
+
+    useEffect(() => {
+        if (state.success) {
+            setSubmitted(true);
+        }
+    }, [state]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-
+    const handleFormSubmit = (formDataParam) => {
         // Redirigir a WhatsApp con el mensaje del formulario
-        const text = encodeURIComponent(
-            `Hola MADA! 👋\n\nMe llamo *${formData.name}*${formData.company ? ` y represento a *${formData.company}*` : ''}.\n\nMe interesa: ${formData.service || 'Conocer sus servicios'}.\n\n${formData.message}\n\nCorreo de contacto: ${formData.email}`
-        );
-        window.open(`https://wa.me/528100000000?text=${text}`, '_blank');
+        const name = formDataParam.get('name');
+        const company = formDataParam.get('company');
+        const service = formDataParam.get('service');
+        const message = formDataParam.get('message');
+        const email = formDataParam.get('email');
 
-        setSubmitted(true);
-        setLoading(false);
+        const text = encodeURIComponent(
+            `Hola MADA! 👋\n\nMe llamo *${name}*${company ? ` y represento a *${company}*` : ''}.\n\nMe interesa: ${service || 'Conocer sus servicios'}.\n\n${message}\n\nCorreo de contacto: ${email}`
+        );
+        window.open(`https://wa.me/${process.env.NEXT_PUBLIC_PHONE_NUMBER}?text=${text}`, '_blank');
+
+        // Enviar a la BD (Server Action)
+        formAction(formDataParam);
     };
 
     return (
@@ -110,7 +121,10 @@ export default function ContactoClient() {
                                 </p>
                             </div>
                         ) : (
-                            <form onSubmit={handleSubmit} className="space-y-5">
+                            <form action={handleFormSubmit} className="space-y-5">
+                                {/* Hidden fields for DB */}
+                                <input type="hidden" name="phone" value="Redirigido a WhatsApp" />
+                                {state.error && <p className="text-red-500 text-xs font-bold">{state.error}</p>}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     <div>
                                         <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Nombre *</label>
@@ -183,11 +197,11 @@ export default function ContactoClient() {
 
                                 <button
                                     type="submit"
-                                    disabled={loading}
+                                    disabled={isPending}
                                     className="w-full py-4 bg-black text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-lime-500 hover:text-black transition-all duration-300 disabled:opacity-60"
                                 >
                                     <WhatsAppIcon className="w-4 h-4" />
-                                    {loading ? 'Enviando...' : 'Enviar por WhatsApp'}
+                                    {isPending ? 'Enviando...' : 'Enviar por WhatsApp'}
                                 </button>
                                 <p className="text-xs text-gray-400 text-center">
                                     Al enviar te redirigimos a WhatsApp para una respuesta más rápida.

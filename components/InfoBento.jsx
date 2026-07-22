@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { Code, Globe, ArrowRight, Box, Layers } from 'lucide-react';
-import { motion } from 'framer-motion'; // <--- IMPORTAMOS FRAMER MOTION
+import { m } from 'framer-motion'; // <--- CAMBIO: m en lugar de motion
 
 const InfoBento = ({ isMobile }) => {
     const bentoRef = useRef(null);
@@ -94,7 +94,7 @@ const InfoBento = ({ isMobile }) => {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Header Animado */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -103,10 +103,10 @@ const InfoBento = ({ isMobile }) => {
                 >
                     <span className="inline-block px-3 py-1 rounded-full border border-black/10 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 bg-gray-100">03. El Stack</span>
                     <h2 className="font-display text-4xl md:text-6xl font-bold">Sin Límites Técnicos</h2>
-                </motion.div>
+                </m.div>
 
                 {/* Grid Container Animado */}
-                <motion.div
+                <m.div
                     className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 h-auto md:h-[600px]"
                     variants={containerVariants}
                     initial="hidden"
@@ -116,7 +116,7 @@ const InfoBento = ({ isMobile }) => {
 
                     {/* CARD 1: FULL STACK */}
                     {/* Movemos col-span y row-span al motion.div wrapper */}
-                    <motion.div variants={cardVariants} className="col-span-1 md:col-span-2 md:row-span-2 h-full">
+                    <m.div variants={cardVariants} className="col-span-1 md:col-span-2 md:row-span-2 h-full">
                         <div
                             className="text-white p-8 rounded-2xl flex flex-col justify-between group overflow-hidden relative h-full"
                             style={{
@@ -150,10 +150,10 @@ const InfoBento = ({ isMobile }) => {
                                 ))}
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* CARD 2: PERFORMANCE */}
-                    <motion.div variants={cardVariants} className="h-full">
+                    <m.div variants={cardVariants} className="h-full">
                         <div className="bg-[#f3f4f6] p-8 rounded-2xl flex flex-col justify-center items-center text-center group hover:shadow-xl transition-all duration-500 relative overflow-hidden border border-transparent hover:border-black/5 h-full">
                             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             <div className="relative z-10">
@@ -167,10 +167,10 @@ const InfoBento = ({ isMobile }) => {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* CARD 3: SEO */}
-                    <motion.div variants={cardVariants} className="h-full">
+                    <m.div variants={cardVariants} className="h-full">
                         <div className="bg-[#f3f4f6] p-8 rounded-2xl flex flex-col justify-between group overflow-hidden relative hover:bg-black hover:text-white transition-colors duration-500 h-full">
                             <div className="flex justify-between items-start">
                                 <Globe className="w-8 h-8 mb-4 group-hover:text-lime-400 transition-colors" />
@@ -181,10 +181,10 @@ const InfoBento = ({ isMobile }) => {
                                 <p className="text-xs text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Estructura semántica perfecta. Google te amará.</p>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* CARD 4: DESIGN SYSTEMS */}
-                    <motion.div variants={cardVariants} className="col-span-1 md:col-span-2 h-full">
+                    <m.div variants={cardVariants} className="col-span-1 md:col-span-2 h-full">
                         <div className="bg-[#f3f4f6] p-8 rounded-2xl flex items-center justify-between relative overflow-hidden group h-full">
                             <div className="relative z-10 flex-1">
                                 <div className="flex items-center gap-3 mb-4">
@@ -206,9 +206,9 @@ const InfoBento = ({ isMobile }) => {
                                 <div className="h-2 w-20 bg-gray-200 rounded-full"></div>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

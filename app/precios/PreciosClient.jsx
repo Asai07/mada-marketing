@@ -60,7 +60,7 @@ function CellValue({ val }) {
 }
 
 export default function PreciosClient() {
-    const PHONE_NUMBER = "528100000000";
+    const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
 
     const handleOpenBooking = () => {
         window.dispatchEvent(new Event('open-booking-modal'));

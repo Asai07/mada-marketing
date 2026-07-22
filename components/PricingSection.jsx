@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
 import { Check, Rocket, Flame, Mountain, Info, ExternalLink } from 'lucide-react'; // <-- Se añadió ExternalLink
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Link from 'next/link';
 import WhatsAppIcon from './WhatsAppIcon';
 
 const PricingSection = ({ onOpenBooking }) => {
     // --- 1. CONFIGURACIÓN DE CONTACTO ---
-    const PHONE_NUMBER = "528100000000";
+    const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
 
     const handlePlanSelect = (plan) => {
         let url = "";
@@ -45,7 +45,7 @@ const PricingSection = ({ onOpenBooking }) => {
     return (
         <section className="py-20 md:py-32 px-6 overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -59,9 +59,9 @@ const PricingSection = ({ onOpenBooking }) => {
                     <p className="max-w-md text-gray-500 text-sm md:text-base text-right">
                         No vendemos "gastos", vendemos activos. Elige la potencia de tu motor de crecimiento.
                     </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 relative"
                     variants={containerVariants}
                     initial="hidden"
@@ -70,7 +70,7 @@ const PricingSection = ({ onOpenBooking }) => {
                 >
 
                     {/* PLAN 1: IGNITION */}
-                    <motion.div variants={itemVariants} className="h-full">
+                    <m.div variants={itemVariants} className="h-full">
                         <div className="group relative p-8 rounded-2xl bg-gray-50 border border-gray-200 hover:border-lime-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                             <div className="mb-6">
                                 <div className="flex justify-between items-start mb-4">
@@ -132,10 +132,10 @@ const PricingSection = ({ onOpenBooking }) => {
                                 <WhatsAppIcon className="w-4 h-4" /> Iniciar Ahora
                             </button>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* PLAN 2: MOMENTUM */}
-                    <motion.div variants={itemVariants} className="h-full relative z-10">
+                    <m.div variants={itemVariants} className="h-full relative z-10">
                         <div className="relative p-8 rounded-2xl bg-black text-white shadow-2xl hover:shadow-lime-900/20 hover:-translate-y-2 transition-all duration-500 flex flex-col h-full transform md:-translate-y-4 ring-1 ring-black/5">
                             {/* ... (Contenido Momentum igual) ... */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-lime-400 text-black text-[10px] font-bold uppercase tracking-widest rounded-full shadow-lg">
@@ -199,10 +199,10 @@ const PricingSection = ({ onOpenBooking }) => {
                                 Hablemos
                             </button>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* PLAN 3: SINGULARITY */}
-                    <motion.div variants={itemVariants} className="h-full">
+                    <m.div variants={itemVariants} className="h-full">
                         <div className="group relative p-8 rounded-2xl bg-gray-50 border border-gray-200 hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
                             {/* ... (Contenido Singularity igual) ... */}
                             <div className="mb-6">
@@ -251,10 +251,10 @@ const PricingSection = ({ onOpenBooking }) => {
                                 Agendar Llamada
                             </button>
                         </div>
-                    </motion.div>
+                    </m.div>
 
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
@@ -283,7 +283,7 @@ const PricingSection = ({ onOpenBooking }) => {
                     >
                         Ver tabla comparativa y preguntas frecuentes sobre precios →
                     </Link>
-                </motion.div>
+                </m.div>
                 {/* 👆 FIN DEL BOTÓN GENERAL 👆 */}
 
             </div> {/* Cierre del container max-w-7xl */}

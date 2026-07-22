@@ -1,27 +1,28 @@
-import { NextResponse } from "next/server";
+'use server';
+
 import { prisma } from "@/lib/prisma";
 import { Resend } from "resend";
 
-export async function POST(request: Request) {
+export async function submitContact(prevState: any, formData: FormData) {
   try {
-    const data = await request.json();
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
+    const service = formData.get('service') as string;
+    const plan = formData.get('plan') as string;
+    const message = formData.get('message') as string; // Optional message
 
-    const { name, email, phone, service, plan } = data;
-
-    if (!name || !email || !phone || !service) {
-      return NextResponse.json(
-        { error: "Faltan campos obligatorios" },
-        { status: 400 }
-      );
+    if (!name || !email || !phone) {
+      return { success: false, error: "Faltan campos obligatorios" };
     }
 
-    // 1. Guardar en Base de Datos (Neon Postgres via Prisma)
+    // 1. Guardar en Base de Datos
     const newContact = await prisma.contact.create({
       data: {
         name,
         email,
         phone,
-        service,
+        service: service || 'No especificado',
         plan: plan || null,
       },
     });
@@ -38,36 +39,28 @@ export async function POST(request: Request) {
               <p><strong>Nombre:</strong> ${name}</p>
               <p><strong>Email:</strong> ${email}</p>
               <p><strong>Teléfono/WhatsApp:</strong> ${phone}</p>
-              <p><strong>Servicio:</strong> ${service}</p>
+              <p><strong>Servicio:</strong> ${service || 'No especificado'}</p>
               ${plan ? `<p><strong>Plan de interés:</strong> ${plan}</p>` : ""}
+              ${message ? `<p><strong>Mensaje:</strong> ${message}</p>` : ""}
             </div>
             <p style="font-size: 12px; color: #888;">Ingresa al <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/admin">Panel de Administración</a> para gestionar este contacto.</p>
           </div>
         `;
 
         await resend.emails.send({
-          from: 'Notificaciones <onboarding@resend.dev>', // Usamos este correo de prueba mientras configuras tu propio dominio
-          to: process.env.ADMIN_EMAIL || 'somosmadamkt@gmail.com', // El correo al que llegarán las notificaciones
-          subject: `Nuevo lead: ${name} - ${service}`,
+          from: 'Notificaciones <onboarding@resend.dev>',
+          to: process.env.ADMIN_EMAIL || 'somosmadamkt@gmail.com',
+          subject: `Nuevo lead: ${name} - ${service || 'General'}`,
           html: emailHtml,
         });
-      } else {
-        console.warn("RESEND_API_KEY no está configurada, no se enviará el correo.");
       }
     } catch (emailError) {
       console.error("Error al enviar email:", emailError);
-      // No hacemos return de error aquí porque el contacto SÍ se guardó en la DB
     }
 
-    return NextResponse.json(
-      { message: "Contacto guardado correctamente", contact: newContact },
-      { status: 201 }
-    );
+    return { success: true, message: "Contacto guardado correctamente" };
   } catch (error) {
-    console.error("Error en API de contacto:", error);
-    return NextResponse.json(
-      { error: "Error interno del servidor" },
-      { status: 500 }
-    );
+    console.error("Error en Server Action de contacto:", error);
+    return { success: false, error: "Error interno del servidor" };
   }
 }

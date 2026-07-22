@@ -47,6 +47,60 @@ const jsonLd = {
             description: 'Estrategias de marketing digital para convertir visitantes en clientes. Campañas publicitarias y crecimiento de marca.',
         },
     ],
+    mainEntity: {
+        '@type': 'OfferCatalog',
+        name: 'Servicios de Agencia Digital',
+        itemListElement: [
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Marketing Digital y Estrategia',
+                    description: 'Estrategias integrales para convertir visitantes en clientes, gestión de campañas publicitarias y crecimiento de marca.'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Desarrollo Web a Medida',
+                    description: 'Sitios web profesionales desarrollados con Next.js, React y Tailwind CSS para máxima velocidad y SEO.'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'SEO Técnico y Posicionamiento',
+                    description: 'Optimización avanzada para motores de búsqueda, arquitectura de información y SEO local.'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Plan Ignition',
+                    description: 'Desarrollo web express para validación rápida. Entrega en 5 días hábiles.'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Plan Momentum',
+                    description: 'Sitio web corporativo robusto diseñado para escalar y posicionar tu marca.'
+                }
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Plan Singularity',
+                    description: 'Soluciones digitales 100% personalizadas para proyectos complejos y aplicaciones web.'
+                }
+            }
+        ]
+    }
 };
 
 export default function Page() {

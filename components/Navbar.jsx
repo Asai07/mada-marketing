@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const handleLetsTalk = () => {
-    const phone = "528100000000";
+    const phone = process.env.NEXT_PUBLIC_PHONE_NUMBER;
     const message = encodeURIComponent("Hola, vengo de su sitio web y me gustaría información.");
     window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
 };

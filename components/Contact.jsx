@@ -10,7 +10,7 @@ const Contact = () => {
     const textLeave = () => { };
     const buttonEnter = () => { };
     const handleWhatsApp = () => {
-        const phone = "528100000000"; // Tu número
+        const phone = process.env.NEXT_PUBLIC_PHONE_NUMBER; // Tu número
         const message = encodeURIComponent("Hola MADA, tengo un proyecto en mente y quisiera platicar detalles.");
         window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     };

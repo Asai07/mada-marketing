@@ -58,7 +58,7 @@ const ProjectCard = ({ project }) => {
 
     // 🟢 LÓGICA DE WHATSAPP AGREGADA AQUÍ
     const getWhatsAppLink = (projectTitle) => {
-        const phone = "528100000000";
+        const phone = process.env.NEXT_PUBLIC_PHONE_NUMBER;
         const message = `Hola, me interesa cotizar una solución similar a: ${projectTitle}`;
         return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     };

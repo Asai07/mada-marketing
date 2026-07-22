@@ -1,6 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useActionState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { submitContact } from '@/app/actions/contact';
 import { X, Check, Loader2, Zap, Layout, Search, ArrowRight, Layers, Smartphone, Sparkles, User, Mail, Phone } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
 
@@ -46,6 +47,16 @@ const BookingModal = ({ isOpen, onClose }) => {
         plan: ''
     });
 
+    const [state, formAction, isPending] = useActionState(submitContact, { success: false, error: null, message: null });
+
+    useEffect(() => {
+        if (state.success) {
+            setIsSubmitted(true);
+        } else if (state.error) {
+            setError(state.error);
+        }
+    }, [state]);
+
     const showWebPlans = formData.service === 'Web / Landing';
 
 
@@ -58,6 +69,9 @@ const BookingModal = ({ isOpen, onClose }) => {
                 setError(null);
                 setFormData({ name: '', email: '', phone: '', service: '', plan: '' });
                 setPrivacyAccepted(false);
+                // No podemos resetear el estado de useActionState directamente, pero al cerrar el modal 
+                // se puede considerar reiniciar el componente entero si es necesario, 
+                // por ahora al reiniciar setIsSubmitted(false) basta.
             }, 500);
             return () => clearTimeout(timer);
         }
@@ -89,42 +103,18 @@ const BookingModal = ({ isOpen, onClose }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
+    const handleFormSubmit = (formDataParam) => {
         setError(null);
-
         if (!formData.service) {
             setError("Por favor selecciona qué necesitas (Web, App o Marketing).");
-            setIsLoading(false);
             return;
         }
         if (!privacyAccepted) {
             setError("Debes aceptar la política de privacidad para continuar.");
-            setIsLoading(false);
             return;
         }
-
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (!response.ok) {
-                throw new Error('Error al enviar el formulario');
-            }
-
-            setIsSubmitted(true);
-        } catch (err) {
-            console.error("Error:", err);
-            setError("Hubo un error al guardar tu contacto. Intenta de nuevo.");
-        } finally {
-            setIsLoading(false);
-        }
+        // Llamar a la acción nativa
+        formAction(formDataParam);
     };
 
     return (
@@ -181,9 +171,11 @@ const BookingModal = ({ isOpen, onClose }) => {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: -10 }}
-                                            onSubmit={handleSubmit}
+                                            action={handleFormSubmit}
                                             className="space-y-6"
                                         >
+                                            <input type="hidden" name="service" value={formData.service} />
+                                            <input type="hidden" name="plan" value={formData.plan} />
                                             {/* SECCIÓN 1: DATOS */}
                                             <div className="space-y-4"> {/* Aumenté un poco el espacio */}
                                                 <h4 className="text-xs font-bold text-black uppercase tracking-wide border-b border-gray-100 pb-2 mb-3">
@@ -308,10 +300,10 @@ const BookingModal = ({ isOpen, onClose }) => {
                                             <div className="pt-2">
                                                 <button
                                                     type="submit"
-                                                    disabled={isLoading}
+                                                    disabled={isPending}
                                                     className="w-full py-4 bg-lime-400 hover:bg-lime-500 active:scale-[0.99] text-black font-bold uppercase tracking-widest text-xs rounded-xl transition-all shadow-xl shadow-lime-400/20 flex items-center justify-center gap-3 disabled:opacity-50 disabled:shadow-none"
                                                 >
-                                                    {isLoading ? <Loader2 className="animate-spin" /> : (
+                                                    {isPending ? <Loader2 className="animate-spin" /> : (
                                                         <>Agendar Llamada <ArrowRight size={16} /></>
                                                     )}
                                                 </button>

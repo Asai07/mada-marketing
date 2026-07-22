@@ -37,7 +37,7 @@ const breathingBlob = {
 
 export default function DesarrolloWebClient() {
     const [activePlan, setActivePlan] = useState('momentum');
-    const PHONE_NUMBER = "528100000000";
+    const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER;
 
     useEffect(() => {
         window.scrollTo(0, 0);
